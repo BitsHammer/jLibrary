@@ -1,14 +1,23 @@
 package com.bitshammer.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 /**
  * Classe que representa um Autor
  * @author Bruno
  *
  */
+@Entity
 public class Autor {
 
+	@Id
+	@GeneratedValue
 	private Long id;
 
+	@Column(nullable=false)
 	private String nome;
 
 	/**

@@ -3,13 +3,21 @@ package com.bitshammer.model;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 /**
  * Classe representando um aluguel
  * @author Bruno
  *
  */
+@Entity
 public class Aluguel {
 
+	@Id
+	@GeneratedValue
 	private Long id;
 
 	private List<Livro> livros;
