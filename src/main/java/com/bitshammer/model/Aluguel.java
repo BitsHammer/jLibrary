@@ -38,7 +38,7 @@ public class Aluguel {
 	private List<Livro> livros;
 
 	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="cliente_id")
+	@JoinColumn(name="cliente_id", referencedColumnName="cliente_id")	
 	private Cliente cliente;
 
 	@Temporal(TemporalType.DATE)

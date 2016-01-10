@@ -32,7 +32,7 @@ public class Livro {
 	private int qtdPaginas;
 
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="editora_id")
+	@JoinColumn(name="editora_id", referencedColumnName="editora_id")
 	private Editora editora;
 
 	@ManyToMany(fetch=FetchType.LAZY)

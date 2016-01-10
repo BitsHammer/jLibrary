@@ -34,7 +34,7 @@ public class Cliente {
 	@Column(nullable=false, length=9)
 	private String celular;
 	
-	@OneToMany(mappedBy="cliente_id", fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="cliente", fetch=FetchType.LAZY)
 	private List<Aluguel> alugueis;
 
 	/**
