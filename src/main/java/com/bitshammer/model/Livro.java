@@ -4,8 +4,13 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 /**
  * 
@@ -16,17 +21,25 @@ import javax.persistence.Id;
 public class Livro {
 	
 	@Id
+	@Column(name="livro_id")
 	@GeneratedValue
 	private Long id;
 	
-	@Column(nullable=false)
+	@Column(nullable=false, length=200)
 	private String nome;
 
 	@Column(nullable=false)
 	private int qtdPaginas;
 
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="editora_id")
 	private Editora editora;
 
+	@ManyToMany(fetch=FetchType.LAZY)
+	@JoinTable(
+	      name="autor_livro",
+	      joinColumns={@JoinColumn(name="livro_id", referencedColumnName="livro_id")},
+	      inverseJoinColumns={@JoinColumn(name="autor_id", referencedColumnName="autor_id")})
 	private List<Autor> autores;
 
 	/**

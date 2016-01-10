@@ -21,13 +21,13 @@ public class Usuario {
 	@GeneratedValue
 	private Long id;
 	
-	@Column(nullable=false)
+	@Column(nullable=false, length=50)
 	private String login;
 	
 	@Column(nullable=false)
 	private String senha;
 	
-	@Column(nullable=false)
+	@Column(nullable=false, length=50)
 	private String email;
 
 	/**

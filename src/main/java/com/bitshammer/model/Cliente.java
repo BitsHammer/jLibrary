@@ -1,9 +1,13 @@
 package com.bitshammer.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  * Classe que representa um Cliente
@@ -15,19 +19,23 @@ public class Cliente {
 
 	@Id
 	@GeneratedValue
+	@Column(name="cliente_id")
 	private Long id;
 	
-	@Column(nullable=false)
+	@Column(nullable=false, length=200)
 	private String nome;
 
-	@Column(nullable=false)
+	@Column(nullable=false, length=8)
 	private String telefone;
 
-	@Column(nullable=false)
+	@Column(nullable=false, length=50)
 	private String email;
 
-	@Column(nullable=false)
+	@Column(nullable=false, length=9)
 	private String celular;
+	
+	@OneToMany(mappedBy="cliente_id", fetch=FetchType.LAZY)
+	private List<Aluguel> alugueis;
 
 	/**
 	 * @return the id
@@ -97,6 +105,20 @@ public class Cliente {
 	 */
 	public void setCelular(String celular) {
 		this.celular = celular;
+	}
+
+	/**
+	 * @return the alugueis
+	 */
+	public List<Aluguel> getAlugueis() {
+		return alugueis;
+	}
+
+	/**
+	 * @param alugueis the alugueis to set
+	 */
+	public void setAlugueis(List<Aluguel> alugueis) {
+		this.alugueis = alugueis;
 	}
 
 }

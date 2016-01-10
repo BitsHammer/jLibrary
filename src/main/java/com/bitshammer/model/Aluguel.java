@@ -7,8 +7,13 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -22,10 +27,18 @@ public class Aluguel {
 
 	@Id
 	@GeneratedValue
+	@Column(name="aluguel_id")
 	private Long id;
 
+	@OneToMany(fetch=FetchType.EAGER)
+	@JoinTable(
+		      name="aluguel_livro",
+		      joinColumns={@JoinColumn(name="aluguel_id", referencedColumnName="aluguel_id")},
+		      inverseJoinColumns={@JoinColumn(name="livro_id", referencedColumnName="livro_id")})
 	private List<Livro> livros;
 
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="cliente_id")
 	private Cliente cliente;
 
 	@Temporal(TemporalType.DATE)
