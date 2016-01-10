@@ -5,8 +5,12 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  * Classe representando um aluguel
@@ -24,10 +28,13 @@ public class Aluguel {
 
 	private Cliente cliente;
 
+	@Temporal(TemporalType.DATE)
 	private Date dtRetirada;
 
+	@Temporal(TemporalType.DATE)
 	private Date dtEntrega;
 	
+	@Enumerated(EnumType.ORDINAL)
 	private StatusAluguel statusAluguel;
 
 	/**
