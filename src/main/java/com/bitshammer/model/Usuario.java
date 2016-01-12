@@ -14,6 +14,10 @@ import javax.persistence.Id;
  * @author Bruno
  *
  */
+/**
+ * @author Bruno
+ *
+ */
 @Entity
 public class Usuario {
 	
@@ -85,6 +89,26 @@ public class Usuario {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Usuario [id=");
+		builder.append(id);
+		builder.append(", login=");
+		builder.append(login);
+		builder.append(", senha=");
+		builder.append(senha);
+		builder.append(", email=");
+		builder.append(email);
+		builder.append("]");
+		return builder.toString();
+	}
+	
+	
 	
 
 }
