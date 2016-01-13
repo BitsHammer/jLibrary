@@ -1,7 +1,9 @@
 /**
  * 
  */
-package com.bitshammer.model;
+package com.bitshammer.security.model;
+
+import java.security.Principal;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,7 +21,7 @@ import javax.persistence.Id;
  *
  */
 @Entity
-public class Usuario {
+public class Usuario implements Principal {
 	
 	@Id
 	@GeneratedValue
@@ -107,8 +109,9 @@ public class Usuario {
 		builder.append("]");
 		return builder.toString();
 	}
-	
-	
-	
 
+	@Override
+	public String getName() {
+		return login;
+	}
 }

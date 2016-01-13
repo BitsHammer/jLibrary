@@ -6,7 +6,7 @@ package com.bitshammer.web.bean;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
-import com.bitshammer.model.Usuario;
+import com.bitshammer.security.model.Usuario;
 
 /**
  * @author Bruno
