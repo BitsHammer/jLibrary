@@ -40,7 +40,6 @@ public final class LoginDao implements ILoginDao {
 		} else {
 			throw new LoginException();
 		}
-//		return null;
 	}
 
 	/* (non-Javadoc)
