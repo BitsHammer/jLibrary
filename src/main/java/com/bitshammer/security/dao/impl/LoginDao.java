@@ -33,6 +33,7 @@ public final class LoginDao implements ILoginDao {
 		Query query = entityManager.createQuery("select u from Ususario as u where u.login = :login and u.senha = :senha", Usuario.class);
 		query.setParameter("login", name);
 		query.setParameter("senha", password);
+		@SuppressWarnings("unchecked")
 		List<Usuario> resultList = query.getResultList();
 		entityManager.close();
 		if(!resultList.isEmpty()){
