@@ -28,7 +28,7 @@ public final class LoginDao implements ILoginDao {
 	@Override
 	public Usuario findUser(String name, String password) throws LoginException {
 		
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("jLibrary");
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("JLibrary");
 		EntityManager entityManager = factory.createEntityManager();
 		Query query = entityManager.createQuery("select u from Ususario as u where u.login = :login and u.senha = :senha", Usuario.class);
 		query.setParameter("login", name);
