@@ -4,7 +4,6 @@
 package com.bitshammer.security.services;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.Map;
 
 import javax.security.auth.Subject;
@@ -18,7 +17,6 @@ import javax.security.auth.spi.LoginModule;
 
 import com.bitshammer.security.dao.ILoginDao;
 import com.bitshammer.security.dao.impl.LoginDao;
-import com.bitshammer.security.model.Role;
 import com.bitshammer.security.model.Usuario;
 
 /**

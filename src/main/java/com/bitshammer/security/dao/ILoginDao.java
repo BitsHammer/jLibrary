@@ -3,11 +3,8 @@
  */
 package com.bitshammer.security.dao;
 
-import java.util.List;
-
 import javax.security.auth.login.LoginException;
 
-import com.bitshammer.security.model.Role;
 import com.bitshammer.security.model.Usuario;
 
 /**

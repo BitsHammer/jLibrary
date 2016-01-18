@@ -12,7 +12,6 @@ import javax.persistence.Query;
 import javax.security.auth.login.LoginException;
 
 import com.bitshammer.security.dao.ILoginDao;
-import com.bitshammer.security.model.Role;
 import com.bitshammer.security.model.Usuario;
 
 /**
