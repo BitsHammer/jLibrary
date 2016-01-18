@@ -43,13 +43,4 @@ public final class LoginDao implements ILoginDao {
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see com.bitshammer.security.dao.ILoginDao#findRoles(com.bitshammer.security.model.Usuario)
-	 */
-	@Override
-	public List<Role> findRoles(Usuario user) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

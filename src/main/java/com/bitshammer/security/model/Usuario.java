@@ -4,11 +4,17 @@
 package com.bitshammer.security.model;
 
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 
 /**
  * 
@@ -25,6 +31,7 @@ public class Usuario implements Principal {
 	
 	@Id
 	@GeneratedValue
+	@Column(name="user_id")
 	private Long id;
 	
 	@Column(nullable=false, length=50)
@@ -35,6 +42,13 @@ public class Usuario implements Principal {
 	
 	@Column(nullable=false, length=50)
 	private String email;
+	
+	@OneToMany(fetch=FetchType.LAZY)
+	@JoinTable(
+		      name="user_roles",
+		      joinColumns={@JoinColumn(name="user_id", referencedColumnName="user_id")},
+		      inverseJoinColumns={@JoinColumn(name="role_id", referencedColumnName="role_id")})
+	private List<Role> roles = new ArrayList<Role>();
 
 	/**
 	 * @return the id
@@ -113,5 +127,19 @@ public class Usuario implements Principal {
 	@Override
 	public String getName() {
 		return login;
+	}
+
+	/**
+	 * @return the roles
+	 */
+	public List<Role> getRoles() {
+		return roles;
+	}
+
+	/**
+	 * @param roles the roles to set
+	 */
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
 	}
 }

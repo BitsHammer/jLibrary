@@ -19,6 +19,7 @@ public class Role implements Principal {
 	
 	@Id
 	@GeneratedValue
+	@Column(name="role_id")
 	private Long id;
 
 	@Column

@@ -33,7 +33,6 @@ public class LoginService implements LoginModule {
 
 	private Usuario user;
 
-	private List<Role> roles;
 
 	private ILoginDao dao = new LoginDao();
 
@@ -64,7 +63,6 @@ public class LoginService implements LoginModule {
 			String password = String.valueOf(((PasswordCallback) callbacks[1]).getPassword());
 
 			user = dao.findUser(name, password);
-			roles = dao.findRoles(user);
 			return true;
 		} catch (LoginException e) {
 			// Logar
@@ -84,7 +82,7 @@ public class LoginService implements LoginModule {
 	@Override
 	public boolean commit() throws LoginException {
 		subject.getPrincipals().add(user);
-		roles.forEach(e -> subject.getPrincipals().add(e));
+		user.getRoles().forEach(e -> subject.getPrincipals().add(e));
 		return true;
 	}
 
@@ -102,7 +100,7 @@ public class LoginService implements LoginModule {
 	@Override
 	public boolean logout() throws LoginException {
 		subject.getPrincipals().remove(user);
-		roles.forEach(e-> subject.getPrincipals().remove(e));
+		user.getRoles().forEach(e-> subject.getPrincipals().remove(e));
 		return true;
 	}
 
