@@ -17,7 +17,5 @@ import com.bitshammer.security.model.Usuario;
 public interface ILoginDao {
 	
 	Usuario findUser(String name, String password) throws LoginException;
-	
-	List<Role> findRoles(Usuario user);
 
 }
