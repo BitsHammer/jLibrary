@@ -25,6 +25,8 @@ public class Role implements Principal {
 	@Column
 	private String name;
 	
+	public Role(){}
+	
 	/**
 	 * 
 	 * @param name

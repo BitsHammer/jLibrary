@@ -6,8 +6,6 @@ package com.bitshammer.security.dao.impl;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.security.auth.login.LoginException;
 
@@ -28,10 +26,9 @@ public final class LoginDao extends DataAccess implements ILoginDao {
 	@Override
 	public Usuario findUser(String name, String password) throws LoginException {
 		EntityManager entityManager = getEntityManager();
-		Query query = entityManager.createQuery("select u from Ususario as u where u.login = :login and u.senha = :senha", Usuario.class);
+		Query query = entityManager.createQuery("select u from Usuario as u where u.login = :login and u.senha = :senha", Usuario.class);
 		query.setParameter("login", name);
 		query.setParameter("senha", password);
-		@SuppressWarnings("unchecked")
 		List<Usuario> resultList = query.getResultList();
 		if(!resultList.isEmpty()){
 			return resultList.get(0);
