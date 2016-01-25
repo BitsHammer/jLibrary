@@ -12,12 +12,12 @@
 			style="margin-bottom:10px;">
 			<p:panelGrid columns="2">
 				<p:outputLabel for="j_username" value="Nome" />
-				<p:inputText type="text" id="j_username" name="j_username" />
+				<p:inputText type="text" id="j_username" name="j_username" value="#{loginBean.usuario.login}"/>
 				<p:outputLabel for="j_password" value="Senha" />
-				<p:inputText type="password" id="j_password" name="j_password" />
+				<p:inputText type="password" id="j_password" name="j_password" value="#{loginBean.usuario.senha}"/>
 			</p:panelGrid>
 		</p:panel>
-		<p:commandButton value="Submit" update="panel" action="j_security_check" />
+		<p:commandButton value="Submit" update="panel" action="#{loginBean.logar}" />
 	</h:form>
 	<p:ajaxStatus onstart="PF('statusDialog').show()"
 		onsuccess="PF('statusDialog').hide()" />

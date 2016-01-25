@@ -8,7 +8,6 @@
 	<version>1.0-SNAPSHOT</version>
 
 
-	<packaging>war</packaging>
 	<build>
 		<plugins>
 			<plugin>
@@ -68,7 +67,12 @@
 			<scope>test</scope>
 		</dependency>
 
-
+		<dependency>
+			<groupId>com.bitshammer</groupId>
+			<artifactId>bitshammer-infra</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 
+	<packaging>war</packaging>
 </project>
