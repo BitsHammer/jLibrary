@@ -6,6 +6,7 @@ package com.bitshammer.security.services;
 import java.io.IOException;
 import java.util.Map;
 
+import javax.faces.application.FacesMessage;
 import javax.security.auth.Subject;
 import javax.security.auth.callback.Callback;
 import javax.security.auth.callback.CallbackHandler;
@@ -14,6 +15,8 @@ import javax.security.auth.callback.PasswordCallback;
 import javax.security.auth.callback.UnsupportedCallbackException;
 import javax.security.auth.login.LoginException;
 import javax.security.auth.spi.LoginModule;
+
+import org.primefaces.context.RequestContext;
 
 import com.bitshammer.security.dao.ILoginDao;
 import com.bitshammer.security.dao.impl.LoginDao;
@@ -61,15 +64,20 @@ public class LoginService implements LoginModule {
 			String password = String.valueOf(((PasswordCallback) callbacks[1]).getPassword());
 
 			user = dao.findUser(name, password);
+			FacesMessage message = new FacesMessage(FacesMessage.FACES_MESSAGES, "Sucesso");
+			RequestContext.getCurrentInstance().showMessageInDialog(message);
 			return true;
 		} catch (LoginException e) {
-			// Logar
+			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "User invalid", e.getMessage());
+	        RequestContext.getCurrentInstance().showMessageInDialog(message);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "User invalid", e.getMessage());
 			e.printStackTrace();
+			RequestContext.getCurrentInstance().showMessageInDialog(message);
 		} catch (UnsupportedCallbackException e) {
-			// TODO Auto-generated catch block
+			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "User invalid", e.getMessage());
 			e.printStackTrace();
+			RequestContext.getCurrentInstance().showMessageInDialog(message);
 		}
 		return false;
 	}

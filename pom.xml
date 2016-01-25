@@ -32,6 +32,13 @@
 			<version>2.1.6</version>
 		</dependency>
 
+		<!-- Primefaces -->
+		<dependency>
+			<groupId>org.primefaces</groupId>
+			<artifactId>primefaces</artifactId>
+			<version>5.3</version>
+		</dependency>
+
 		<!-- JPA com Hibernate -->
 		<dependency>
 			<groupId>org.hibernate</groupId>

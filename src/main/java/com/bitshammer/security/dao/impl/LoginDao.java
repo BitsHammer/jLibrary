@@ -35,6 +35,6 @@ public final class LoginDao extends DataAccess implements ILoginDao {
 		} else {
 			throw new LoginException();
 		}
-	}
+	}	
 
 }

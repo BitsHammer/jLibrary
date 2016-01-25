@@ -2,20 +2,29 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
 
 <h:head></h:head>
 <h:body>
-	<p>Login to access secure pages:</p>
-	<form method="post" action="j_security_check">
-		<h:panelGrid columns="2">
-			<h:outputLabel for="j_username" value="Username" />
-			<input type="text" id="j_username" name="j_username" />
-			<h:outputLabel for="j_password" value="Password" />
-			<input type="password" id="j_password" name="j_password" />
-			<input type="submit" name="submit" value="Login" />
-		</h:panelGrid>
-		<br />
-	</form>
+	<h:form>
+		<p:panel id="panel" header="Bem vindo ao jLibrary"
+			style="margin-bottom:10px;">
+			<p:panelGrid columns="2">
+				<p:outputLabel for="j_username" value="Nome" />
+				<p:inputText type="text" id="j_username" name="j_username" />
+				<p:outputLabel for="j_password" value="Senha" />
+				<p:inputText type="password" id="j_password" name="j_password" />
+			</p:panelGrid>
+		</p:panel>
+		<p:commandButton value="Submit" update="panel" action="j_security_check" />
+	</h:form>
+	<p:ajaxStatus onstart="PF('statusDialog').show()"
+		onsuccess="PF('statusDialog').hide()" />
+
+	<p:dialog widgetVar="statusDialog" modal="true" draggable="false"
+		closable="false" resizable="false" showHeader="false">
+		<p:graphicImage name="/images/ajaxloadingbar.gif" />
+	</p:dialog>
 </h:body>
 </html>
