@@ -5,13 +5,15 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 
-<h:head></h:head>
+<h:head>
+	<f:loadBundle  basename="com.bitshammer.messages" var="msg"/>
+</h:head>
 <h:body>
 	<h:form>
 		<p:panel id="panel" header="Bem vindo ao jLibrary"
 			style="margin-bottom:10px;">
 			<p:panelGrid columns="2">
-				<p:outputLabel for="j_username" value="Nome" />
+				<p:outputLabel for="j_username" value="#{msg.label_nome}" />
 				<p:inputText type="text" id="j_username" name="j_username" value="#{loginBean.usuario.login}"/>
 				<p:outputLabel for="j_password" value="Senha" />
 				<p:inputText type="password" id="j_password" name="j_password" value="#{loginBean.usuario.senha}"/>
