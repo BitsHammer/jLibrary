@@ -7,7 +7,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.security.auth.login.LoginException;
 
-import com.bitshammer.bean.DefaultBean;
 import com.bitshammer.security.dao.ILoginDao;
 import com.bitshammer.security.dao.impl.LoginDao;
 import com.bitshammer.security.model.Usuario;
@@ -18,7 +17,7 @@ import com.bitshammer.security.model.Usuario;
  */
 @ManagedBean
 @ViewScoped
-public class LoginBean extends DefaultBean{
+public class LoginBean extends com.bitshammer.infra.bean.DefaultBean{
 
 	
 	private ILoginDao dao = new LoginDao();
