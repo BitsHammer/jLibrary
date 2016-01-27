@@ -17,7 +17,7 @@ import com.bitshammer.security.model.Usuario;
  * @author Bruno
  *
  */
-public final class LoginDao extends DataAccess implements ILoginDao {
+public class LoginDao extends DataAccess implements ILoginDao {
 
 	
 	/**

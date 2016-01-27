@@ -43,13 +43,6 @@ public class Usuario implements Principal {
 	@Column(nullable=false, length=50)
 	private String email;
 	
-	@OneToMany(fetch=FetchType.LAZY)
-	@JoinTable(
-		      name="user_roles",
-		      joinColumns={@JoinColumn(name="user_id", referencedColumnName="user_id")},
-		      inverseJoinColumns={@JoinColumn(name="role_id", referencedColumnName="role_id")})
-	private List<Role> roles = new ArrayList<Role>();
-
 	/**
 	 * @return the id
 	 */
@@ -127,19 +120,5 @@ public class Usuario implements Principal {
 	@Override
 	public String getName() {
 		return login;
-	}
-
-	/**
-	 * @return the roles
-	 */
-	public List<Role> getRoles() {
-		return roles;
-	}
-
-	/**
-	 * @param roles the roles to set
-	 */
-	public void setRoles(List<Role> roles) {
-		this.roles = roles;
 	}
 }
