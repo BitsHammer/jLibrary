@@ -5,6 +5,7 @@ package com.bitshammer.security.dao.impl;
 
 import java.util.List;
 
+import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.security.auth.login.LoginException;
@@ -17,7 +18,8 @@ import com.bitshammer.security.model.Usuario;
  * @author Bruno
  *
  */
-public class LoginDao extends DataAccess implements ILoginDao {
+@Named
+class LoginDao extends DataAccess implements ILoginDao {
 
 	
 	/**

@@ -5,10 +5,12 @@ package com.bitshammer.security.services;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.inject.Inject;
 import javax.security.auth.login.LoginException;
 
 import com.bitshammer.security.dao.ILoginDao;
-import com.bitshammer.security.dao.impl.LoginDao;
+import com.bitshammer.security.facade.ILoginFacade;
+import com.bitshammer.security.facade.LoginFacade;
 import com.bitshammer.security.model.Usuario;
 
 /**
@@ -19,8 +21,8 @@ import com.bitshammer.security.model.Usuario;
 @ViewScoped
 public class LoginBean extends com.bitshammer.infra.bean.DefaultBean{
 
-	
-	private ILoginDao dao = new LoginDao();
+	@Inject
+	private ILoginFacade facade;
 	
 	private Usuario usuario = new Usuario();
 	
@@ -30,7 +32,7 @@ public class LoginBean extends com.bitshammer.infra.bean.DefaultBean{
 	
 	public void logar() throws LoginException{
 		try{	
-			usuario = dao.findUser(usuario.getName(), usuario.getSenha());
+			facade.login(usuario);
 		}catch(LoginException e){
 			addMessage(e.getMessage());
 		}
