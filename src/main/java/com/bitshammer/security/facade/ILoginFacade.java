@@ -13,7 +13,7 @@ import com.bitshammer.security.model.Usuario;
  * @author Bruno
  *
  */
-public interface ILoginFacade extends Serializable {
+public interface ILoginFacade {
 	
 	void login(Usuario user) throws LoginException;
 

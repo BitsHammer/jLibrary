@@ -3,12 +3,11 @@
  */
 package com.bitshammer.security.services;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 import javax.security.auth.login.LoginException;
 
-import com.bitshammer.security.dao.ILoginDao;
 import com.bitshammer.security.facade.ILoginFacade;
 import com.bitshammer.security.facade.LoginFacade;
 import com.bitshammer.security.model.Usuario;
@@ -17,9 +16,14 @@ import com.bitshammer.security.model.Usuario;
  * @author Bruno
  *
  */
-@ManagedBean
-@ViewScoped
+@Named
+@RequestScoped
 public class LoginBean extends com.bitshammer.infra.bean.DefaultBean{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4166072776920035348L;
 
 	@Inject
 	private ILoginFacade facade;

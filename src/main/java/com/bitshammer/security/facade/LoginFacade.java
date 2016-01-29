@@ -1,24 +1,17 @@
 package com.bitshammer.security.facade;
 
 import javax.inject.Inject;
-import javax.inject.Named;
 import javax.security.auth.login.LoginException;
 
 import com.bitshammer.security.dao.ILoginDao;
 import com.bitshammer.security.model.Usuario;
 
-@Named
 public class LoginFacade implements ILoginFacade{
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 8595467789835076412L;
 	
 	
 	@Inject
 	private ILoginDao dao;
-	
 	
 	@Override
 	public void login(Usuario user) throws LoginException {

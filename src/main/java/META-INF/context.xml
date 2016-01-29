@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context>
-  <Realm className="org.apache.catalina.realm.JAASRealm" 
-    appName="JLibrary"
-    userClassNames="com.bitshammer.security.model.Usuario"
-    roleClassNames="com.bitshammer.security.model.Role" />
+   <Manager pathname=""/> <!-- disables storage of sessions across restarts -->
+   <Resource name="BeanManager"
+      auth="Container"
+      type="javax.enterprise.inject.spi.BeanManager"
+      factory="org.jboss.weld.resources.ManagerObjectFactory"/>
 </Context>
