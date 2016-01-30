@@ -13,6 +13,6 @@ import com.bitshammer.security.model.Usuario;
  */
 public interface ILoginFacade {
 	
-	void login(Usuario user) throws LoginException;
+	Usuario login(Usuario user) throws LoginException;
 
 }

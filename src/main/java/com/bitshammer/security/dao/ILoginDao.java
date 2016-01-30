@@ -13,6 +13,6 @@ import com.bitshammer.security.model.Usuario;
  */
 public interface ILoginDao {
 	
-	Usuario findUser(String name, String password) throws LoginException;
+	Usuario findUser(Usuario user) throws LoginException;
 
 }

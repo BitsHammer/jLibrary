@@ -14,8 +14,8 @@ public class LoginFacade implements ILoginFacade{
 	private ILoginDao dao;
 	
 	@Override
-	public void login(Usuario user) throws LoginException {
-		dao.findUser(user.getName(), user.getSenha());
+	public Usuario login(Usuario user) throws LoginException {
+		return dao.findUser(user);
 		
 	}
 
