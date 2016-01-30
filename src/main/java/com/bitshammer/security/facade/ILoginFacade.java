@@ -3,8 +3,6 @@
  */
 package com.bitshammer.security.facade;
 
-import java.io.Serializable;
-
 import javax.security.auth.login.LoginException;
 
 import com.bitshammer.security.model.Usuario;

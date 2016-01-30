@@ -8,8 +8,8 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.security.auth.login.LoginException;
 
+import com.bitshammer.infra.bean.DefaultBean;
 import com.bitshammer.security.facade.ILoginFacade;
-import com.bitshammer.security.facade.LoginFacade;
 import com.bitshammer.security.model.Usuario;
 
 /**
@@ -18,7 +18,7 @@ import com.bitshammer.security.model.Usuario;
  */
 @Named
 @RequestScoped
-public class LoginBean extends com.bitshammer.infra.bean.DefaultBean{
+public class LoginBean extends DefaultBean{
 
 	/**
 	 * 
