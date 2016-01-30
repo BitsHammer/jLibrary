@@ -16,23 +16,6 @@ public class LoginFacade implements ILoginFacade{
 	@Override
 	public Usuario login(Usuario user) throws LoginException {
 		return dao.findUser(user);
-		
-	}
-
-
-	/**
-	 * @return the dao
-	 */
-	public ILoginDao getDao() {
-		return dao;
-	}
-
-
-	/**
-	 * @param dao the dao to set
-	 */
-	public void setDao(ILoginDao dao) {
-		this.dao = dao;
 	}
 
 }

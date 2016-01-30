@@ -8,6 +8,7 @@ import static org.mockito.Mockito.when;
 
 import javax.security.auth.login.LoginException;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -31,9 +32,13 @@ public class UsuarioTest {
 	@InjectMocks
 	private LoginFacade facade;
 	
-	@Test
-	public void gravarUsuarioSucesso() throws LoginException{
+	@Before
+	public void setUp(){
 		MockitoAnnotations.initMocks(this);
+	}
+	
+	@Test
+	public void lerUsuarioSucesso() throws LoginException{
 		Usuario user = new Usuario();
 		user.setEmail("bdm2943@gmail.com");
 		user.setLogin("bruno");
@@ -49,9 +54,16 @@ public class UsuarioTest {
 		});
 		user = facade.login(user);
 		assertEquals(1l, user.getId().longValue());
-		
-		
-		
+	}
+	
+	@Test(expected=LoginException.class)
+	public void lerUsuarioFalha() throws LoginException{
+		Usuario user = new Usuario();
+		user.setEmail("bdm2943@gmail.com");
+		user.setLogin("bruno");
+		user.setSenha("123");
+		when(dao.findUser(user)).thenThrow(LoginException.class);
+		facade.login(user);
 	}
 
 }
