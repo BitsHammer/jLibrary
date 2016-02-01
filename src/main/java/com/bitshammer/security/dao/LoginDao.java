@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.bitshammer.security.dao.impl;
+package com.bitshammer.security.dao;
 
 import java.util.List;
 
@@ -10,7 +10,6 @@ import javax.persistence.Query;
 import javax.security.auth.login.LoginException;
 
 import com.bitshammer.dao.DataAccess;
-import com.bitshammer.security.dao.ILoginDao;
 import com.bitshammer.security.model.Usuario;
 
 /**

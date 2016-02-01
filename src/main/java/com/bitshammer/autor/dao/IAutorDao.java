@@ -1,4 +1,4 @@
-package com.bitshammer.autor;
+package com.bitshammer.autor.dao;
 
 import com.bitshammer.model.Autor;
 

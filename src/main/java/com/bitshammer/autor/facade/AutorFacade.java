@@ -5,8 +5,7 @@ package com.bitshammer.autor.facade;
 
 import javax.inject.Inject;
 
-import com.bitshammer.autor.IAutorDao;
-import com.bitshammer.autor.IAutorFacade;
+import com.bitshammer.autor.dao.IAutorDao;
 import com.bitshammer.model.Autor;
 
 /**
@@ -19,7 +18,7 @@ class AutorFacade implements IAutorFacade {
 	private IAutorDao dao;
 	
 	/**
-	 * @see com.bitshammer.autor.IAutorFacade#save(com.bitshammer.model.Autor)
+	 * @see com.bitshammer.autor.facade.IAutorFacade#save(com.bitshammer.model.Autor)
 	 */
 	@Override
 	public void save(Autor autor) {

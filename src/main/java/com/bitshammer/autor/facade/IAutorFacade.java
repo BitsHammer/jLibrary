@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.bitshammer.autor;
+package com.bitshammer.autor.facade;
 
 import com.bitshammer.model.Autor;
 

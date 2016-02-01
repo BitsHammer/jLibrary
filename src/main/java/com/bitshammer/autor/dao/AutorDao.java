@@ -1,6 +1,5 @@
 package com.bitshammer.autor.dao;
 
-import com.bitshammer.autor.IAutorDao;
 import com.bitshammer.dao.DataAccess;
 import com.bitshammer.model.Autor;
 
