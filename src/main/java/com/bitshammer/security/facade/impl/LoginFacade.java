@@ -1,12 +1,13 @@
-package com.bitshammer.security.facade;
+package com.bitshammer.security.facade.impl;
 
 import javax.inject.Inject;
 import javax.security.auth.login.LoginException;
 
 import com.bitshammer.security.dao.ILoginDao;
+import com.bitshammer.security.facade.ILoginFacade;
 import com.bitshammer.security.model.Usuario;
 
-public class LoginFacade implements ILoginFacade{
+class LoginFacade implements ILoginFacade{
 
 	
 	

@@ -6,34 +6,41 @@ package com.bitshammer.test.usuario;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
+import javax.inject.Inject;
 import javax.security.auth.login.LoginException;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
-import com.bitshammer.security.dao.impl.LoginDao;
-import com.bitshammer.security.facade.LoginFacade;
+import com.bitshammer.security.dao.ILoginDao;
+import com.bitshammer.security.facade.ILoginFacade;
 import com.bitshammer.security.model.Usuario;
+import com.bitshammer.test.WeldJUnit4Runner;
 
+	
 /**
  * @author Bruno
  *
  */
+@RunWith(WeldJUnit4Runner.class)
 public class UsuarioTest {
 	
 	@Mock
-	private LoginDao dao;
+	private ILoginDao dao;
 	
+	@Inject
 	@InjectMocks
-	private LoginFacade facade;
+	private ILoginFacade facade;
 	
 	@Before
-	public void setUp(){
+	public void before(){
 		MockitoAnnotations.initMocks(this);
 	}
 	
