@@ -1,9 +1,8 @@
 package com.bitshammer.autor.dao;
 
-import com.bitshammer.dao.DataAccess;
 import com.bitshammer.model.Autor;
 
-class AutorDao extends DataAccess implements IAutorDao{
+class AutorDao implements IAutorDao{
 
 	public void persist(Autor autor) {
 		
