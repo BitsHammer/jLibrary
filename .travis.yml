@@ -1,7 +1,6 @@
 language: java
 jdk:
   - oraclejdk8
-before_install:
-	- ls -R && mvn compiler:compile compiler:testCompile surefire:test
+before_install: ls -R
 install: mvn install -DskipTests=true -U
 
