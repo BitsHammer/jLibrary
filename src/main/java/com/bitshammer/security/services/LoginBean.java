@@ -34,12 +34,14 @@ public class LoginBean extends DefaultBean{
 		
 	}
 	
-	public void logar() throws LoginException{
+	public String logar() throws LoginException{
 		try{	
 			facade.login(usuario);
+			return "home";
 		}catch(LoginException e){
 			addMessage(e.getMessage());
 		}
+		return "";
 	}
 
 	/**
