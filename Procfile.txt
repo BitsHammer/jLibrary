@@ -1,0 +1,1 @@
+web: mvn tomcat:run
