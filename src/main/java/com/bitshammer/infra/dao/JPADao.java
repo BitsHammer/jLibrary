@@ -7,16 +7,17 @@ import javax.persistence.Persistence;
  * Classe para acesso a 
  * base de dados
  * @author Bruno
+ * @param <T>
  *
  */
-public abstract class DataAccess {
+public abstract class JPADao<T> {
 	
 	private static EntityManager em;
 	
 	/**
 	 * Construtor privado 
 	 */
-	protected DataAccess(){};
+	protected JPADao(){};
 	
 	
 	protected EntityManager getEntityManager() {
@@ -25,6 +26,12 @@ public abstract class DataAccess {
 		}
 		return em;
 		
+	}
+	
+	public void persist(final T e){
+		getEntityManager().getTransaction().begin();
+		getEntityManager().persist(e);
+		getEntityManager().getTransaction().commit();
 	}
 	
 	

@@ -1,11 +1,9 @@
 package com.bitshammer.autor.dao;
 
+import com.bitshammer.infra.dao.JPADao;
 import com.bitshammer.model.Autor;
 
-class AutorDao implements IAutorDao{
+class AutorDao extends JPADao<Autor> implements IAutorDao{
 
-	public void persist(Autor autor) {
-		
-	}
 
 }

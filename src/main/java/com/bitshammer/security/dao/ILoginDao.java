@@ -3,8 +3,6 @@
  */
 package com.bitshammer.security.dao;
 
-import java.io.Serializable;
-
 import javax.security.auth.login.LoginException;
 
 import com.bitshammer.security.model.Usuario;
@@ -16,5 +14,7 @@ import com.bitshammer.security.model.Usuario;
 public interface ILoginDao {
 	
 	Usuario findUser(Usuario user) throws LoginException;
+	
+	void persist(final Usuario user);
 
 }

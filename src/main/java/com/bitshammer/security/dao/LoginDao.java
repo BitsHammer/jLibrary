@@ -8,14 +8,14 @@ import java.util.List;
 import javax.persistence.Query;
 import javax.security.auth.login.LoginException;
 
-import com.bitshammer.infra.dao.DataAccess;
+import com.bitshammer.infra.dao.JPADao;
 import com.bitshammer.security.model.Usuario;
 
 /**
  * @author Bruno
  *
  */
-class LoginDao extends DataAccess implements ILoginDao {
+class LoginDao extends JPADao<Usuario> implements ILoginDao {
 	
 	/**
 	 * @see com.bitshammer.security.dao.ILoginDao#findUser(java.lang.String,
