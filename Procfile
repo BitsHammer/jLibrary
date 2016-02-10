@@ -1,2 +1,1 @@
-web: mvn tomcat:run
-worker: mvn tomcat:run
+web: java $JAVA_OPTS -jar target/dependency/jetty-runner.jar --port 8080 target/*.war
