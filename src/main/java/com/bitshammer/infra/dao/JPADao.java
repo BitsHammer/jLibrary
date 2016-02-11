@@ -12,6 +12,9 @@ import javax.persistence.Persistence;
  */
 public abstract class JPADao<T> {
 	
+	/**
+	 * Entity Manager
+	 */
 	private static EntityManager em;
 	
 	/**
@@ -19,7 +22,10 @@ public abstract class JPADao<T> {
 	 */
 	protected JPADao(){};
 	
-	
+	/**
+	 * Singleton do entityManager
+	 * @return {@link EntityManager} já criado previamente
+	 */
 	protected EntityManager getEntityManager() {
 		if(em == null){
 			em = Persistence.createEntityManagerFactory("JLibrary").createEntityManager();
@@ -28,12 +34,27 @@ public abstract class JPADao<T> {
 		
 	}
 	
+	/**
+	 * Persiste um objeto na base
+	 * de dados
+	 * @param e {@link Object}
+	 */
 	public void persist(final T e){
 		getEntityManager().getTransaction().begin();
 		getEntityManager().persist(e);
 		getEntityManager().getTransaction().commit();
 	}
 	
+	/**
+	 * Procura por um determinado
+	 * objeto na base de dados
+	 * 
+	 * @param id
+	 * @param clazz
+	 * @return
+	 */
+	public T find(final Long id, final Class<T> clazz){
+		return getEntityManager().find(clazz, id);
+	}
 	
-
 }
