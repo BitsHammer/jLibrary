@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
 
 /**
  * Classe que representa um Autor
@@ -25,6 +26,7 @@ public class Autor {
 	private Long id;
 
 	@Column(nullable=false, length=200)
+	@NotNull(message="{nome.required}")
 	private String nome;
 	
 	@OneToMany(fetch=FetchType.LAZY)
