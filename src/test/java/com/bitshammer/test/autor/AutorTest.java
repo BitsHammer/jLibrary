@@ -48,7 +48,7 @@ public class AutorTest {
 			}
 		}).when(dao).persist(autor);
 		
-		dao.persist(autor);
+		facade.save(autor);
 		assertEquals(1l, autor.getId().longValue());
 	}
 	
