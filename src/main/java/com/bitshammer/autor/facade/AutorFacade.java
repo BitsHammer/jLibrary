@@ -3,6 +3,7 @@
  */
 package com.bitshammer.autor.facade;
 
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -31,6 +32,15 @@ class AutorFacade implements IAutorFacade {
 		log.log(Level.INFO, "Entrou");
 		dao.persist(autor);
 		log.log(Level.INFO, "saiu");
+	}
+
+	/**
+	 * (non-Javadoc)
+	 * @see com.bitshammer.autor.facade.IAutorFacade#findByParams(com.bitshammer.model.Autor)
+	 */
+	@Override
+	public List<Autor> findByParams(Autor autor) {
+		return dao.findByParams(autor);
 	}
 
 }

@@ -6,8 +6,17 @@
         </Console>
     </Appenders>
     <Loggers>
+    	<logger name="org.hibernate.SQL" additivity="false" >   
+		 <level value="DEBUG" />    
+		</logger>
+		
+		<logger name="org.hibernate.type" additivity="false" >
+		 <level value="TRACE" />
+		</logger>
+		    
         <Root level="info" additivity="false">
             <AppenderRef ref="console"/>
         </Root>
     </Loggers>
+    
 </Configuration>
