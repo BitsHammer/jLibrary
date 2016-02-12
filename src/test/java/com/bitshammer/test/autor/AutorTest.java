@@ -1,7 +1,11 @@
 package com.bitshammer.test.autor;
 
-import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.doAnswer;
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -52,5 +56,47 @@ public class AutorTest {
 		assertEquals(1l, autor.getId().longValue());
 	}
 	
+	
+	@Test
+	public void buscarUmAutor(){
+		final Autor autor = new Autor();
+		autor.setNome("Teste");
+		doAnswer(new Answer<List<Autor>>() {
+
+			@Override
+			public List<Autor> answer(InvocationOnMock invocation)
+					throws Throwable {
+				Autor a = new Autor();
+				a.setNome("A");
+				Autor b = new Autor();
+				b.setNome("B");
+				return Arrays.asList(a,b);
+			}
+
+			
+		}).when(dao).findByParams(autor);
+		
+		List<Autor> list = facade.findByParams(autor);
+		assertEquals(2, list.size());
+	}
+	
+	@Test
+	public void buscarAutorInexistente(){
+		final Autor autor = new Autor();
+		autor.setNome("Teste");
+		doAnswer(new Answer<List<Autor>>() {
+
+			@Override
+			public List<Autor> answer(InvocationOnMock invocation)
+					throws Throwable {
+				return new ArrayList<Autor>();
+			}
+
+			
+		}).when(dao).findByParams(autor);
+		
+		List<Autor> list = facade.findByParams(autor);
+		assertEquals(0, list.size());
+	}
 	
 }
