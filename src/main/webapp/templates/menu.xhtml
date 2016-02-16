@@ -5,22 +5,19 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
-<head>
-<title>Not present in rendered output</title>
-</head>
+<h:head>
+	<f:loadBundle  basename="com.bitshammer.messages" var="msg"/>
+</h:head>
 <body>
 <ui:composition>
 	<h:form>  
     <p:growl id="messages"/>
  
     <p:menubar>
+    	<p:menuitem label="Home" action="home" />        
         <p:submenu label="Autor" icon="ui-icon-document">
-            <p:submenu label="Novo" icon="ui-icon-contact">
-                <p:menuitem value="Project" url="#" />
-                <p:menuitem value="Other" url="#" />
-            </p:submenu>
-            <p:menuitem value="Buscar" url="#" />
-            <p:separator />
+            <p:menuitem label="Cadastrar" icon="ui-icon-contact"  action="autorLoader" />
+        <p:separator />
         </p:submenu>
     </p:menubar>
 </h:form>

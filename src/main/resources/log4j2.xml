@@ -6,12 +6,12 @@
         </Console>
     </Appenders>
     <Loggers>
-    	<logger name="org.hibernate.SQL" additivity="false" >   
-		 <level value="DEBUG" />    
+    	<logger name="org.hibernate.SQL" >   
+		 	<level value="DEBUG" />    
 		</logger>
 		
-		<logger name="org.hibernate.type" additivity="false" >
-		 <level value="TRACE" />
+		<logger name="org.hibernate.type"  >
+		 	<level value="ALL" />
 		</logger>
 		    
         <Root level="info" additivity="false">

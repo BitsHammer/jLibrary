@@ -9,6 +9,13 @@
 			<to-view-id>/pages/user/home.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/pages/user/home.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>autorLoader</from-outcome>
+			<to-view-id>/pages/autor/autorLoader.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 	<application>
 		<resource-bundle>
 			<base-name>com.bitshammer.messages</base-name>

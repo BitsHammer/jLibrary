@@ -29,7 +29,9 @@ public class AutorBean extends DefaultBean {
 	
 	private Autor autor;
 	
-	public AutorBean() {}
+	public AutorBean() {
+		autor = new Autor();
+	}
 	
 	/**
 	 * Salva um usuário na base

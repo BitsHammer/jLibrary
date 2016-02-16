@@ -10,5 +10,14 @@
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#pages#user#home.xhtml"
-  PATH="/pages/user/home.xhtml" SHAPE="240,145,0,0" model-entity="JSFProcessGroup"/>
+  PATH="/pages/user/home.xhtml" SHAPE="240,145,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pages#user#home.xhtml:0" NAME="item"
+   PATH="/pages/user/home.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="autorLoader::#pages#autor#autorLoader.xhtml"
+    NAME="output" PATH="/pages/autor/autorLoader.xhtml"
+    TARGET="rules:#pages#autor#autorLoader.xhtml" TITLE="autorLoader" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#autor#autorLoader.xhtml"
+  PATH="/pages/autor/autorLoader.xhtml" SHAPE="448,129,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>
