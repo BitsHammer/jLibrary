@@ -4,4 +4,7 @@ jdk:
 before_install: 
   - mvn compile -DskipTests=true -U
   - mv /home/travis/build/BrunoDM2943/jLibrary/target/classes/ /home/travis/build/BrunoDM2943/jLibrary/target/test-classes/
+  - pip install codecov
+after_success:
+  - codecov
 install: mvn test
