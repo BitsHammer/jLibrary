@@ -24,6 +24,15 @@ public class Editora {
 	@Column(nullable=false)
 	private String nome;
 	
+	public Editora(String nome) {
+		super();
+		this.nome = nome;
+	}
+	
+	public Editora() {
+		// TODO Auto-generated constructor stub
+	}
+
 	@OneToMany(mappedBy="editora", fetch=FetchType.LAZY)
 	private List<Livro> livros;
 

@@ -1,5 +1,6 @@
 package com.bitshammer.infra.dao;
 
+import javax.enterprise.inject.Produces;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 
@@ -26,6 +27,7 @@ public abstract class JPADao<T> {
 	 * Singleton do entityManager
 	 * @return {@link EntityManager} já criado previamente
 	 */
+	
 	protected EntityManager getEntityManager() {
 		if(em == null){
 			em = Persistence.createEntityManagerFactory("JLibrary").createEntityManager();

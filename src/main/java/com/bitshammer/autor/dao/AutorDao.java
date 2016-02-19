@@ -2,6 +2,7 @@ package com.bitshammer.autor.dao;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
 import com.bitshammer.infra.dao.JPADao;

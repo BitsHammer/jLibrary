@@ -29,6 +29,15 @@ public class Autor {
 	@NotNull(message="{nome.required}")
 	private String nome;
 	
+	public Autor(String nome) {
+		super();
+		this.nome = nome;
+	}
+	
+	public Autor() {
+		// TODO Auto-generated constructor stub
+	}
+
 	@OneToMany(fetch=FetchType.LAZY)
 	@JoinTable(
 		      name="autor_livro",
