@@ -22,7 +22,7 @@ class LivroFacade implements ILivroFacade {
 	 */
 	@Override
 	public void save(Livro livro) {
-		// TODO Auto-generated method stub
+		dao.persist(livro);
 
 	}
 
