@@ -16,7 +16,8 @@
 			<property name="hibernate.show_sql" value="true"/>
 			<property name="hibernate.format_sql" value="true"/>
 			<property name="use_sql_comments" value="true"/>
-			<property name="hibernate.pool_size" value="10"/>			
+			<property name="hibernate.pool_size" value="10"/>
+			<property name="hibernate.ejb.cfgfile" value="META-INF/hibernate.cfg.xml"/>			
 		</properties>
 	</persistence-unit>
 </persistence>

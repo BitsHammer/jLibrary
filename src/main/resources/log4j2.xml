@@ -7,14 +7,14 @@
     </Appenders>
     <Loggers>
     	<logger name="org.hibernate.SQL" >   
-		 	<level value="DEBUG" />    
+		 	<level value="INFO" />    
 		</logger>
 		
 		<logger name="org.hibernate.type"  >
-		 	<level value="ALL" />
+		 	<level value="INFO" />
 		</logger>
 		    
-        <Root level="info" additivity="false">
+        <Root level="ALL" additivity="false">
             <AppenderRef ref="console"/>
         </Root>
     </Loggers>
