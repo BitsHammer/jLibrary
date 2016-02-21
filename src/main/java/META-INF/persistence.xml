@@ -13,9 +13,10 @@
 			<property name="javax.persistence.jdbc.password" value="61417181@ab" />
 			<property name="javax.persistence.schema-generation.database.action"
 				value="none" />
-			<property name="show_sql" value="true"/>
-			<property name="format_sql" value="true"/>
+			<property name="hibernate.show_sql" value="true"/>
+			<property name="hibernate.format_sql" value="true"/>
 			<property name="use_sql_comments" value="true"/>
+			<property name="hibernate.pool_size" value="10"/>			
 		</properties>
 	</persistence-unit>
 </persistence>

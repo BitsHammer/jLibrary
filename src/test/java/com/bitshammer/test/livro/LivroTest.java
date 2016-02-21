@@ -11,7 +11,6 @@ import java.util.Arrays;
 import javax.inject.Inject;
 
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -57,7 +56,7 @@ public class LivroTest {
 
 			@Override
 			public Livro answer(InvocationOnMock invocation) throws Throwable {
-				Livro autor = invocation.getArgumentAt(0, Livro.class);
+				Livro livro = invocation.getArgumentAt(0, Livro.class);
 				livro.setId(1l);
 				return livro;
 			}
