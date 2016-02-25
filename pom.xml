@@ -7,7 +7,7 @@
 	<artifactId>jLibrary</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<properties>
-		<tomcat.version>8.0.28</tomcat.version>
+		<tomcat.version>8.0.30</tomcat.version>
 	</properties>
 
 	<build>
