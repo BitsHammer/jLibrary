@@ -57,7 +57,7 @@
 						<configuration>
 							<target>
 								<delete file="target/jLibrary.jar"/>
-								<delete dir="target/classes/" includeemptydirs="true"/>
+								<delete dir="target/repo/com/bitshammer/jLibrary" includeemptydirs="true"/>
 							</target>
 						</configuration>
 					</execution>
