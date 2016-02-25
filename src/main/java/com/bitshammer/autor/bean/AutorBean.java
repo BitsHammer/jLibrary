@@ -73,6 +73,7 @@ public class AutorBean extends DefaultBean {
 	 * @return the autores
 	 */
 	public List<Autor> getAutores() {
+		buscar();
 		return autores;
 	}
 

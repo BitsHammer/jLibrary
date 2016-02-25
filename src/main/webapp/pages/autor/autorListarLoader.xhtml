@@ -15,7 +15,7 @@
 
 	<p:panel id="basic" header="Autores" footer="Detalhes"
 		style="margin-bottom:20px">
-		<p:dataTable var="autor" value="#{autorBean.buscar}">
+		<p:dataTable var="autor" value="#{autorBean.autores}">
 			<p:column headerText="Id">
 				<h:outputText value="#{autor.id}" />
 			</p:column>
