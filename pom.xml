@@ -57,6 +57,7 @@
 						<configuration>
 							<target>
 								<delete file="target/jLibrary.jar"/>
+								<delete dir="target/classes/" includeemptydirs="true"/>
 							</target>
 						</configuration>
 					</execution>
