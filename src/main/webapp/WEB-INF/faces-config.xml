@@ -15,6 +15,10 @@
 			<from-outcome>autorLoader</from-outcome>
 			<to-view-id>/pages/autor/autorLoader.xhtml</to-view-id>
 		</navigation-case>
+		<navigation-case>
+			<from-outcome>autorListarLoader</from-outcome>
+			<to-view-id>/pages/autor/autorListarLoader.xhtml</to-view-id>
+		</navigation-case>
 	</navigation-rule>
 	<application>
 		<resource-bundle>

@@ -10,6 +10,8 @@ public interface IAutorDao {
 	void persist(final Autor autor);
 
 	List<Autor> findByParams(Autor autor);
+	
+	List<Autor> listAll();
 
 
 }

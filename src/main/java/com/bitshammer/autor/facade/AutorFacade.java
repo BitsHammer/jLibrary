@@ -43,4 +43,9 @@ class AutorFacade implements IAutorFacade {
 		return dao.findByParams(autor);
 	}
 
+	@Override
+	public List<Autor> listAll() {
+		return dao.listAll();
+	}
+
 }
