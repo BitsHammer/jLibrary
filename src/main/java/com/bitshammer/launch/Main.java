@@ -33,6 +33,9 @@ public class Main {
 		// Declare an alternative location for your "WEB-INF/classes" dir
 		// Servlet 3.0 annotation will work
 		File additionWebInfClasses = new File("target/classes");
+		File f = new File("target/jLibrary.jar");
+		f.delete();
+		
 		WebResourceRoot resources = new StandardRoot(ctx);
 		resources.addPreResources(new DirResourceSet(resources,
 				"/WEB-INF/classes", additionWebInfClasses.getAbsolutePath(),
