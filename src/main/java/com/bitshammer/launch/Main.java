@@ -30,7 +30,7 @@ public class Main {
 		System.out.println("configuring app with basedir: "
 				+ new File("./" + webappDirLocation).getAbsolutePath());
 
-		// Declare an alternative location for your "WEB-INF/classes" dir
+		/*// Declare an alternative location for your "WEB-INF/classes" dir
 		// Servlet 3.0 annotation will work
 		File additionWebInfClasses = new File("target/classes");
 		File f = new File("target/jLibrary.jar");
@@ -40,7 +40,7 @@ public class Main {
 		resources.addPreResources(new DirResourceSet(resources,
 				"/WEB-INF/classes", additionWebInfClasses.getAbsolutePath(),
 				"/"));
-		ctx.setResources(resources);
+		ctx.setResources(resources);*/
 
 		tomcat.start();
 		tomcat.getServer().await();

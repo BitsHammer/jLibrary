@@ -32,6 +32,7 @@
 						<program>
 							<mainClass>com.bitshammer.launch.Main</mainClass>
 							<name>webapp</name>
+							
 						</program>
 					</programs>
 				</configuration>
@@ -57,7 +58,6 @@
 						<configuration>
 							<target>
 								<delete file="target/jLibrary.jar"/>
-								<delete dir="target/repo/com/bitshammer/jLibrary" includeemptydirs="true"/>
 							</target>
 						</configuration>
 					</execution>
