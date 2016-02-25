@@ -3,5 +3,4 @@ jdk:
   - oraclejdk8
 before_install: 
   - mvn compile -DskipTests=true -U
-  - mv /home/travis/build/BrunoDM2943/jLibrary/target/classes/ /home/travis/build/BrunoDM2943/jLibrary/target/test-classes/
 install: mvn test
