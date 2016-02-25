@@ -2,15 +2,14 @@
 <persistence version="2.1"
 	xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-	<persistence-unit name="JLibrary" transaction-type="RESOURCE_LOCAL">
+	<persistence-unit name="JLibrary" transaction-type="JTA">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<mapping-file>META-INF/orm.xml</mapping-file>
 		<properties>
-			<property name="javax.persistence.jdbc.url"
-				value="jdbc:mysql://127.0.0.1/jLibrary" />
-			<property name="javax.persistence.jdbc.user" value="root" />
-			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
-			<property name="javax.persistence.jdbc.password" value="61417181@ab" />
+			<property name="javax.persistence.jdbc.url"	value="jdbc:postgresql://qnjkmtcyyjlzjv:452nryF1UbfLaiq-bNMFcgjqLN@ec2-54-225-165-132.compute-1.amazonaws.com:5432/d74nrupcurbrun" />
+			<property name="javax.persistence.jdbc.user" value="qnjkmtcyyjlzjv" />
+			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
+			<property name="javax.persistence.jdbc.password" value="452nryF1UbfLaiq-bNMFcgjqLN" />
 			<property name="javax.persistence.schema-generation.database.action"
 				value="none" />
 			<property name="hibernate.show_sql" value="true"/>

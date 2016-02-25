@@ -32,7 +32,7 @@
 						<program>
 							<mainClass>com.bitshammer.launch.Main</mainClass>
 							<name>webapp</name>
-							
+
 						</program>
 					</programs>
 				</configuration>
@@ -57,7 +57,7 @@
 						</goals>
 						<configuration>
 							<target>
-								<delete file="target/jLibrary.jar"/>
+								<delete file="target/jLibrary.jar" />
 							</target>
 						</configuration>
 					</execution>
@@ -209,6 +209,11 @@
 			<version>2.2</version>
 		</dependency>
 
+		<dependency>
+			<groupId>postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.1-901.jdbc4</version>
+		</dependency>
 
 
 
