@@ -19,7 +19,7 @@
 				<p:inputText type="password" id="j_password" name="j_password" value="#{loginBean.usuario.senha}"/>
 			</p:panelGrid>
 		</p:panel>
-		<p:commandButton value="Submit" update="panel" action="#{loginBean.logar}" />
+		<p:commandButton value="Entrar" update="panel" action="#{loginBean.logar}" />
 	</h:form>
 	<p:ajaxStatus onstart="PF('statusDialog').show()"
 		onsuccess="PF('statusDialog').hide()" />
