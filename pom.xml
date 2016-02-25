@@ -56,8 +56,7 @@
 						</goals>
 						<configuration>
 							<target>
-								<delete dir="target/repo"
-									includeemptydirs="true" />
+								<delete file="target/jLibrary.jar"/>
 							</target>
 						</configuration>
 					</execution>
