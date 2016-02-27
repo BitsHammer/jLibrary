@@ -1,1 +1,0 @@
-insert into usuario(user_id,login,senha,email) values(1,'bruno',1234,'bdm2943@gmail.com')
