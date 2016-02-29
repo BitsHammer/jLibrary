@@ -99,4 +99,25 @@ public class AutorTest {
 		assertEquals(0, list.size());
 	}
 	
+	@Test
+	public void buscarTodosAutores(){
+		doAnswer(new Answer<List<Autor>>() {
+
+			@Override
+			public List<Autor> answer(InvocationOnMock invocation)
+					throws Throwable {
+				Autor a = new Autor();
+				a.setNome("A");
+				Autor b = new Autor();
+				b.setNome("B");
+				return Arrays.asList(a,b);
+			}
+
+			
+		}).when(dao).listAll();
+		
+		List<Autor> list = facade.listAll();
+		assertEquals(2, list.size());
+	}
+	
 }

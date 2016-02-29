@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+</h:head>
+<h:body>
+	<ui:insert name="menu">
+		<ui:include src="/templates/menu.xhtml" />
+	</ui:insert>
+
+	<p:panel id="basic" header="Autores" footer="Detalhes"
+		style="margin-bottom:20px">
+		<p:dataTable var="autor" value="#{autorBean.autores}">
+			<p:column headerText="Id">
+				<h:outputText value="#{autor.id}" />
+			</p:column>
+
+			<p:column headerText="Nome">
+				<h:outputText value="#{autor.nome}" />
+			</p:column>
+		</p:dataTable>
+	</p:panel>
+</h:body>
+
+</html>

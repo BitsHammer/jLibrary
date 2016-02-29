@@ -3,6 +3,9 @@
  */
 package com.bitshammer.autor.bean;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -29,8 +32,11 @@ public class AutorBean extends DefaultBean {
 	
 	private Autor autor;
 	
+	private List<Autor> autores;
+	
 	public AutorBean() {
 		autor = new Autor();
+		autores = new ArrayList<Autor>();
 	}
 	
 	/**
@@ -45,6 +51,9 @@ public class AutorBean extends DefaultBean {
 		}
 	}
 
+	public void buscar(){
+		autores = facade.listAll();
+	}
 
 	/**
 	 * @return the autor
@@ -58,6 +67,21 @@ public class AutorBean extends DefaultBean {
 	 */
 	public void setAutor(Autor autor) {
 		this.autor = autor;
+	}
+
+	/**
+	 * @return the autores
+	 */
+	public List<Autor> getAutores() {
+		buscar();
+		return autores;
+	}
+
+	/**
+	 * @param autores the autores to set
+	 */
+	public void setAutores(List<Autor> autores) {
+		this.autores = autores;
 	}
 	
 	

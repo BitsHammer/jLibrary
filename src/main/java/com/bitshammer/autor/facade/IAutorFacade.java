@@ -27,5 +27,11 @@ public interface IAutorFacade {
 	 * @return Lista contendo os autoires que se encaixam nos parametros
 	 */
 	List<Autor> findByParams(Autor autor);
+	
+	/**
+	 * Encontra todos os autores
+	 * @return Lista contendo os autoires que se encaixam nos parametros
+	 */
+	List<Autor> listAll();
 
 }
