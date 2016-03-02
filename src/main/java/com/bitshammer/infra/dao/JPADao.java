@@ -59,4 +59,15 @@ public abstract class JPADao<T> {
 		return getEntityManager().find(clazz, id);
 	}
 	
+	/**
+	 * Deleta um objeto da base de dados
+	 * 
+	 * @param id
+	 * @param clazz
+	 * @return
+	 */
+	public void remove(final Long id, final Class<T> clazz){
+		getEntityManager().remove(find(id, clazz));
+	}
+	
 }
