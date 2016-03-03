@@ -7,14 +7,22 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
+<style>
+	.table {
+		margin-bottom:20px;
+		width:50%;
+		margin-top: 50px;
+		margin-left: 25%;
+	}
+</style>
 </h:head>
 <h:body>
 	<ui:insert name="menu">
 		<ui:include src="/templates/menu.xhtml" />
 	</ui:insert>
-
-	<p:panel 	id="basic" header="Autores" footer="Detalhes"
-		style="margin-bottom:20px">
+	
+	<p:panel id="basic" header="Autores" footer="Detalhes"
+		styleClass="table" >
 		<p:dataTable var="autor" value="#{autorBean.autores}">
 			<p:column headerText="Nome">
 				<h:outputText value="#{autor.nome}" />
@@ -25,5 +33,4 @@
 		</p:dataTable>
 	</p:panel>
 </h:body>
-
 </html>
