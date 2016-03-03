@@ -4,9 +4,11 @@
 package com.bitshammer.security.services;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.security.auth.login.LoginException;
+import javax.servlet.http.HttpSession;
 
 import com.bitshammer.infra.bean.DefaultBean;
 import com.bitshammer.security.facade.ILoginFacade;
@@ -41,7 +43,9 @@ public class LoginBean extends DefaultBean{
 	 */
 	public String logar() throws LoginException{
 		try{	
-			facade.login(usuario);
+			usuario = facade.login(usuario);
+			HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+			session.setAttribute("user", usuario);
 			return "home";
 		}catch(LoginException e){
 			addErrorMessage(e.getMessage());
