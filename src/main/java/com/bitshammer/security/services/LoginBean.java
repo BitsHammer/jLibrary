@@ -52,6 +52,17 @@ public class LoginBean extends DefaultBean{
 		}
 		return "";
 	}
+	
+	/**
+	 * Loga o usuário
+	 * @return
+	 * @throws LoginException
+	 */
+	public void logOff() throws LoginException{
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+		session.removeAttribute("user");
+		session.invalidate();
+	}
 
 	/**
 	 * @return the usuario
