@@ -7,6 +7,7 @@
 		<navigation-case>
 			<from-outcome>home</from-outcome>
 			<to-view-id>/pages/user/home.xhtml</to-view-id>
+			<redirect />
 		</navigation-case>
 	</navigation-rule>
 	<navigation-rule>
@@ -14,14 +15,17 @@
 		<navigation-case>
 			<from-outcome>autorLoader</from-outcome>
 			<to-view-id>/pages/autor/autorLoader.xhtml</to-view-id>
+			<redirect />
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>autorListarLoader</from-outcome>
 			<to-view-id>/pages/autor/autorListarLoader.xhtml</to-view-id>
+			<redirect />
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>login</from-outcome>
 			<to-view-id>/login.xhtml</to-view-id>
+			<redirect />
 		</navigation-case>
 	</navigation-rule>
 	<application>
