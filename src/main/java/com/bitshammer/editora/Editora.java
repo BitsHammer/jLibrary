@@ -1,4 +1,4 @@
-package com.bitshammer.model;
+package com.bitshammer.editora;
 
 import java.util.List;
 
@@ -7,42 +7,35 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.NotNull;
+
+import com.bitshammer.livro.Livro;
 
 /**
- * Classe que representa um Autor
+ * Classe que representa uma Editora
  * @author Bruno
- *
  */
 @Entity
-public class Autor {
+public class Editora {
 
 	@Id
 	@GeneratedValue
-	@Column(name="autor_id")
+	@Column(name="editora_id")
 	private Long id;
 
-	@Column(nullable=false, length=200)
-	@NotNull(message="{nome.required}")
+	@Column(nullable=false)
 	private String nome;
 	
-	public Autor(String nome) {
+	public Editora(String nome) {
 		super();
 		this.nome = nome;
 	}
 	
-	public Autor() {
+	public Editora() {
 		// TODO Auto-generated constructor stub
 	}
 
-	@OneToMany(fetch=FetchType.LAZY)
-	@JoinTable(
-		      name="autor_livro",
-		      joinColumns={@JoinColumn(name="autor_id", referencedColumnName="autor_id")},
-		      inverseJoinColumns={@JoinColumn(name="livro_id", referencedColumnName="livro_id")})
+	@OneToMany(mappedBy="editora", fetch=FetchType.LAZY)
 	private List<Livro> livros;
 
 	/**

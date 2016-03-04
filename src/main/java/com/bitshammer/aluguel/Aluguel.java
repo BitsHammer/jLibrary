@@ -1,4 +1,4 @@
-package com.bitshammer.model;
+package com.bitshammer.aluguel;
 
 import java.util.Date;
 import java.util.List;
@@ -16,6 +16,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import com.bitshammer.alugel.StatusAluguel;
+import com.bitshammer.cliente.Cliente;
+import com.bitshammer.livro.Livro;
 
 /**
  * Classe representando um aluguel

@@ -10,9 +10,9 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import com.bitshammer.autor.Autor;
 import com.bitshammer.autor.facade.IAutorFacade;
 import com.bitshammer.infra.bean.DefaultBean;
-import com.bitshammer.model.Autor;
 
 /**
  * @author bruno.martins

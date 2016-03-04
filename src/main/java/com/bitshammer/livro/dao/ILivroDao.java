@@ -3,7 +3,7 @@
  */
 package com.bitshammer.livro.dao;
 
-import com.bitshammer.model.Livro;
+import com.bitshammer.livro.Livro;
 
 /**
  * @author bruno.martins

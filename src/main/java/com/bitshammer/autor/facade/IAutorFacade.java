@@ -5,7 +5,7 @@ package com.bitshammer.autor.facade;
 
 import java.util.List;
 
-import com.bitshammer.model.Autor;
+import com.bitshammer.autor.Autor;
 
 /**
  * @author Bruno

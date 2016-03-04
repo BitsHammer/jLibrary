@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.bitshammer.model;
+package com.bitshammer.alugel;
 
 /**
  * @author Bruno

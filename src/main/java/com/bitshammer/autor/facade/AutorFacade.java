@@ -9,8 +9,8 @@ import java.util.logging.Logger;
 
 import javax.inject.Inject;
 
+import com.bitshammer.autor.Autor;
 import com.bitshammer.autor.dao.IAutorDao;
-import com.bitshammer.model.Autor;
 
 /**
  * @author Bruno
@@ -25,7 +25,7 @@ class AutorFacade implements IAutorFacade {
 	private Logger log;
 	
 	/**
-	 * @see com.bitshammer.autor.facade.IAutorFacade#save(com.bitshammer.model.Autor)
+	 * @see com.bitshammer.autor.facade.IAutorFacade#save(com.bitshammer.autor.Autor)
 	 */
 	@Override
 	public void save(Autor autor) {
@@ -36,7 +36,7 @@ class AutorFacade implements IAutorFacade {
 
 	/**
 	 * (non-Javadoc)
-	 * @see com.bitshammer.autor.facade.IAutorFacade#findByParams(com.bitshammer.model.Autor)
+	 * @see com.bitshammer.autor.facade.IAutorFacade#findByParams(com.bitshammer.autor.Autor)
 	 */
 	@Override
 	public List<Autor> findByParams(Autor autor) {

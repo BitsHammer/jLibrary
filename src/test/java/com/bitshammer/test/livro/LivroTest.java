@@ -19,11 +19,11 @@ import org.mockito.MockitoAnnotations;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
+import com.bitshammer.autor.Autor;
+import com.bitshammer.editora.Editora;
+import com.bitshammer.livro.Livro;
 import com.bitshammer.livro.dao.ILivroDao;
 import com.bitshammer.livro.facade.ILivroFacade;
-import com.bitshammer.model.Autor;
-import com.bitshammer.model.Editora;
-import com.bitshammer.model.Livro;
 import com.bitshammer.test.WeldJUnit4Runner;
 
 /**

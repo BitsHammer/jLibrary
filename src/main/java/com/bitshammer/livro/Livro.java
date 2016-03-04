@@ -1,4 +1,4 @@
-package com.bitshammer.model;
+package com.bitshammer.livro;
 
 import java.util.List;
 
@@ -11,6 +11,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+
+import com.bitshammer.autor.Autor;
+import com.bitshammer.editora.Editora;
 
 /**
  * 

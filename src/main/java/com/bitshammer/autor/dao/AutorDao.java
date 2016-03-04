@@ -4,8 +4,8 @@ import java.util.List;
 
 import javax.persistence.TypedQuery;
 
+import com.bitshammer.autor.Autor;
 import com.bitshammer.infra.dao.JPADao;
-import com.bitshammer.model.Autor;
 
 class AutorDao extends JPADao<Autor> implements IAutorDao{
 

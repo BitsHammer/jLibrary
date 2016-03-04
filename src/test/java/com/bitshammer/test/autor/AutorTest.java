@@ -18,9 +18,9 @@ import org.mockito.MockitoAnnotations;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
+import com.bitshammer.autor.Autor;
 import com.bitshammer.autor.dao.IAutorDao;
 import com.bitshammer.autor.facade.IAutorFacade;
-import com.bitshammer.model.Autor;
 import com.bitshammer.test.WeldJUnit4Runner;
 
 @RunWith(WeldJUnit4Runner.class)
@@ -119,5 +119,6 @@ public class AutorTest {
 		List<Autor> list = facade.listAll();
 		assertEquals(2, list.size());
 	}
+	
 	
 }

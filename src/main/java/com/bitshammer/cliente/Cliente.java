@@ -1,4 +1,4 @@
-package com.bitshammer.model;
+package com.bitshammer.cliente;
 
 import java.util.List;
 
@@ -8,6 +8,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
+import com.bitshammer.aluguel.Aluguel;
 
 /**
  * Classe que representa um Cliente
