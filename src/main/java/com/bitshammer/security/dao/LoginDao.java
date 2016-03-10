@@ -31,7 +31,7 @@ class LoginDao extends JPADao<Usuario> implements ILoginDao {
 		if (!resultList.isEmpty()) {
 			return resultList.get(0);
 		} else {
-			throw new LoginException("Usuário não encontrado");
+			throw new LoginException("Usuario nao encontrado");
 		}
 	}
 

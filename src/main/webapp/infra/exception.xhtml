@@ -9,14 +9,15 @@
 <h:head>
 </h:head>
 <h:body>
-	<ui:insert name="menu">
-		<ui:include src="/templates/menu.xhtml" />
-	</ui:insert>
-	
-	<p:panel id="basic" header="Erro" >
-	<h:outputLabel value="#{msg.erro_generico}"/>
-	<h:inputTextarea value="#{errorBean.stackTrace}" rows="40" cols="80"
-           readonly="true"/>
-	</p:panel>
+	<ui:composition template="/templates/defaultTemplate.xhtml">
+		<ui:define name="content">
+
+			<p:panel id="basic" header="Erro">
+				<h:outputLabel value="#{msg.erro_generico}" />
+				<h:inputTextarea value="#{errorBean.stackTrace}" rows="40" cols="80"
+					readonly="true" />
+			</p:panel>
+		</ui:define>
+	</ui:composition>
 </h:body>
 </html>

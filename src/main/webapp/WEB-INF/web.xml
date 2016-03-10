@@ -39,6 +39,14 @@
 		<servlet-name>Faces Servlet</servlet-name>
 	</filter-mapping>
 	<error-page>
+		<error-code>404</error-code>
+		<location>/faces/error.xhtml</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/faces/error.xhtml</location>
+	</error-page>
+	<error-page>
 		<exception-type>java.lang.Exception</exception-type>
 		<location>/infra/exception.xhtml</location>
 	</error-page>

@@ -5,23 +5,23 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
-<h:head>
-</h:head>
+	xmlns:p="http://primefaces.org/ui">
 <h:body>
-	 <ui:insert name="menu" >
-	 	  <ui:include src="/templates/menu.xhtml" />
-	 </ui:insert>
-	 
-	 <h:form>
-	 	<p:messages/>
-		<p:panelGrid columns="2">
-			<p:outputLabel value="#{msg.label_nome}" for="nome" />
-			<p:inputText value="#{autorBean.autor.nome}" id="nome" />
-			
-			<p:commandButton action="#{autorBean.salvar()}" value="#{msg.btn_salvar}" />
-		</p:panelGrid>			 
-	 </h:form>
+	<ui:composition template="/templates/defaultTemplate.xhtml">
+		<ui:define name="content">
+
+			<h:form>
+				<p:messages />
+				<p:panelGrid columns="2">
+					<p:outputLabel value="#{msg.label_nome}" for="nome" />
+					<p:inputText value="#{autorBean.autor.nome}" id="nome" />
+
+					<p:commandButton action="#{autorBean.salvar()}"
+						value="#{msg.btn_salvar}" />
+				</p:panelGrid>
+			</h:form>
+		</ui:define>
+	</ui:composition>
 </h:body>
 
 </html>
