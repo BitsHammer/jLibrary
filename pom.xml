@@ -240,8 +240,6 @@
 			<version>1.0.8</version>
 		</dependency>
 
-
-
 	</dependencies>
 
 	<packaging>jar</packaging>
