@@ -15,7 +15,7 @@ import com.bitshammer.security.model.Usuario;
  * @author Bruno
  *
  */
-class LoginDao extends JPADao<Usuario> implements ILoginDao {
+public class LoginDao extends JPADao<Usuario> implements ILoginDao {
 	
 	/**
 	 * @see com.bitshammer.security.dao.ILoginDao#findUser(java.lang.String,
