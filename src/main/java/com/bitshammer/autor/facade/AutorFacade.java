@@ -7,20 +7,22 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.inject.Inject;
+
 import com.bitshammer.autor.Autor;
-import com.bitshammer.autor.dao.AutorDao;
 import com.bitshammer.autor.dao.IAutorDao;
-import com.bitshammer.infra.logger.LoggerProducer;
 
 /**
  * @author Bruno
  *
  */
-public class AutorFacade implements IAutorFacade {
+class AutorFacade implements IAutorFacade {
 
-	private IAutorDao dao = new AutorDao();
+	@Inject
+	private IAutorDao dao;
 	
-	private Logger log = LoggerProducer.produceLogger(getClass());
+	@Inject
+	private Logger log;
 	
 	/**
 	 * @see com.bitshammer.autor.facade.IAutorFacade#save(com.bitshammer.autor.Autor)

@@ -6,11 +6,11 @@ package com.bitshammer.autor.bean;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import com.bitshammer.autor.Autor;
-import com.bitshammer.autor.facade.AutorFacade;
 import com.bitshammer.autor.facade.IAutorFacade;
 import com.bitshammer.infra.bean.DefaultBean;
 
@@ -18,8 +18,8 @@ import com.bitshammer.infra.bean.DefaultBean;
  * @author bruno.martins
  *
  */
-@ManagedBean
-@ViewScoped
+@Named
+@RequestScoped
 public class AutorBean extends DefaultBean {
 	
 	/**
@@ -27,7 +27,8 @@ public class AutorBean extends DefaultBean {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private IAutorFacade facade = new AutorFacade();
+	@Inject
+	private IAutorFacade facade;
 	
 	private Autor autor;
 	

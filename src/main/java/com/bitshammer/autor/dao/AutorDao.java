@@ -7,7 +7,7 @@ import javax.persistence.TypedQuery;
 import com.bitshammer.autor.Autor;
 import com.bitshammer.infra.dao.JPADao;
 
-public class AutorDao extends JPADao<Autor> implements IAutorDao{
+class AutorDao extends JPADao<Autor> implements IAutorDao{
 
 	@Override
 	public List<Autor> findByParams(Autor autor) {

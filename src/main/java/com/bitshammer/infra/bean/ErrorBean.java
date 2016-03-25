@@ -5,13 +5,13 @@ import java.io.StringWriter;
 import java.sql.SQLException;
 import java.util.Map;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Named;
 import javax.servlet.ServletException;
 
-@ManagedBean
-@ViewScoped
+@Named
+@RequestScoped
 public class ErrorBean {
    public String getStackTrace() {
       FacesContext context = FacesContext.getCurrentInstance();

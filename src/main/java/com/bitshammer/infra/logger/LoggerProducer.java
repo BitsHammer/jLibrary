@@ -5,6 +5,9 @@ package com.bitshammer.infra.logger;
 
 import java.util.logging.Logger;
 
+import javax.enterprise.inject.Produces;
+import javax.enterprise.inject.spi.InjectionPoint;
+
 
 
 /**
@@ -14,8 +17,9 @@ import java.util.logging.Logger;
 public class LoggerProducer {
 	
 	
-	public static Logger produceLogger(Class<?> clazz){
-		return Logger.getLogger(clazz.getCanonicalName());
+	@Produces
+	public Logger produceLogger(InjectionPoint p){
+		return Logger.getLogger(p.getClass().getCanonicalName());
 		
 	}
 
