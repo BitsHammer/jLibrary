@@ -6,10 +6,6 @@
 	<groupId>com.bitshammer</groupId>
 	<artifactId>jLibrary</artifactId>
 	<version>1.0-SNAPSHOT</version>
-	<properties>
-		<tomcat.version>8.0.30</tomcat.version>
-	</properties>
-
 	<build>
 		<finalName>jLibrary</finalName>
 		<plugins>
@@ -23,51 +19,6 @@
 					<source>1.8</source>
 					<target>1.8</target>
 				</configuration>
-			</plugin>
-
-			<!-- Plugin para subir a aplicação como webapp -->
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>appassembler-maven-plugin</artifactId>
-				<version>1.1.1</version>
-				<configuration>
-					<assembleDirectory>target</assembleDirectory>
-					<programs>
-						<program>
-							<mainClass>com.bitshammer.launch.Main</mainClass>
-							<name>webapp</name>
-
-						</program>
-					</programs>
-				</configuration>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>assemble</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-
-			<!-- Plugin para gerar um Jar -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<version>1.8</version>
-				<executions>
-					<execution>
-						<phase>install</phase>
-						<goals>
-							<goal>run</goal>
-						</goals>
-						<configuration>
-							<target>
-								<delete file="target/jLibrary.jar" />
-							</target>
-						</configuration>
-					</execution>
-				</executions>
 			</plugin>
 
 			<!-- Plugin para o Codecov -->
@@ -193,55 +144,6 @@
 			<version>1.7.7</version>
 		</dependency>
 
-		<!-- Tomcat embarcado -->
-		<dependency>
-			<groupId>org.apache.tomcat.embed</groupId>
-			<artifactId>tomcat-embed-core</artifactId>
-			<version>${tomcat.version}</version>
-		</dependency>
-
-		<!-- Tomcat embarcado -->
-		<dependency>
-			<groupId>org.apache.tomcat.embed</groupId>
-			<artifactId>tomcat-embed-logging-juli</artifactId>
-			<version>${tomcat.version}</version>
-		</dependency>
-
-		<!-- Tomcat embarcado -->
-		<dependency>
-			<groupId>org.apache.tomcat.embed</groupId>
-			<artifactId>tomcat-embed-jasper</artifactId>
-			<version>${tomcat.version}</version>
-		</dependency>
-
-		<!-- Tomcat embarcado -->
-		<dependency>
-			<groupId>org.apache.tomcat</groupId>
-			<artifactId>tomcat-jasper</artifactId>
-			<version>${tomcat.version}</version>
-		</dependency>
-
-		<!-- Tomcat embarcado -->
-		<dependency>
-			<groupId>org.apache.tomcat</groupId>
-			<artifactId>tomcat-jsp-api</artifactId>
-			<version>${tomcat.version}</version>
-		</dependency>
-
-		<!-- Tomcat embarcado -->
-		<dependency>
-			<groupId>org.apache.tomcat.embed</groupId>
-			<artifactId>tomcat-embed-el</artifactId>
-			<version>${tomcat.version}</version>
-		</dependency>
-
-		<!-- El -->
-		<dependency>
-			<groupId>org.glassfish.web</groupId>
-			<artifactId>el-impl</artifactId>
-			<version>2.2</version>
-		</dependency>
-
 		<!-- Postgree para o Heroku -->
 		<dependency>
 			<groupId>postgresql</groupId>
@@ -266,5 +168,5 @@
 
 	</dependencies>
 
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 </project>

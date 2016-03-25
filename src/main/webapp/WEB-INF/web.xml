@@ -7,10 +7,10 @@
 		<param-name>javax.faces.INTERPRET_EMPTY_STRING_SUBMITTED_VALUES_AS_NULL</param-name>
 		<param-value>true</param-value>
 	</context-param>
-	<context-param>
+<!-- 	<context-param>
 		<param-name>primefaces.THEME</param-name>
 		<param-value>home</param-value>
-	</context-param>
+	</context-param> -->
 	<servlet>
 		<servlet-name>Faces Servlet</servlet-name>
 		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
@@ -33,11 +33,11 @@
 	</filter-mapping>
 	<error-page>
 		<error-code>404</error-code>
-		<location>/faces/error.xhtml</location>
+		<location>/infra/exception.xhtml</location>
 	</error-page>
 	<error-page>
 		<error-code>500</error-code>
-		<location>/faces/error.xhtml</location>
+		<location>/infra/exception.xhtml</location>
 	</error-page>
 	<error-page>
 		<exception-type>java.lang.Exception</exception-type>
