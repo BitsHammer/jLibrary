@@ -7,10 +7,10 @@
 		<param-name>javax.faces.INTERPRET_EMPTY_STRING_SUBMITTED_VALUES_AS_NULL</param-name>
 		<param-value>true</param-value>
 	</context-param>
-<!-- 	<context-param>
+	<context-param>
 		<param-name>primefaces.THEME</param-name>
 		<param-value>home</param-value>
-	</context-param> -->
+	</context-param>
 	<servlet>
 		<servlet-name>Faces Servlet</servlet-name>
 		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
@@ -23,14 +23,6 @@
 	<welcome-file-list>
 		<welcome-file>login.xhtml</welcome-file>
 	</welcome-file-list>
-	<filter>
-		<filter-name>LoginFilter</filter-name>
-		<filter-class>com.bitshammer.security.filter.LoginFilter</filter-class>
-	</filter>
-	<filter-mapping>
-		<filter-name>LoginFilter</filter-name>
-		<servlet-name>Faces Servlet</servlet-name>
-	</filter-mapping>
 	<error-page>
 		<error-code>404</error-code>
 		<location>/infra/exception.xhtml</location>
