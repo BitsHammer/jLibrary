@@ -3,19 +3,18 @@
  */
 package com.bitshammer.livro.facade;
 
-import javax.inject.Inject;
-
 import com.bitshammer.livro.Livro;
 import com.bitshammer.livro.dao.ILivroDao;
+import com.bitshammer.livro.dao.LivroDao;
 
 /**
  * @author bruno.martins
  *
  */
-class LivroFacade implements ILivroFacade {
+public class LivroFacade implements ILivroFacade {
 
-	@Inject
-	private ILivroDao dao;
+	
+	private ILivroDao dao = new LivroDao();
 	
 	/**
 	 * @see com.bitshammer.livro.facade.ILivroFacade#save(com.bitshammer.livro.Livro)
