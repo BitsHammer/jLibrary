@@ -151,13 +151,6 @@
 			<version>9.1-901.jdbc4</version>
 		</dependency>
 
-		<!-- Temas ddo Primefaces -->
-		<dependency>
-			<groupId>org.primefaces.extensions</groupId>
-			<artifactId>all-themes</artifactId>
-			<version>1.0.8</version>
-		</dependency>
-
 		<!-- Javax validation -->
 		<dependency>
 			<groupId>javax.validation</groupId>
