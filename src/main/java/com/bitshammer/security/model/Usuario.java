@@ -3,6 +3,7 @@
  */
 package com.bitshammer.security.model;
 
+import java.io.Serializable;
 import java.security.Principal;
 
 import javax.persistence.Column;
@@ -21,7 +22,7 @@ import javax.persistence.Id;
  *
  */
 @Entity
-public class Usuario implements Principal {
+public class Usuario implements Principal, Serializable {
 	
 	@Id
 	@GeneratedValue

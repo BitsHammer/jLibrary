@@ -1,17 +1,11 @@
 package com.bitshammer.infra.bean;
 
-import java.io.Serializable;
-
 import javax.faces.application.FacesMessage;
 
 import org.primefaces.context.RequestContext;
 
-public abstract class DefaultBean implements Serializable{
+public abstract class DefaultBean{
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 2162113209886252134L;
 
 	/**
 	 * Exibe uma mensagem de informação ao usuário

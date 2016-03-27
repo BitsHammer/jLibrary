@@ -4,7 +4,6 @@
 package com.bitshammer.security.services;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.security.auth.login.LoginException;
@@ -22,11 +21,6 @@ import com.bitshammer.security.model.Usuario;
 @ManagedBean
 @ViewScoped
 public class LoginBean extends DefaultBean{
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 4166072776920035348L;
 
 	private ILoginFacade facade = new LoginFacade();
 	
@@ -78,6 +72,5 @@ public class LoginBean extends DefaultBean{
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-
 
 }
