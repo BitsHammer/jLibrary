@@ -10,15 +10,16 @@
 			<redirect />
 		</navigation-case>
 		<navigation-case>
-			<from-outcome>autorLoader</from-outcome>
-			<to-view-id>/pages/autor/autorLoader.xhtml</to-view-id>
+			<from-outcome>livroLoader</from-outcome>
+			<to-view-id>/pages/admin/livroLoader.xhtml</to-view-id>
 			<redirect />
 		</navigation-case>
 		<navigation-case>
-			<from-outcome>autorListarLoader</from-outcome>
-			<to-view-id>/pages/autor/autorListarLoader.xhtml</to-view-id>
+			<from-outcome>livroListarLoader</from-outcome>
+			<to-view-id>/pages/admin/livroListarLoader.xhtml</to-view-id>
 			<redirect />
 		</navigation-case>
+		
 		<navigation-case>
 			<from-outcome>login</from-outcome>
 			<to-view-id>/login.xhtml</to-view-id>

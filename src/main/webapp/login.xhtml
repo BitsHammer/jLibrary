@@ -11,7 +11,8 @@
 <h:body>
 	<h:form>
 		<p:panel id="panel" header="Bem vindo ao jLibrary"
-			style="margin-bottom:10px;">
+			style="margin-bottom:10px; width: 100%;" >
+			<p:graphicImage value="/images/books.png" width="200" />
 			<h:panelGrid columns="2" columnClasses="label, value">
 				<p:outputLabel for="j_username" value="#{msg.label_nome}" />
 				<p:inputText type="text" id="j_username" name="j_username" value="#{loginBean.usuario.login}"/>
