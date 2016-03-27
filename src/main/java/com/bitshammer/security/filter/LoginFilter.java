@@ -20,7 +20,7 @@ import javax.servlet.http.HttpSession;
 				DispatcherType.REQUEST, 
 				DispatcherType.INCLUDE
 		}
-					, urlPatterns = { "/pages/*" })
+					, urlPatterns = { "/pages/compra/*", "/pages/admin/*" })
 public final class LoginFilter implements Filter {
 
     /**
