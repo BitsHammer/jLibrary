@@ -15,7 +15,7 @@
  
     <p:menubar>
     	<p:menuitem label="Home" action="home" />        
-        <p:submenu label="#{msg.btn_menu_livro}" icon="ui-icon-document">
+        <p:submenu label="#{msg.btn_menu_livro}" icon="ui-icon-document" rendered="#{securityBean.usuarioAdministrador}">
             <p:menuitem value="#{msg.btn_cadastrar}" label="#{msg.btn_cadastrar}" icon="ui-icon-contact" action="autorLoader" />
             <p:menuitem value="#{msg.btn_buscar}" label="#{msg.btn_buscar}" icon="ui-icon-contact" action="autorListarLoader" />
         </p:submenu>

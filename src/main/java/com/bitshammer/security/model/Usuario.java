@@ -4,10 +4,11 @@
 package com.bitshammer.security.model;
 
 import java.io.Serializable;
-import java.security.Principal;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
@@ -22,8 +23,13 @@ import javax.persistence.Id;
  *
  */
 @Entity
-public class Usuario implements Principal, Serializable {
+public class Usuario implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4196937487888694691L;
+
 	@Id
 	@GeneratedValue
 	@Column(name="user_id")
@@ -37,6 +43,9 @@ public class Usuario implements Principal, Serializable {
 	
 	@Column(nullable=false, length=50)
 	private String email;
+	
+	@Enumerated(EnumType.ORDINAL)
+	private TipoUsuario tipoUsuario;
 	
 	/**
 	 * @return the id
@@ -112,8 +121,17 @@ public class Usuario implements Principal, Serializable {
 		return builder.toString();
 	}
 
-	@Override
-	public String getName() {
-		return login;
+	/**
+	 * @return the tipoUsuario
+	 */
+	public TipoUsuario getTipoUsuario() {
+		return tipoUsuario;
+	}
+
+	/**
+	 * @param tipoUsuario the tipoUsuario to set
+	 */
+	public void setTipoUsuario(TipoUsuario tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
 	}
 }

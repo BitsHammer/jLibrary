@@ -1,8 +1,13 @@
 package com.bitshammer.infra.bean;
 
 import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 import org.primefaces.context.RequestContext;
+
+import com.bitshammer.security.model.TipoUsuario;
+import com.bitshammer.security.model.Usuario;
 
 public abstract class DefaultBean{
 
@@ -31,7 +36,32 @@ public abstract class DefaultBean{
 	protected void showSucessMessage() {
 		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso", "Dados salvos!");
 		RequestContext.getCurrentInstance().showMessageInDialog(message);
-		
+	}
+	
+	/**
+	 * Valida se há um usuário comum na aplicação
+	 * @return
+	 */
+	public boolean isUsuarioCliente(){
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+		if(session.getAttribute("usuario") != null){
+			Usuario usuario = (Usuario) session.getAttribute("usuario");
+			return TipoUsuario.CLIENTE.equals(usuario.getTipoUsuario());			
+		}
+		return true;
+	}
+	
+	/**
+	 * Valida se há um usuário administrador na aplicação
+	 * @return
+	 */
+	public boolean isUsuarioAdministrador(){
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+		if(session.getAttribute("usuario") != null){
+			Usuario usuario = (Usuario) session.getAttribute("usuario");
+			return TipoUsuario.ADMINISTRADOR.equals(usuario.getTipoUsuario());			
+		}
+		return false;
 	}
 
 }

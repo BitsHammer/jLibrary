@@ -28,7 +28,6 @@ public class Autor {
 	private Long id;
 
 	@Column(nullable=false, length=200)
-	@NotNull(message="{nome.required}")
 	private String nome;
 	
 	public Autor(String nome) {

@@ -39,7 +39,7 @@ public class LoginBean extends DefaultBean{
 		try{	
 			usuario = facade.login(usuario);
 			HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
-			session.setAttribute("user", usuario);
+			session.setAttribute("usuario", usuario);
 			return "home";
 		}catch(LoginException e){
 			addErrorMessage(e.getMessage());
