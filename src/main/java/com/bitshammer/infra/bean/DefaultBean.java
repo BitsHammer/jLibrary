@@ -63,5 +63,15 @@ public abstract class DefaultBean{
 		}
 		return false;
 	}
+	
+	/**
+	 * Valida se há um usuário na aplicação
+	 * @return
+	 */
+	public boolean isUsuarioLogado(){
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+		return session.getAttribute("usuario") != null;
+	}
+
 
 }

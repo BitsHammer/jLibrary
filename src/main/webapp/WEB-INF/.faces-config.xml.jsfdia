@@ -1,23 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PROCESS model-entity="JSFProcess">
  <PROCESS-ITEM NAME="rules:#login.xhtml" PATH="/login.xhtml"
-  SHAPE="40,96,0,0" model-entity="JSFProcessGroup">
-  <PROCESS-ITEM ID="rules:#login.xhtml:0" NAME="item"
-   PATH="/login.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="home::#pages#user#home.xhtml" NAME="output"
-    PATH="/pages/user/home.xhtml" TARGET="rules:#pages#user#home.xhtml"
+  SHAPE="40,96,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#home.xhtml" PATH="/pages/home.xhtml"
+  SHAPE="32,129,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:*" PATH="*" SHAPE="32,305,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:*:0" NAME="item" PATH="*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="home::#pages#home.xhtml" NAME="output"
+    PATH="/pages/home.xhtml" TARGET="rules:#pages#home.xhtml"
     TITLE="home" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="livroLoader::#pages#admin#livro#livroLoader.xhtml"
+    NAME="output1" PATH="/pages/admin/livro/livroLoader.xhtml"
+    TARGET="rules:#pages#admin#livro#livroLoader.xhtml"
+    TITLE="livroLoader" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="livroListarLoader::#pages#admin#livro#livroListarLoader.xhtml"
+    NAME="output2" PATH="/pages/admin/livro/livroListarLoader.xhtml"
+    TARGET="rules:#pages#admin#livro#livroListarLoader.xhtml"
+    TITLE="livroListarLoader" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="carrinhoListarLoader::#pages#carrinho#carrinhoListarLoader.xhtml"
+    NAME="output3" PATH="/pages/carrinho/carrinhoListarLoader.xhtml"
+    TARGET="rules:#pages#carrinho#carrinhoListarLoader.xhtml"
+    TITLE="carrinhoListarLoader" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="login::#login.xhtml" NAME="output4"
+    PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="login" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
- <PROCESS-ITEM NAME="rules:#pages#user#home.xhtml"
-  PATH="/pages/user/home.xhtml" SHAPE="240,145,0,0" model-entity="JSFProcessGroup">
-  <PROCESS-ITEM ID="rules:#pages#user#home.xhtml:0" NAME="item"
-   PATH="/pages/user/home.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="autorLoader::#pages#autor#autorLoader.xhtml"
-    NAME="output" PATH="/pages/autor/autorLoader.xhtml"
-    TARGET="rules:#pages#autor#autorLoader.xhtml" TITLE="autorLoader" model-entity="JSFProcessItemOutput"/>
-  </PROCESS-ITEM>
- </PROCESS-ITEM>
- <PROCESS-ITEM NAME="rules:#pages#autor#autorLoader.xhtml"
-  PATH="/pages/autor/autorLoader.xhtml" SHAPE="448,129,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#admin#livro#livroLoader.xhtml"
+  PATH="/pages/admin/livro/livroLoader.xhtml" SHAPE="288,257,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#admin#livro#livroListarLoader.xhtml"
+  PATH="/pages/admin/livro/livroListarLoader.xhtml" SHAPE="288,465,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#carrinho#carrinhoListarLoader.xhtml"
+  PATH="/pages/carrinho/carrinhoListarLoader.xhtml" SHAPE="304,497,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>

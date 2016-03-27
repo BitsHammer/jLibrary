@@ -11,12 +11,17 @@
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>livroLoader</from-outcome>
-			<to-view-id>/pages/admin/livroLoader.xhtml</to-view-id>
+			<to-view-id>/pages/admin/livro/livroLoader.xhtml</to-view-id>
 			<redirect />
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>livroListarLoader</from-outcome>
-			<to-view-id>/pages/admin/livroListarLoader.xhtml</to-view-id>
+			<to-view-id>/pages/admin/livro/livroListarLoader.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>carrinhoListarLoader</from-outcome>
+			<to-view-id>/pages/carrinho/carrinhoListarLoader.xhtml</to-view-id>
 			<redirect />
 		</navigation-case>
 		
