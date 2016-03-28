@@ -6,7 +6,7 @@
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<mapping-file>META-INF/orm.xml</mapping-file>
 		<properties>
-			<property name="javax.persistence.jdbc.url"	value="jdbc:postgresql://ec2-54-225-165-132.compute-1.amazonaws.com:5432/d74nrupcurbrun?ssl=true" />
+			<property name="javax.persistence.jdbc.url"	value="jdbc:postgresql://ec2-54-225-165-132.compute-1.amazonaws.com:5432/d74nrupcurbrun" />
 			<property name="javax.persistence.jdbc.user" value="qnjkmtcyyjlzjv" />
 			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
 			<property name="javax.persistence.schema-generation.database.action"
