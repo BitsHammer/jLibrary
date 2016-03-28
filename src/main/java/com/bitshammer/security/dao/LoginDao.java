@@ -5,7 +5,9 @@ package com.bitshammer.security.dao;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaQuery;
 import javax.security.auth.login.LoginException;
 
 import com.bitshammer.infra.dao.JPADao;
@@ -23,10 +25,14 @@ public class LoginDao extends JPADao<Usuario> implements ILoginDao {
 	 */
 	@Override
 	public Usuario findUser(Usuario usuario) throws LoginException {
-		TypedQuery<Usuario> query = getEntityManager().createQuery("select u from Usuario as u where u.login = :login and u.senha = :senha",
+		EntityManager entityManager = getEntityManager();
+		
+		TypedQuery<Usuario> query = entityManager.createQuery("select u from Usuario as u where u.login = :login and u.senha = :senha",
 				Usuario.class);
 		query.setParameter("login", usuario.getLogin());
 		query.setParameter("senha", usuario.getSenha());
+		
+		entityManager.close();
 		List<Usuario> resultList = query.getResultList();
 		if (!resultList.isEmpty()) {
 			return resultList.get(0);

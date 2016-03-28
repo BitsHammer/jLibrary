@@ -1,6 +1,7 @@
 package com.bitshammer.infra.dao;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 /**
@@ -16,6 +17,10 @@ public abstract class JPADao<T> {
 	 * Entity Manager
 	 */
 	private static EntityManager em;
+	/**
+	 * Entity Manager Factory
+	 */
+	private static EntityManagerFactory factory;
 	
 	/**
 	 * Construtor privado 
@@ -28,8 +33,11 @@ public abstract class JPADao<T> {
 	 */
 	
 	protected EntityManager getEntityManager() {
+		if(factory == null){
+			factory = Persistence.createEntityManagerFactory("JLibrary");
+		}
 		if(em == null){
-			em = Persistence.createEntityManagerFactory("JLibrary").createEntityManager();
+			em = factory.createEntityManager();
 		}
 		return em;
 		
