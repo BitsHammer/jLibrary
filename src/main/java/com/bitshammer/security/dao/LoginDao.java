@@ -32,13 +32,13 @@ public class LoginDao extends JPADao<Usuario> implements ILoginDao {
 		query.setParameter("login", usuario.getLogin());
 		query.setParameter("senha", usuario.getSenha());
 		
-		entityManager.close();
 		List<Usuario> resultList = query.getResultList();
 		if (!resultList.isEmpty()) {
 			return resultList.get(0);
 		} else {
 			throw new LoginException("Usuario nao encontrado");
 		}
+		
 	}
 
 }
