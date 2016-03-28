@@ -1,6 +1,7 @@
 package com.bitshammer.infra.dao;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 /**
@@ -13,9 +14,9 @@ import javax.persistence.Persistence;
 public abstract class JPADao<T> {
 	
 	/**
-	 * Entity Manager
+	 * Entity Manager Factory
 	 */
-	private static EntityManager em;
+	private static EntityManagerFactory factory;
 	
 	/**
 	 * Construtor privado 
@@ -28,10 +29,7 @@ public abstract class JPADao<T> {
 	 */
 	
 	protected EntityManager getEntityManager() {
-		if(em == null){
-			em = Persistence.createEntityManagerFactory("JLibrary").createEntityManager();
-		}
-		return em;
+		return  EntityManagerSingleton.getInstance().createEntityManager();
 		
 	}
 	
@@ -41,9 +39,10 @@ public abstract class JPADao<T> {
 	 * @param e {@link Object}
 	 */
 	public void persist(final T e){
-		getEntityManager().getTransaction().begin();
-		getEntityManager().persist(e);
-		getEntityManager().getTransaction().commit();
+		EntityManager entityManager = getEntityManager();
+		entityManager.getTransaction().begin();
+		entityManager.persist(e);
+		entityManager.getTransaction().commit();
 	}
 	
 	/**
@@ -55,7 +54,8 @@ public abstract class JPADao<T> {
 	 * @return
 	 */
 	public T find(final Long id, final Class<T> clazz){
-		return getEntityManager().find(clazz, id);
+		EntityManager entityManager = getEntityManager();
+		return entityManager.find(clazz, id);
 	}
 	
 	/**
@@ -66,7 +66,8 @@ public abstract class JPADao<T> {
 	 * @return
 	 */
 	public void remove(final Long id, final Class<T> clazz){
-		getEntityManager().remove(find(id, clazz));
+		EntityManager entityManager = getEntityManager();
+		entityManager.remove(find(id, clazz));
 	}
 	
 }
