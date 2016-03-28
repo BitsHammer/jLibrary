@@ -14,9 +14,9 @@ import javax.persistence.Persistence;
 public abstract class JPADao<T> {
 	
 	/**
-	 * Entity Manager Factory
+	 * Entity Manager
 	 */
-	private static EntityManagerFactory factory;
+	private static EntityManager em;
 	
 	/**
 	 * Construtor privado 
@@ -29,7 +29,7 @@ public abstract class JPADao<T> {
 	 */
 	
 	protected EntityManager getEntityManager() {
-		return  EntityManagerSingleton.getInstance().createEntityManager();
+		return EntityManagerSingleton.getInstance().createEntityManager();
 		
 	}
 	
@@ -54,8 +54,7 @@ public abstract class JPADao<T> {
 	 * @return
 	 */
 	public T find(final Long id, final Class<T> clazz){
-		EntityManager entityManager = getEntityManager();
-		return entityManager.find(clazz, id);
+		return getEntityManager().find(clazz, id);
 	}
 	
 	/**
@@ -66,8 +65,7 @@ public abstract class JPADao<T> {
 	 * @return
 	 */
 	public void remove(final Long id, final Class<T> clazz){
-		EntityManager entityManager = getEntityManager();
-		entityManager.remove(find(id, clazz));
+		getEntityManager().remove(find(id, clazz));
 	}
 	
 }
