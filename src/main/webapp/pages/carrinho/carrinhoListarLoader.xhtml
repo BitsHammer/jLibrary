@@ -21,9 +21,11 @@
 				<p:panel id="basic" header="Carrinho de compras"
 					styleClass="table">
 
-					<p:dataTable var="produto" value="#{carrinhoBean.carrinho.produtosSelecionados()}">
+					<p:dataTable id="tableProdutos" var="produto" value="#{carrinhoBean.carrinho.produtosSelecionados()}">
 						<p:column headerText="Produto">
 							<h:outputText value="#{produto.livro.nome}" />
+							&emsp;
+							<p:commandButton value="Remover" action="#{carrinhoBean.carrinho.removerItem(produto)}" update="tableProdutos,form:precoTotal"/>
 						</p:column>
 						<p:column headerText="Quantidade">
 							<p:spinner value="#{produto.quantidade}" min="1">
