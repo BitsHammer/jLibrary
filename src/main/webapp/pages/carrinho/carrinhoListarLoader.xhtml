@@ -11,21 +11,21 @@
 .table {
 	margin-bottom: 20px;
 	width: 50%;
-	margin-top: 50px;
+	margin-top: 25%;
 	margin-left: 25%;
 }
 </style>
 	<ui:composition template="/templates/defaultTemplate.xhtml">
 		<ui:define name="content">
 			<h:form id="form">
-				<p:panel id="basic" header="Carrinho de compras"
-					styleClass="table">
+				<p:panel id="painelTabela" header="Carrinho de compras"
+					styleClass="table" >
 
-					<p:dataTable id="tableProdutos" var="produto" value="#{carrinhoBean.carrinho.produtosSelecionados()}">
+					<p:dataTable id="tableProdutos" var="produto" value="#{carrinhoBean.carrinho.produtosSelecionados()}" rendered="#{not empty carrinhoBean.carrinho.produtosSelecionados()}">
 						<p:column headerText="Produto">
 							<h:outputText value="#{produto.livro.nome}" />
 							&emsp;
-							<p:commandButton value="Remover" action="#{carrinhoBean.carrinho.removerItem(produto)}" update="tableProdutos,form:precoTotal"/>
+							<p:commandButton icon="ui-icon-trash" action="#{carrinhoBean.carrinho.removerItem(produto)}" update="form:painelTabela"/>
 						</p:column>
 						<p:column headerText="Quantidade">
 							<p:spinner value="#{produto.quantidade}" min="1">
@@ -39,7 +39,8 @@
 							<h:outputText value="#{produto.valorTotal()}" id="valorTotal"/>
 						</p:column>
 					</p:dataTable>
-					<h:outputText value="#{carrinhoBean.carrinho.precoTotal()}" id="precoTotal"/>
+					<h:outputText value="#{carrinhoBean.carrinho.precoTotal()}" id="precoTotal" rendered="#{not empty carrinhoBean.carrinho.produtosSelecionados()}"/>
+					<h:outputText value="Não há itens no carrinho!" rendered="#{empty carrinhoBean.carrinho.produtosSelecionados()}"/>
 				</p:panel>
 	
 			</h:form>
