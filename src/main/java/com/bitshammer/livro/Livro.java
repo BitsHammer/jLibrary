@@ -1,9 +1,12 @@
 package com.bitshammer.livro;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -11,6 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import com.bitshammer.autor.Autor;
 import com.bitshammer.editora.Editora;
@@ -23,27 +28,91 @@ import com.bitshammer.editora.Editora;
 @Entity
 public class Livro {
 	
+	/**
+	 * Id
+	 */
 	@Id
 	@Column(name="livro_id")
 	@GeneratedValue
 	private Long id;
 	
+	/**
+	 * Título
+	 */
 	@Column(nullable=false, length=200)
-	private String nome;
+	private String titulo;
 
+	/**
+	 * Número de páginas
+	 */
 	@Column(nullable=false)
-	private int qtdPaginas;
+	private Integer numeroPaginas;
 
+	/**
+	 * Editora do livro
+	 */
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="editora_id", referencedColumnName="editora_id")
 	private Editora editora;
 
+	/**
+	 * Lista de autores
+	 */
 	@ManyToMany(fetch=FetchType.LAZY)
 	@JoinTable(
 	      name="autor_livro",
 	      joinColumns={@JoinColumn(name="livro_id", referencedColumnName="livro_id")},
 	      inverseJoinColumns={@JoinColumn(name="autor_id", referencedColumnName="autor_id")})
 	private List<Autor> autores;
+	
+	/**
+	 * ISBN
+	 */
+	@Column(nullable=false, length=10)
+	private Long isbn;
+	
+	/**
+	 * Data da publicação
+	 */
+	@Temporal(TemporalType.DATE)
+	private Date dataPublicacao;
+	
+	/**
+	 * Preço de venda
+	 */
+	@Column(nullable=false)
+	private Double precoVenda;
+	
+	/**
+	 * Resumo do livro
+	 */
+	@Column(nullable=false)
+	private String resumo;
+	
+	/**
+	 * Formato do livro
+	 */
+	@Enumerated(EnumType.ORDINAL)
+	private FormatoLivro formato;
+	
+	
+	/**
+	 * Preço de custo
+	 */
+	@Column(nullable=false)
+	private Double precoCusto;
+	
+	/**
+	 * Quantidade em estoque
+	 */
+	@Column(nullable=false)
+	private Integer quantidadeEstoque;
+	
+	/**
+	 * Indice
+	 */
+	@Column(nullable=false)
+	private String indice;
 
 	/**
 	 * @return the id
@@ -60,31 +129,31 @@ public class Livro {
 	}
 
 	/**
-	 * @return the nome
+	 * @return the titulo
 	 */
-	public String getNome() {
-		return nome;
+	public String getTitulo() {
+		return titulo;
 	}
 
 	/**
-	 * @param nome the nome to set
+	 * @param titulo the titulo to set
 	 */
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
 
 	/**
-	 * @return the qtdPaginas
+	 * @return the numeroPaginas
 	 */
-	public int getQtdPaginas() {
-		return qtdPaginas;
+	public Integer getNumeroPaginas() {
+		return numeroPaginas;
 	}
 
 	/**
-	 * @param qtdPaginas the qtdPaginas to set
+	 * @param numeroPaginas the numeroPaginas to set
 	 */
-	public void setQtdPaginas(int qtdPaginas) {
-		this.qtdPaginas = qtdPaginas;
+	public void setNumeroPaginas(Integer numeroPaginas) {
+		this.numeroPaginas = numeroPaginas;
 	}
 
 	/**
@@ -115,4 +184,123 @@ public class Livro {
 		this.autores = autores;
 	}
 
+	/**
+	 * @return the isbn
+	 */
+	public Long getIsbn() {
+		return isbn;
+	}
+
+	/**
+	 * @param isbn the isbn to set
+	 */
+	public void setIsbn(Long isbn) {
+		this.isbn = isbn;
+	}
+
+	/**
+	 * @return the dataPublicacao
+	 */
+	public Date getDataPublicacao() {
+		return dataPublicacao;
+	}
+
+	/**
+	 * @param dataPublicacao the dataPublicacao to set
+	 */
+	public void setDataPublicacao(Date dataPublicacao) {
+		this.dataPublicacao = dataPublicacao;
+	}
+
+	/**
+	 * @return the precoVenda
+	 */
+	public Double getPrecoVenda() {
+		return precoVenda;
+	}
+
+	/**
+	 * @param precoVenda the precoVenda to set
+	 */
+	public void setPrecoVenda(Double precoVenda) {
+		this.precoVenda = precoVenda;
+	}
+
+	/**
+	 * @return the resumo
+	 */
+	public String getResumo() {
+		return resumo;
+	}
+
+	/**
+	 * @param resumo the resumo to set
+	 */
+	public void setResumo(String resumo) {
+		this.resumo = resumo;
+	}
+
+	/**
+	 * @return the formato
+	 */
+	public FormatoLivro getFormato() {
+		return formato;
+	}
+
+	/**
+	 * @param formato the formato to set
+	 */
+	public void setFormato(FormatoLivro formato) {
+		this.formato = formato;
+	}
+
+	/**
+	 * @return the precoCusto
+	 */
+	public Double getPrecoCusto() {
+		return precoCusto;
+	}
+
+	/**
+	 * @param precoCusto the precoCusto to set
+	 */
+	public void setPrecoCusto(Double precoCusto) {
+		this.precoCusto = precoCusto;
+	}
+
+	/**
+	 * @return the quantidadeEstoque
+	 */
+	public Integer getQuantidadeEstoque() {
+		return quantidadeEstoque;
+	}
+
+	/**
+	 * @param quantidadeEstoque the quantidadeEstoque to set
+	 */
+	public void setQuantidadeEstoque(Integer quantidadeEstoque) {
+		this.quantidadeEstoque = quantidadeEstoque;
+	}
+	
+	/**
+	 * Calcula a margem de lucro
+	 * @return
+	 */
+	public Double calcularMargemLucro(){
+		return precoVenda - precoCusto;
+	}
+
+	/**
+	 * @return the indice
+	 */
+	public String getIndice() {
+		return indice;
+	}
+
+	/**
+	 * @param indice the indice to set
+	 */
+	public void setIndice(String indice) {
+		this.indice = indice;
+	}
 }

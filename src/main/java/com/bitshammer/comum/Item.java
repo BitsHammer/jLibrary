@@ -1,4 +1,4 @@
-package com.bitshammer.carrinho;
+package com.bitshammer.comum;
 
 import java.io.Serializable;
 
@@ -9,7 +9,7 @@ import com.bitshammer.livro.Livro;
  * 
  * @author Bruno
  */
-public class Produto implements Serializable {
+public class Item implements Serializable {
 	
 	/**
 	 * 
@@ -31,7 +31,7 @@ public class Produto implements Serializable {
 	 * @param livro livro
 	 * @param quantidade quantidade
 	 */
-	public Produto(Livro livro) {
+	public Item(Livro livro) {
 		this.livro = livro;
 		this.quantidade = 1;
 	}

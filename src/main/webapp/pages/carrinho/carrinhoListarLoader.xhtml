@@ -21,14 +21,14 @@
 				<p:panel id="painelTabela" header="Carrinho de compras"
 					styleClass="table" >
 
-					<p:dataTable id="tableProdutos" var="produto" value="#{carrinhoBean.carrinho.produtosSelecionados()}" rendered="#{not empty carrinhoBean.carrinho.produtosSelecionados()}">
-						<p:column headerText="Produto">
-							<h:outputText value="#{produto.livro.nome}" />
+					<p:dataTable id="tableItems" var="Item" value="#{carrinhoBean.carrinho.ItemsSelecionados()}" rendered="#{not empty carrinhoBean.carrinho.ItemsSelecionados()}">
+						<p:column headerText="Item">
+							<h:outputText value="#{Item.livro.nome}" />
 							&emsp;
-							<p:commandButton icon="ui-icon-trash" action="#{carrinhoBean.carrinho.removerItem(produto)}" update="form:painelTabela"/>
+							<p:commandButton icon="ui-icon-trash" action="#{carrinhoBean.carrinho.removerItem(Item)}" update="form:painelTabela"/>
 						</p:column>
 						<p:column headerText="Quantidade">
-							<p:spinner value="#{produto.quantidade}" min="1">
+							<p:spinner value="#{Item.quantidade}" min="1">
 								<p:ajax event="change" update="valorTotal, form:precoTotal" />
 							</p:spinner>
 						</p:column>
@@ -36,11 +36,11 @@
 							<h:outputText value="1"/>
 						</p:column>
 						<p:column headerText="Valor Total">
-							<h:outputText value="#{produto.valorTotal()}" id="valorTotal"/>
+							<h:outputText value="#{Item.valorTotal()}" id="valorTotal"/>
 						</p:column>
 					</p:dataTable>
-					<h:outputText value="#{carrinhoBean.carrinho.precoTotal()}" id="precoTotal" rendered="#{not empty carrinhoBean.carrinho.produtosSelecionados()}"/>
-					<h:outputText value="Não há itens no carrinho!" rendered="#{empty carrinhoBean.carrinho.produtosSelecionados()}"/>
+					<h:outputText value="#{carrinhoBean.carrinho.precoTotal()}" id="precoTotal" rendered="#{not empty carrinhoBean.carrinho.ItemsSelecionados()}"/>
+					<h:outputText value="Não há itens no carrinho!" rendered="#{empty carrinhoBean.carrinho.ItemsSelecionados()}"/>
 				</p:panel>
 	
 			</h:form>

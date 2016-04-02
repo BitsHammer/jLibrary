@@ -7,7 +7,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
 import com.bitshammer.carrinho.Carrinho;
-import com.bitshammer.carrinho.Produto;
+import com.bitshammer.comum.Item;
 import com.bitshammer.infra.bean.DefaultBean;
 import com.bitshammer.livro.Livro;
 
@@ -27,11 +27,11 @@ public class CarrinhoBean extends DefaultBean {
 	public CarrinhoBean() {
 		carrinho = new Carrinho();
 		Livro livro = new Livro();
-		livro.setNome("Teste");
+		livro.setTitulo("Teste");
 		Livro livro2 = new Livro();
-		livro2.setNome("Blabla");
-		carrinho.adicionarItem(new Produto(livro));
-		carrinho.adicionarItem(new Produto(livro2));
+		livro2.setTitulo("Blabla");
+		carrinho.adicionarItem(new Item(livro));
+		carrinho.adicionarItem(new Item(livro2));
 	}
 
 	/**

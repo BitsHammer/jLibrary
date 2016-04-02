@@ -43,8 +43,8 @@ public class LivroTest {
 	@Test
 	public void salvarLivro(){
 		Livro livro = new Livro();
-		livro.setQtdPaginas(999);
-		livro.setNome("TESTE");
+		livro.setNumeroPaginas(999);
+		livro.setTitulo("TESTE");
 		livro.setEditora(new Editora("Editora"));
 		livro.setAutores(Arrays.asList(new Autor("Autor")));
 		doAnswer(new Answer<Livro>() {

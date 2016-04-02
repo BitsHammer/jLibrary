@@ -3,12 +3,14 @@ package com.bitshammer.editora;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.bitshammer.comum.Endereco;
 import com.bitshammer.livro.Livro;
 
 /**
@@ -25,6 +27,12 @@ public class Editora {
 
 	@Column(nullable=false)
 	private String nome;
+	
+	@Column(nullable=false)
+	private Long telefone;
+	
+	@Embedded
+	private Endereco endereco;
 	
 	public Editora(String nome) {
 		super();

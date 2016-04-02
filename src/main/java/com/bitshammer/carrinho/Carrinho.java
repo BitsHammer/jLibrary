@@ -7,6 +7,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.bitshammer.comum.Item;
+
 /**
  * @author Bruno
  *
@@ -17,7 +19,7 @@ public final class Carrinho implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1829333857410038071L;
-	private List<Produto> produtos = new ArrayList<>();
+	private List<Item> produtos = new ArrayList<>();
 
 	/**
 	 * Adiciona um item na lista
@@ -25,7 +27,7 @@ public final class Carrinho implements Serializable {
 	 * @param item
 	 *            Produto
 	 */
-	public void adicionarItem(Produto item) {
+	public void adicionarItem(Item item) {
 		produtos.add(item);
 	}
 
@@ -35,7 +37,7 @@ public final class Carrinho implements Serializable {
 	 * @param item
 	 *            Produto
 	 */
-	public void removerItem(Produto item) {
+	public void removerItem(Item item) {
 		produtos.remove(item);
 	}
 
@@ -43,7 +45,7 @@ public final class Carrinho implements Serializable {
 	 * Calcula o preco total
 	 */
 	public double precoTotal() {
-		return produtos.stream().mapToDouble(Produto::valorTotal).sum();
+		return produtos.stream().mapToDouble(Item::valorTotal).sum();
 	}
 
 	/**
@@ -57,7 +59,7 @@ public final class Carrinho implements Serializable {
 	 * Retorna os produtos selecionados
 	 * @return
 	 */
-	public List<Produto> produtosSelecionados(){
+	public List<Item> produtosSelecionados(){
 		return produtos;
 	}
 

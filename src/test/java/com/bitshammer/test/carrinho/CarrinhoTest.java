@@ -9,7 +9,7 @@ import static org.mockito.Mockito.*;
 import org.junit.Test;
 
 import com.bitshammer.carrinho.Carrinho;
-import com.bitshammer.carrinho.Produto;
+import com.bitshammer.comum.Item;
 import com.bitshammer.livro.Livro;
 
 /**
@@ -22,7 +22,7 @@ public class CarrinhoTest {
 	public void testAdicionar(){
 		Carrinho carrinho = new Carrinho();
 		assertEquals(0, carrinho.quantidadeItens());
-		carrinho.adicionarItem(new Produto(new Livro()));
+		carrinho.adicionarItem(new Item(new Livro()));
 		assertEquals(1, carrinho.quantidadeItens());
 	}
 	
@@ -30,7 +30,7 @@ public class CarrinhoTest {
 	public void testRemover(){
 		Carrinho carrinho = new Carrinho();
 		assertEquals(0, carrinho.quantidadeItens());
-		Produto p = new Produto(new Livro());
+		Item p = new Item(new Livro());
 		carrinho.adicionarItem(p);
 		assertEquals(1, carrinho.quantidadeItens());
 		carrinho.removerItem(p);
@@ -40,12 +40,12 @@ public class CarrinhoTest {
 	@Test
 	public void testSomar(){
 		Carrinho carrinho = new Carrinho();
-		Produto p = new Produto(new Livro());
+		Item p = new Item(new Livro());
 		carrinho.adicionarItem(p);
 		assertEquals(1d, carrinho.precoTotal(),0d);
 		carrinho.adicionarItem(p);
 		assertEquals(2d, carrinho.precoTotal(),0d);
-		Produto p2 = new Produto(new Livro());
+		Item p2 = new Item(new Livro());
 		p2.setQuantidade(5);
 		carrinho.adicionarItem(p2);
 		assertEquals(7d, carrinho.precoTotal(),0d);
