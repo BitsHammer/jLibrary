@@ -1,7 +1,6 @@
 # jLibrary
-Aplicativo Web para gerenciamento de pequenas bibliotecas.
+Loja web para vendas de livros
 
-Possui funcionalidades como controle de clientes, livros, autores e empréstimos
 
 
 [![Build Status](https://travis-ci.org/BitsHammer/jLibrary.svg?branch=master)](https://travis-ci.org/BitsHammer/jLibrary)
