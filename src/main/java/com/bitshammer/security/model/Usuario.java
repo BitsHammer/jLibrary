@@ -6,6 +6,7 @@ package com.bitshammer.security.model;
 import java.io.Serializable;
 
 import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -18,11 +19,8 @@ import javax.persistence.Id;
  * @author Bruno
  *
  */
-/**
- * @author Bruno
- *
- */
 @Entity
+@Embeddable
 public class Usuario implements Serializable {
 	
 	/**

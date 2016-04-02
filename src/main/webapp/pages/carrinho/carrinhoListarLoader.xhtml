@@ -21,7 +21,7 @@
 				<p:panel id="painelTabela" header="Carrinho de compras"
 					styleClass="table" >
 
-					<p:dataTable id="tableItems" var="Item" value="#{carrinhoBean.carrinho.ItemsSelecionados()}" rendered="#{not empty carrinhoBean.carrinho.ItemsSelecionados()}">
+					<p:dataTable id="tableItems" var="Item" value="#{carrinhoBean.carrinho.itemsSelecionados()}" rendered="#{not empty carrinhoBean.carrinho.itemsSelecionados()}">
 						<p:column headerText="Item">
 							<h:outputText value="#{Item.livro.nome}" />
 							&emsp;
@@ -39,8 +39,8 @@
 							<h:outputText value="#{Item.valorTotal()}" id="valorTotal"/>
 						</p:column>
 					</p:dataTable>
-					<h:outputText value="#{carrinhoBean.carrinho.precoTotal()}" id="precoTotal" rendered="#{not empty carrinhoBean.carrinho.ItemsSelecionados()}"/>
-					<h:outputText value="Não há itens no carrinho!" rendered="#{empty carrinhoBean.carrinho.ItemsSelecionados()}"/>
+					<h:outputText value="#{carrinhoBean.carrinho.precoTotal()}" id="precoTotal" rendered="#{not empty carrinhoBean.carrinho.itemsSelecionados()}"/>
+					<h:outputText value="Não há itens no carrinho!" rendered="#{empty carrinhoBean.carrinho.itemsSelecionados()}"/>
 				</p:panel>
 	
 			</h:form>

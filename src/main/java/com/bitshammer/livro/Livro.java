@@ -3,7 +3,9 @@ package com.bitshammer.livro;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -113,6 +115,12 @@ public class Livro {
 	 */
 	@Column(nullable=false)
 	private String indice;
+	
+    @ElementCollection(targetClass=Categoria.class)
+    @Enumerated(EnumType.ORDINAL)
+    @CollectionTable(name="categoria_livro")
+    @Column(name="categoria")
+	private List<Categoria> categorias;
 
 	/**
 	 * @return the id
@@ -302,5 +310,19 @@ public class Livro {
 	 */
 	public void setIndice(String indice) {
 		this.indice = indice;
+	}
+
+	/**
+	 * @return the categorias
+	 */
+	public List<Categoria> getCategorias() {
+		return categorias;
+	}
+
+	/**
+	 * @param categorias the categorias to set
+	 */
+	public void setCategorias(List<Categoria> categorias) {
+		this.categorias = categorias;
 	}
 }

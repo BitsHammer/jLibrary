@@ -19,7 +19,7 @@ public final class Carrinho implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1829333857410038071L;
-	private List<Item> produtos = new ArrayList<>();
+	private List<Item> itens = new ArrayList<>();
 
 	/**
 	 * Adiciona um item na lista
@@ -28,7 +28,7 @@ public final class Carrinho implements Serializable {
 	 *            Produto
 	 */
 	public void adicionarItem(Item item) {
-		produtos.add(item);
+		itens.add(item);
 	}
 
 	/**
@@ -38,29 +38,29 @@ public final class Carrinho implements Serializable {
 	 *            Produto
 	 */
 	public void removerItem(Item item) {
-		produtos.remove(item);
+		itens.remove(item);
 	}
 
 	/**
 	 * Calcula o preco total
 	 */
 	public double precoTotal() {
-		return produtos.stream().mapToDouble(Item::valorTotal).sum();
+		return itens.stream().mapToDouble(Item::valorTotal).sum();
 	}
 
 	/**
 	 * retorna a quantidade de itens
 	 */
 	public int quantidadeItens() {
-		return produtos.size();
+		return itens.size();
 	}
 	
 	/**
-	 * Retorna os produtos selecionados
+	 * Retorna os itens selecionados
 	 * @return
 	 */
-	public List<Item> produtosSelecionados(){
-		return produtos;
+	public List<Item> itensSelecionados(){
+		return itens;
 	}
 
 }
