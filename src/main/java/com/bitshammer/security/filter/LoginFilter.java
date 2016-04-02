@@ -45,7 +45,7 @@ public final class LoginFilter implements Filter {
 		String uri = ((HttpServletRequest)request).getRequestURI();
 		if(uri.contains(".css") || uri.contains(".js") || uri.contains(".png"))
 			chain.doFilter(request, response);	
-		if(session.getAttribute("user") != null)
+		if(session.getAttribute("usuario") != null)
 			chain.doFilter(request, response);
 		else ((HttpServletRequest)request).getRequestDispatcher("/login.xhtml").forward(request, response);
 		
