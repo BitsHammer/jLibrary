@@ -9,7 +9,17 @@ package com.bitshammer.livro;
  */
 public enum Categoria {
 	
-	TERROR,
-	PAIXAO
+	TERROR("Terror"),
+	PAIXAO("Paixao");
+	
+	private String nome;
+
+	public String getNome() {
+		return nome;
+	}
+
+	private Categoria(String nome) {
+		this.nome = nome;
+	}
 
 }

@@ -20,9 +20,8 @@ public class LivroFacade implements ILivroFacade {
 	 * @see com.bitshammer.livro.facade.ILivroFacade#save(com.bitshammer.livro.Livro)
 	 */
 	@Override
-	public void save(Livro livro) {
+	public void gravarLivro(Livro livro) {
 		dao.persist(livro);
-
 	}
 
 }

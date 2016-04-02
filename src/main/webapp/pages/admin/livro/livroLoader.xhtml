@@ -7,6 +7,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 <h:body>
+	
 	<ui:composition template="/templates/defaultTemplate.xhtml">
 		<ui:define name="content">
 			<h:form>
@@ -21,78 +22,84 @@
 
 						<p:outputLabel for="l_titulo" value="Título" />
 						<p:inputText type="text" size="50" maxlength="50" id="l_titulo"
-							name="l_titulo" value="Título" />
+							name="l_titulo" value="#{livroBean.livro.titulo}" />
 
 						<h:outputLabel for="menu" value="Autores:" />
-						<p:selectCheckboxMenu id="menu"
-							value="#{livroBean.selectedAutores}" label="Autores"
+						<p:selectCheckboxMenu id="menu" value="#{livroBean.livro.autores}" label="Autores"
 							filter="true" filterMatchMode="startsWith"
 							panelStyle="width:250px">
-							<f:selectItems value="#{livroBean.autores}" />
-							<p:ajax event="change" update="tabela"/>
+							<f:selectItems value="#{livroBean.autores}" var="autor" itemLabel="#{autor.nome}"/>
+							<p:ajax event="change" update="tabelaAutor"/>
 						</p:selectCheckboxMenu>
 
-						<p:commandLink value="Adicionar" update="panel"  />
-						<p:dataList id="tabela" value="#{livroBean.selectedAutores}"
-							var="city" emptyMessage="Nenhuma autor selecionado">
-				            	#{city}
+						<p:outputLabel value="Selecionados" />
+						<p:dataList id="tabelaAutor" value="#{livroBean.livro.autores}"
+							var="autor" emptyMessage="Nenhuma autor selecionado">
+				            	#{autor}
 				       		</p:dataList>
 
 						<!-- DATA DE PUBLICAÇÃO -->
 						<p:outputLabel for="dt_publicacao" value="Data de Publicação" />
-						<p:calendar id="dt_publicacao" value="#{calendarView.date2}" />
+						<p:calendar id="dt_publicacao" value="#{livroBean.livro.dataPublicacao}" />
 
 						<!-- EDITORA -->
 						<p:outputLabel for="l_editora" value="Editora" />
 						<p:inputText size="50" maxlength="50" id="l_editora"
-							name="l_titulo" value="#" />
-
-						<!-- PREÇO DE VENDA-->
-						<p:outputLabel for="l_preco_venda" value="Preço de Venda" />
-						<p:inputText size="10" maxlength="10" id="l_preco_venda"
-							name="l_titulo" value="#" />
+							name="l_titulo" value="#{livroBean.livro.editora}" />
 
 						<p:outputLabel for="categoria" value="Categoria" />
-						<p:selectOneMenu id="categoria"
-							value="#{selectOneMenuView.console}" style="width:125px">
-							<f:selectItem itemLabel="Select One" itemValue="" />
-							<f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
-							<f:selectItem itemLabel="PS4" itemValue="PS4" />
-							<f:selectItem itemLabel="Wii U" itemValue="Wii U" />
-						</p:selectOneMenu>
+						<p:selectCheckboxMenu id="categoria"
+							value="#{livroBean.livro.categorias}" style="width:125px">
+							<f:selectItems value="#{livroBean.categorias}" var="categoria" itemLabel="#{categoria}" />
+							<p:ajax event="change" update="tabelaCategoria"/>
+						</p:selectCheckboxMenu>
+						
+						<p:outputLabel value="Selecionados" />
+						<p:dataList id="tabelaCategoria" value="#{livroBean.livro.categorias}"
+							var="categoria" emptyMessage="Nenhuma categoria selecionada">
+				            	#{categoria}
+				       		</p:dataList>
 
-						<p:outputLabel for="l_indice" value="Indíce" />
-						<p:inputText size="10" maxlength="10" id="l_indice"
-							name="l_indice" value="#" />
+						<p:outputLabel for="l_indice" value="Índice" />
+						<p:inputTextarea id="l_indice" rows="6" cols="33" />
 
 						<p:outputLabel for="formato" value="Formato" />
-						<p:selectOneMenu id="formato" value="#{selectOneMenuView.console}"
+						<p:selectOneMenu id="formato" value="#{livroBean.livro.formato}"
 							style="width:125px">
-							<f:selectItem itemLabel="Selecione" itemValue="" />
-							<f:selectItem itemLabel="Capa Dura" itemValue="" />
-							<f:selectItem itemLabel="Brochura" itemValue="brochura" />
+								<f:selectItems value="#{livroBean.formatos}" />
 						</p:selectOneMenu>
 
 						<p:outputLabel for="l_numero_paginas" value="Número de Páginas" />
 						<p:inputText size="10" maxlength="10" id="l_numero_paginas"
-							name="l_numero_paginas" value="#" />
+							name="l_numero_paginas" value="#{livroBean.livro.numeroPaginas}" />
 
+						<!-- PREÇO DE VENDA-->
+						<p:outputLabel for="l_preco_venda" value="Preço de Venda" />
+						<p:inputText size="10" maxlength="10" id="l_preco_venda"
+							name="l_titulo" value="#{livroBean.livro.precoVenda}">
+							<p:ajax event="change" update="l_margem_lucro"/>	
+						</p:inputText>
+							
 						<p:outputLabel for="l_preco_custo" value="Preço de Custo" />
-						<p:inputText id="l_preco_custo" value="#" />
+						<p:inputText id="l_preco_custo" value="#{livroBean.livro.precoCusto}">
+							<p:ajax event="change" update="l_margem_lucro"/>	
+						</p:inputText>
+						
 						<p:outputLabel for="l_margem_lucro" value="Margem de Lucro" />
-						<p:inputText id="l_margem_lucro" value="#" />
+						<h:outputText id="l_margem_lucro" value="#{livroBean.livro.calcularMargemLucro()}" />
+						
+						
 						<p:outputLabel for="l_estoque" value="Quantidade em Estoque" />
-						<p:inputText id="l_estoque" value="#" />
+						<p:inputText id="l_estoque" value="#{livroBean.livro.quantidadeEstoque	}" />
 						<p:outputLabel for="l_resumo" value="Resumo" />
-						<p:inputTextarea id="l_resumo" rows="6" cols="33" />
+						<p:inputTextarea id="l_resumo" rows="6" cols="33" value="#{livroBean.livro.resumo}" />
 					</h:panelGrid>
 
 				</p:panel>
-				<p:commandButton value="Entrar" update="panel"
+				<p:commandButton value="Gravar" update="panel"
 					action="#{loginBean.logar}" />
 			</h:form>
 		</ui:define>
 	</ui:composition>
 </h:body>
-
 </html>

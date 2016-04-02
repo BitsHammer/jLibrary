@@ -1,5 +1,7 @@
 package com.bitshammer.infra.bean;
 
+import java.io.Serializable;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
@@ -9,8 +11,13 @@ import org.primefaces.context.RequestContext;
 import com.bitshammer.security.model.TipoUsuario;
 import com.bitshammer.security.model.Usuario;
 
-public abstract class DefaultBean{
+public abstract class DefaultBean implements Serializable{
 
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6837848004347486921L;
 
 	/**
 	 * Exibe uma mensagem de informação ao usuário

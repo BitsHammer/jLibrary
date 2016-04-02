@@ -1,5 +1,6 @@
 package com.bitshammer.livro;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -83,7 +84,7 @@ public class Livro {
 	 * Preço de venda
 	 */
 	@Column(nullable=false)
-	private Double precoVenda;
+	private Double precoVenda = 0d;
 	
 	/**
 	 * Resumo do livro
@@ -102,7 +103,7 @@ public class Livro {
 	 * Preço de custo
 	 */
 	@Column(nullable=false)
-	private Double precoCusto;
+	private Double precoCusto = 0d;
 	
 	/**
 	 * Quantidade em estoque
@@ -182,7 +183,7 @@ public class Livro {
 	 * @return the autores
 	 */
 	public List<Autor> getAutores() {
-		return autores;
+ 		return autores;
 	}
 
 	/**

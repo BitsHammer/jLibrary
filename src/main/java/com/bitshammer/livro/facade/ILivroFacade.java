@@ -16,6 +16,6 @@ public interface ILivroFacade {
 	 * dados
 	 * @param livro Livro que será gravado
 	 */
-	void save(Livro livro);
+	void gravarLivro(Livro livro);
 
 }

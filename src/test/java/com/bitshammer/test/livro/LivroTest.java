@@ -57,7 +57,7 @@ public class LivroTest {
 			}
 		}).when(dao).persist(livro);
 		
-		facade.save(livro);
+		facade.gravarLivro(livro);
 		assertEquals(1l, livro.getId().longValue());
 		
 	}
