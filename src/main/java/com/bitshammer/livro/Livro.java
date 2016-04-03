@@ -1,6 +1,5 @@
 package com.bitshammer.livro;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -37,7 +36,7 @@ public class Livro {
 	@Id
 	@Column(name="livro_id")
 	@GeneratedValue
-	private Long id;
+	private Integer id;
 	
 	/**
 	 * Título
@@ -117,6 +116,9 @@ public class Livro {
 	@Column(nullable=false)
 	private String indice;
 	
+	/**
+	 * Categorias
+	 */
     @ElementCollection(targetClass=Categoria.class)
     @Enumerated(EnumType.ORDINAL)
     @CollectionTable(name="categoria_livro")
@@ -126,14 +128,14 @@ public class Livro {
 	/**
 	 * @return the id
 	 */
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -325,5 +327,12 @@ public class Livro {
 	 */
 	public void setCategorias(List<Categoria> categorias) {
 		this.categorias = categorias;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(obj == null)
+			return false;
+		return id.equals(((Livro)obj).getId());
 	}
 }

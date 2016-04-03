@@ -52,7 +52,7 @@ public class LivroTest {
 			@Override
 			public Livro answer(InvocationOnMock invocation) throws Throwable {
 				Livro livro = invocation.getArgumentAt(0, Livro.class);
-				livro.setId(1l);
+				livro.setId(1);
 				return livro;
 			}
 		}).when(dao).persist(livro);

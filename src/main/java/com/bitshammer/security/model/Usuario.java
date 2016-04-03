@@ -6,13 +6,11 @@ package com.bitshammer.security.model;
 import java.io.Serializable;
 
 import javax.persistence.Column;
-import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
 
 /**
  * 
@@ -29,27 +27,42 @@ public class Usuario implements Serializable {
 	 */
 	private static final long serialVersionUID = -4196937487888694691L;
 
+	/**
+	 * Id
+	 */
 	@Id
 	@GeneratedValue
 	@Column(name = "user_id")
-	private Long id;
+	private Integer id;
 
+	/**
+	 * Login
+	 */
 	@Column(nullable = false, length = 50)
 	private String login;
 
-	@Column(nullable = false)
+	/**
+	 * Senha
+	 */
+	@Column(nullable = false, length=6)
 	private String senha;
 
+	/**
+	 * Email
+	 */
 	@Column(nullable = false, length = 50)
 	private String email;
 
+	/**
+	 * Tipo de Usuario
+	 */
 	@Enumerated(EnumType.ORDINAL)
 	private TipoUsuario tipoUsuario;
 
 	/**
 	 * @return the id
 	 */
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
@@ -57,7 +70,7 @@ public class Usuario implements Serializable {
 	 * @param id
 	 *            the id to set
 	 */
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -139,5 +152,12 @@ public class Usuario implements Serializable {
 	 */
 	public void setTipoUsuario(TipoUsuario tipoUsuario) {
 		this.tipoUsuario = tipoUsuario;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(obj == null)
+			return false;
+		return id.equals(((Usuario)obj).getId());
 	}
 }

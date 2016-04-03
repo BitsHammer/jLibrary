@@ -11,7 +11,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -27,6 +26,9 @@ import com.bitshammer.security.model.Usuario;
 @Entity
 public class Cliente {
 
+	/**
+	 * ID
+	 */
 	@Id
 	@GeneratedValue
 	@Column(name = "cliente_id")
@@ -67,6 +69,12 @@ public class Cliente {
 	 */
 	@Embedded
 	private String endereco;
+	
+	/**
+	 * CPF
+	 */
+	@Column
+	private String cpf;
 
 	/**
 	 * Usuário
@@ -133,6 +141,76 @@ public class Cliente {
 	 */
 	public void setCelular(String celular) {
 		this.celular = celular;
+	}
+
+	/**
+	 * @return the dtNascimento
+	 */
+	public Date getDtNascimento() {
+		return dtNascimento;
+	}
+
+	/**
+	 * @param dtNascimento the dtNascimento to set
+	 */
+	public void setDtNascimento(Date dtNascimento) {
+		this.dtNascimento = dtNascimento;
+	}
+
+	/**
+	 * @return the sexo
+	 */
+	public Sexo getSexo() {
+		return sexo;
+	}
+
+	/**
+	 * @param sexo the sexo to set
+	 */
+	public void setSexo(Sexo sexo) {
+		this.sexo = sexo;
+	}
+
+	/**
+	 * @return the endereco
+	 */
+	public String getEndereco() {
+		return endereco;
+	}
+
+	/**
+	 * @param endereco the endereco to set
+	 */
+	public void setEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+
+	/**
+	 * @return the cpf
+	 */
+	public String getCpf() {
+		return cpf;
+	}
+
+	/**
+	 * @param cpf the cpf to set
+	 */
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	/**
+	 * @return the usuario
+	 */
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	/**
+	 * @param usuario the usuario to set
+	 */
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
 }

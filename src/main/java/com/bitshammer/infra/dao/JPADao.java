@@ -1,8 +1,6 @@
 package com.bitshammer.infra.dao;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
 /**
  * Classe para acesso a 
@@ -12,11 +10,6 @@ import javax.persistence.Persistence;
  *
  */
 public abstract class JPADao<T> {
-	
-	/**
-	 * Entity Manager
-	 */
-	private static EntityManager em;
 	
 	/**
 	 * Construtor privado 

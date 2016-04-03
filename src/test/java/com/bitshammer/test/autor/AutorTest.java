@@ -42,7 +42,7 @@ public class AutorTest {
 			@Override
 			public Autor answer(InvocationOnMock invocation) throws Throwable {
 				Autor autor = invocation.getArgumentAt(0, Autor.class);
-				autor.setId(1l);
+				autor.setId(1);
 				return autor;
 			}
 		}).when(dao).persist(autor);

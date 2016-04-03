@@ -50,7 +50,7 @@ public class UsuarioTest {
 			@Override
 			public Usuario answer(InvocationOnMock invocation) throws Throwable {
 				Usuario usuario = new Usuario();
-				usuario.setId(1l);
+				usuario.setId(1);
 				return usuario;
 			}
 		});

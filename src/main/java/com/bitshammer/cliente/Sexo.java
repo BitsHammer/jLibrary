@@ -25,5 +25,14 @@ public enum Sexo {
 	private Sexo(String sexo) {
 		this.sexo = sexo;
 	}
+	
+	/*
+	 * (non-Javadoc)
+	 * @see java.lang.Enum#toString()
+	 */
+	@Override
+	public String toString() {
+		return sexo;
+	}
 
 }

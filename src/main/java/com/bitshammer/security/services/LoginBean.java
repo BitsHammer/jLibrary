@@ -22,12 +22,13 @@ import com.bitshammer.security.model.Usuario;
 @ViewScoped
 public class LoginBean extends DefaultBean{
 
-	private ILoginFacade facade = new LoginFacade();
+	private ILoginFacade facade;
 	
-	private Usuario usuario = new Usuario();
+	private Usuario usuario;
 	
 	public LoginBean(){
-		
+		usuario = new Usuario();
+		facade = new LoginFacade();
 	}
 	
 	/**

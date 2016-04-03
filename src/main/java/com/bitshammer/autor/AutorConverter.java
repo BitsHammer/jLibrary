@@ -3,14 +3,10 @@
  */
 package com.bitshammer.autor;
 
-import java.util.Optional;
-
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
-
-import com.bitshammer.livro.bean.LivroBean;
 
 /**
  * @author Bruno

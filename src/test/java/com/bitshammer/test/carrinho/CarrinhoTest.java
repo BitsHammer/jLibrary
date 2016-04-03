@@ -3,8 +3,7 @@
  */
 package com.bitshammer.test.carrinho;
 
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
@@ -16,7 +15,7 @@ import com.bitshammer.pedido.Item;
  * @author Bruno
  *
  */
-public class CarrinhoTest {
+public class CarrinhoTest {	
 	
 	@Test
 	public void testAdicionar(){

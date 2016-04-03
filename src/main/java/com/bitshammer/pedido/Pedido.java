@@ -6,6 +6,8 @@ package com.bitshammer.pedido;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -31,6 +33,9 @@ public class Pedido {
 	@Column(name="pedido_id")
 	private Long id;
 	
+	/**
+	 * Lista de itens do pedido
+	 */
 	@ManyToMany(fetch=FetchType.LAZY)
 	@JoinTable(
 	      name="pedido_item",
@@ -38,11 +43,81 @@ public class Pedido {
 	      inverseJoinColumns={@JoinColumn(name="item_id", referencedColumnName="item_id")})
 	private List<Item> listaItens;
 	
+	/**
+	 * Usuario do pedido
+	 */
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="usuario_id", referencedColumnName="usuario_id")
 	private Usuario usuario;
 	
+	/**
+	 * Status do pedido
+	 */
+	@Enumerated(EnumType.ORDINAL)
 	private StatusPedido statusPedido;
+
+	/**
+	 * @return the id
+	 */
+	public Long getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	/**
+	 * @return the listaItens
+	 */
+	public List<Item> getListaItens() {
+		return listaItens;
+	}
+
+	/**
+	 * @param listaItens the listaItens to set
+	 */
+	public void setListaItens(List<Item> listaItens) {
+		this.listaItens = listaItens;
+	}
+
+	/**
+	 * @return the usuario
+	 */
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	/**
+	 * @param usuario the usuario to set
+	 */
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	/**
+	 * @return the statusPedido
+	 */
+	public StatusPedido getStatusPedido() {
+		return statusPedido;
+	}
+
+	/**
+	 * @param statusPedido the statusPedido to set
+	 */
+	public void setStatusPedido(StatusPedido statusPedido) {
+		this.statusPedido = statusPedido;
+	}
+	
+	/**
+	 * Calcula o preco total
+	 */
+	public double calcularValorPedido(){
+		return listaItens.stream().mapToDouble(Item::valorTotal).sum();
+	}
 	
 	
 

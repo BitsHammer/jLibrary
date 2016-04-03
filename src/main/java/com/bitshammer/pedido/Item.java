@@ -2,14 +2,26 @@ package com.bitshammer.pedido;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 import com.bitshammer.livro.Livro;
 
 /**
- * Classe contendo um produto
+ * Classe contendo um item de venda ou pedido
  * 
  * @author Bruno
  */
 public class Item implements Serializable {
+	
+	@Id
+	@Column(name="item_id")
+	@GeneratedValue
+	private Integer id;
 	
 	/**
 	 * 
@@ -17,13 +29,16 @@ public class Item implements Serializable {
 	private static final long serialVersionUID = 3302325467661797883L;
 
 	/**
-	 * Produto
+	 * Items do pedido
 	 */
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="livro_id", referencedColumnName="livro_id")
 	private Livro livro;
 
 	/**
 	 * Quantidade de itens do produto
 	 */
+	@Column
 	private int quantidade;
 
 	/**
@@ -76,6 +91,34 @@ public class Item implements Serializable {
 	 */
 	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(obj == null)
+			return false;
+		return id.equals(((Item)obj).getId());
+	}
+
+	/**
+	 * @return the id
+	 */
+	public Integer getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	/**
+	 * @param livro the livro to set
+	 */
+	public void setLivro(Livro livro) {
+		this.livro = livro;
 	}
 	
 	
