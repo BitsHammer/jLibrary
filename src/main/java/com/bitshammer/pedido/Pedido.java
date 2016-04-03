@@ -6,6 +6,7 @@ package com.bitshammer.pedido;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -16,7 +17,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
+import com.bitshammer.comum.Endereco;
 import com.bitshammer.security.model.Usuario;
 
 /**
@@ -38,11 +41,8 @@ public class Pedido {
 	/**
 	 * Lista de itens do pedido
 	 */
-	@ManyToMany(fetch=FetchType.LAZY)
-	@JoinTable(
-	      name="pedido_item",
-	      joinColumns={@JoinColumn(name="pedido_id", referencedColumnName="item_id")},
-	      inverseJoinColumns={@JoinColumn(name="item_id", referencedColumnName="item_id")})
+	@OneToMany(fetch=FetchType.LAZY)
+	@JoinColumn(name="pedido_id")
 	private List<Item> listaItens;
 	
 	/**
@@ -57,6 +57,12 @@ public class Pedido {
 	 */
 	@Enumerated(EnumType.ORDINAL)
 	private StatusPedido statusPedido;
+	
+	/**
+	 * Endereco de entrega
+	 */
+	@Embedded
+	private Endereco enderecoEntrega;
 
 	/**
 	 * @return the id
@@ -119,6 +125,20 @@ public class Pedido {
 	 */
 	public double calcularValorPedido(){
 		return listaItens.stream().mapToDouble(Item::valorTotal).sum();
+	}
+
+	/**
+	 * @return the enderecoEntrega
+	 */
+	public Endereco getEnderecoEntrega() {
+		return enderecoEntrega;
+	}
+
+	/**
+	 * @param enderecoEntrega the enderecoEntrega to set
+	 */
+	public void setEnderecoEntrega(Endereco enderecoEntrega) {
+		this.enderecoEntrega = enderecoEntrega;
 	}
 	
 	

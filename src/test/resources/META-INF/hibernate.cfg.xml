@@ -6,5 +6,6 @@
   <property name="hibernate.show_sql">true</property>
   <property name="hibernate.format_sql">true</property>
   <property name="hibernate.connection.pool_size">10</property>
+  <mapping package="com.bitshammer"/>
  </session-factory>
 </hibernate-configuration>

@@ -2,6 +2,7 @@ package com.bitshammer.cliente;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -15,6 +16,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.bitshammer.comum.Endereco;
 import com.bitshammer.security.model.Usuario;
 
 /**
@@ -68,7 +70,7 @@ public class Cliente {
 	 * Endereco
 	 */
 	@Embedded
-	private String endereco;
+	private Endereco endereco;
 	
 	/**
 	 * CPF
@@ -79,8 +81,8 @@ public class Cliente {
 	/**
 	 * Usuário
 	 */
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "user_id", referencedColumnName = "user_id")
+	@OneToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+	@JoinColumn(name = "usuario_id", referencedColumnName = "usuario_id")
 	private Usuario usuario;
 
 	/**
@@ -174,14 +176,14 @@ public class Cliente {
 	/**
 	 * @return the endereco
 	 */
-	public String getEndereco() {
+	public Endereco getEndereco() {
 		return endereco;
 	}
 
 	/**
 	 * @param endereco the endereco to set
 	 */
-	public void setEndereco(String endereco) {
+	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
 

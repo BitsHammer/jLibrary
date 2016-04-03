@@ -32,7 +32,7 @@ public class Usuario implements Serializable {
 	 */
 	@Id
 	@GeneratedValue
-	@Column(name = "user_id")
+	@Column(name = "usuario_id")
 	private Integer id;
 
 	/**

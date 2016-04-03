@@ -42,6 +42,10 @@ public class Item implements Serializable {
 	 */
 	@Column
 	private int quantidade;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="pedido_id")
+	private Pedido pedido;
 
 	/**
 	 * Construtor
@@ -114,6 +118,20 @@ public class Item implements Serializable {
 	 */
 	public void setLivro(Livro livro) {
 		this.livro = livro;
+	}
+
+	/**
+	 * @return the pedido
+	 */
+	public Pedido getPedido() {
+		return pedido;
+	}
+
+	/**
+	 * @param pedido the pedido to set
+	 */
+	public void setPedido(Pedido pedido) {
+		this.pedido = pedido;
 	}
 	
 	
