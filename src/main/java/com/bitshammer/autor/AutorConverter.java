@@ -28,15 +28,8 @@ public class AutorConverter implements Converter {
 	@Override
 	public Object getAsObject(FacesContext fc, UIComponent arg1, String value) {
 		Autor autor = null;
-		if (value != null && value.trim().length() > 0) {
-			LivroBean bean = (LivroBean) fc.getViewRoot().getViewMap().get("livroBean");
-			for(Autor t : bean.getListaAutor()){
-				if(t.getId().equals(Long.parseLong(value)))
-					autor = t;
-			}
-		}
- 		return autor;
-
+		autor = AutorMock.getInstance().listaAutor.stream().filter(e-> e.getId().equals(Long.parseLong(value))).findFirst().orElse(autor);
+		return autor;
 	}
 
 	/*

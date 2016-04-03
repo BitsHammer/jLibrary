@@ -6,14 +6,9 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
-import javax.faces.model.SelectItem;
-import javax.security.auth.login.LoginException;
-import javax.servlet.http.HttpSession;
-
-import org.hibernate.loader.custom.Return;
 
 import com.bitshammer.autor.Autor;
+import com.bitshammer.autor.AutorMock;
 import com.bitshammer.infra.bean.DefaultBean;
 import com.bitshammer.livro.Categoria;
 import com.bitshammer.livro.FormatoLivro;
@@ -37,12 +32,7 @@ public class LivroBean extends DefaultBean {
 	private List<Autor> listaAutor= new ArrayList<>();
 
 	public LivroBean() {
-		Autor a = new Autor("Teste");
-		a.setId(1l);
-		Autor b = new Autor("Teste2");
-		b.setId(2l);
-		listaAutor.add(a);
-		listaAutor.add(b);
+		listaAutor = AutorMock.getInstance().listaAutor;
 	}
 
 	public List<Categoria> getCategorias() {

@@ -29,7 +29,7 @@
 							filter="true" filterMatchMode="startsWith"
 							panelStyle="width:250px" converter="autorConverter">
 							<f:selectItems value="#{livroBean.listaAutor}" var="autor" itemLabel="#{autor.nome}" itemValue="#{autor}"/>
-							<p:ajax event="change" update="tabelaAutor"/>
+							<p:ajax event="change"  update="tabelaAutor"/>
 						</p:selectCheckboxMenu>
 
 						<p:outputLabel value="Selecionados" />
