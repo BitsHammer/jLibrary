@@ -56,10 +56,10 @@ public class ClienteTest {
 		//Endereco
 		Endereco endereco = new Endereco();
 		endereco.setBairro("Parque Boturussu");
-		endereco.setCep(3805090l);
-		endereco.setCidade("São Paulo");
+		endereco.setCep("03805090");
+		endereco.setLocalidade("São Paulo");
 		endereco.setComplemento("Proximo a avendia Paranagua");
-		endereco.setEstado("SP");
+		endereco.setUf("SP");
 		endereco.setNumero(661);
 		
 		//Usuario
@@ -88,10 +88,10 @@ public class ClienteTest {
 		//Endereco
 		Endereco endereco = new Endereco();
 		endereco.setBairro("Parque Boturussu");
-		endereco.setCep(3805090l);
-		endereco.setCidade("São Paulo");
+		endereco.setCep("03805090");
+		endereco.setLocalidade("São Paulo");
 		endereco.setComplemento("Proximo a avendia Paranagua");
-		endereco.setEstado("SP");
+		endereco.setUf("SP");
 		endereco.setNumero(661);
 		
 		//Usuario
