@@ -6,6 +6,7 @@ package com.bitshammer.pedido;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
@@ -23,6 +24,7 @@ import com.bitshammer.security.model.Usuario;
  * @author Bruno
  *
  */
+@Entity
 public class Pedido {
 	
 	/**

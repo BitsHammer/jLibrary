@@ -29,7 +29,7 @@ public class CarrinhoTest {
 	public void testRemover(){
 		Carrinho carrinho = new Carrinho();
 		assertEquals(0, carrinho.quantidadeItens());
-		Item p = new Item(new Livro());
+		Item p = new Item(new Livro());		
 		carrinho.adicionarItem(p);
 		assertEquals(1, carrinho.quantidadeItens());
 		carrinho.removerItem(p);

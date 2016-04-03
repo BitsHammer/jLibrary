@@ -3,6 +3,7 @@ package com.bitshammer.pedido;
 import java.io.Serializable;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -16,6 +17,7 @@ import com.bitshammer.livro.Livro;
  * 
  * @author Bruno
  */
+@Entity
 public class Item implements Serializable {
 	
 	@Id
@@ -93,13 +95,6 @@ public class Item implements Serializable {
 		this.quantidade = quantidade;
 	}
 	
-	@Override
-	public boolean equals(Object obj) {
-		if(obj == null)
-			return false;
-		return id.equals(((Item)obj).getId());
-	}
-
 	/**
 	 * @return the id
 	 */
