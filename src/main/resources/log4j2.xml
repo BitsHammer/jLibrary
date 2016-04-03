@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE log4j:configuration>
-<Configuration status="WARN">
+<Configuration status="ALL">
     <Appenders>
         <Console name="console" target="SYSTEM_OUT">
             <PatternLayout pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n"/>
@@ -13,6 +13,12 @@
 		
 		<logger name="org.hibernate.type"  >
 		 	<level value="INFO" />
+		</logger>
+		<logger name="com.sun.faces" >   
+		 	<level value="INFO" />    
+		</logger>
+		<logger name="javax.faces" >   
+		 	<level value="INFO" />    
 		</logger>
 		    
         <Root level="INFO" additivity="false">

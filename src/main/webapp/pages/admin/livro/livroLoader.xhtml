@@ -27,15 +27,15 @@
 						<h:outputLabel for="menu" value="Autores:" />
 						<p:selectCheckboxMenu id="menu" value="#{livroBean.livro.autores}" label="Autores"
 							filter="true" filterMatchMode="startsWith"
-							panelStyle="width:250px">
-							<f:selectItems value="#{livroBean.autores}" var="autor" itemLabel="#{autor.nome}"/>
+							panelStyle="width:250px" converter="autorConverter">
+							<f:selectItems value="#{livroBean.listaAutor}" var="autor" itemLabel="#{autor.nome}" itemValue="#{autor}"/>
 							<p:ajax event="change" update="tabelaAutor"/>
 						</p:selectCheckboxMenu>
 
 						<p:outputLabel value="Selecionados" />
 						<p:dataList id="tabelaAutor" value="#{livroBean.livro.autores}"
-							var="autor" emptyMessage="Nenhuma autor selecionado">
-				            	#{autor}
+							var="autor" emptyMessage="Nenhuma autor selecionado"> 
+				            	<h:outputText value="#{autor.nome}" />
 				       		</p:dataList>
 
 						<!-- DATA DE PUBLICAÇÃO -->
@@ -97,7 +97,7 @@
 
 				</p:panel>
 				<p:commandButton value="Gravar" update="panel"
-					action="#{loginBean.logar}" />
+					action="#{livroBean.gravarLivro}" />
 			</h:form>
 		</ui:define>
 	</ui:composition>

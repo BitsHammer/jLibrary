@@ -1,5 +1,6 @@
 package com.bitshammer.autor;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -9,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
@@ -20,7 +22,7 @@ import com.bitshammer.livro.Livro;
  *
  */
 @Entity
-public class Autor {
+public class Autor{
 
 	@Id
 	@GeneratedValue
@@ -39,11 +41,11 @@ public class Autor {
 		// TODO Auto-generated constructor stub
 	}
 
-	@OneToMany(fetch=FetchType.LAZY)
+	@ManyToMany(fetch=FetchType.LAZY)
 	@JoinTable(
-		      name="autor_livro",
-		      joinColumns={@JoinColumn(name="autor_id", referencedColumnName="autor_id")},
-		      inverseJoinColumns={@JoinColumn(name="livro_id", referencedColumnName="livro_id")})
+	      name="autor_livro",
+	      joinColumns={@JoinColumn(name="autor_id", referencedColumnName="autor_id")},
+	      inverseJoinColumns={@JoinColumn(name="livro_id", referencedColumnName="livro_id")})
 	private List<Livro> livros;
 
 	/**

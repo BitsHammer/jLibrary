@@ -7,6 +7,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.model.SelectItem;
 import javax.security.auth.login.LoginException;
 import javax.servlet.http.HttpSession;
 
@@ -32,22 +33,16 @@ public class LivroBean extends DefaultBean {
 	private ILivroFacade facade = new LivroFacade();
 
 	private Livro livro = new Livro();
-
-	private List<Autor> autores;
-
-	private String[] selectedAutores;
+	
+	private List<Autor> listaAutor= new ArrayList<>();
 
 	public LivroBean() {
-
-	}
-
-	public List<Autor> getAutores() {
-		autores = new ArrayList<Autor>();
 		Autor a = new Autor("Teste");
+		a.setId(1l);
 		Autor b = new Autor("Teste2");
-		autores.add(a);
-		autores.add(b);
-		return autores;
+		b.setId(2l);
+		listaAutor.add(a);
+		listaAutor.add(b);
 	}
 
 	public List<Categoria> getCategorias() {
@@ -56,14 +51,6 @@ public class LivroBean extends DefaultBean {
 
 	public List<FormatoLivro> getFormatos() {
 		return Arrays.asList(FormatoLivro.values());
-	}
-
-	public String[] getSelectedAutores() {
-		return selectedAutores;
-	}
-
-	public void setSelectedAutores(String[] selectedAutores) {
-		this.selectedAutores = selectedAutores;
 	}
 
 	/**
@@ -85,6 +72,20 @@ public class LivroBean extends DefaultBean {
 		facade.gravarLivro(livro);
 		addMessage("Sucesso", "Livro Cadastrado com Sucesso.");
 
+	}
+
+	/**
+	 * @return the listaAutor
+	 */
+	public List<Autor> getListaAutor() {
+		return listaAutor;
+	}
+
+	/**
+	 * @param listaAutor the listaAutor to set
+	 */
+	public void setListaAutor(List<Autor> listaAutor) {
+		this.listaAutor = listaAutor;
 	}
 
 }

@@ -9,8 +9,8 @@ import static org.mockito.Mockito.*;
 import org.junit.Test;
 
 import com.bitshammer.carrinho.Carrinho;
-import com.bitshammer.comum.Item;
 import com.bitshammer.livro.Livro;
+import com.bitshammer.pedido.Item;
 
 /**
  * @author Bruno

@@ -7,18 +7,22 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.bitshammer.comum.Item;
+import com.bitshammer.pedido.Item;
 
 /**
+ * Classe representando o carrinho de compras
+ * 
  * @author Bruno
- *
  */
 public final class Carrinho implements Serializable {
 
 	/**
-	 * 
+	 * Serial Version 
 	 */
 	private static final long serialVersionUID = 1829333857410038071L;
+	/**
+	 * Lista de itens selecionados para compra
+	 */
 	private List<Item> itens = new ArrayList<>();
 
 	/**

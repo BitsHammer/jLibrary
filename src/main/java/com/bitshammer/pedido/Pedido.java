@@ -14,7 +14,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
-import com.bitshammer.comum.Item;
 import com.bitshammer.security.model.Usuario;
 
 /**

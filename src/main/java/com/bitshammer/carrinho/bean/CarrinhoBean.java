@@ -7,9 +7,9 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
 import com.bitshammer.carrinho.Carrinho;
-import com.bitshammer.comum.Item;
 import com.bitshammer.infra.bean.DefaultBean;
 import com.bitshammer.livro.Livro;
+import com.bitshammer.pedido.Item;
 
 /**
  * @author Bruno

@@ -4,13 +4,17 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	id="WebApp_ID" version="3.0">
 	<context-param>
-		<param-name>facelets.SKIP_COMMENTS</param-name>
+		<param-name>javax.faces.FACELETS_SKIP_COMMENTS</param-name>
 		<param-value>true</param-value>
 	</context-param>
 	<context-param>
 		<param-name>javax.faces.INTERPRET_EMPTY_STRING_SUBMITTED_VALUES_AS_NULL</param-name>
 		<param-value>true</param-value>
 	</context-param>
+	<context-param>
+      <param-name>log4jConfigLocation</param-name>
+     <param-value>/WEB-INF/classes/log4j2.xml</param-value>
+</context-param>
 	<servlet>
 		<servlet-name>Faces Servlet</servlet-name>
 		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
@@ -35,4 +39,5 @@
 		<exception-type>java.lang.Exception</exception-type>
 		<location>/infra/exception.xhtml</location>
 	</error-page>
+	
 </web-app>

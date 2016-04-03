@@ -1,4 +1,4 @@
-package com.bitshammer.comum;
+package com.bitshammer.pedido;
 
 import java.io.Serializable;
 
