@@ -5,16 +5,10 @@ package com.bitshammer.test.cliente;
 
 import java.util.Calendar;
 
-import org.junit.Before;
 import org.junit.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 
 import com.bitshammer.cliente.Cliente;
 import com.bitshammer.cliente.Sexo;
-import com.bitshammer.cliente.dao.ClienteDao;
-import com.bitshammer.cliente.dao.IClienteDao;
 import com.bitshammer.cliente.facade.ClienteFacade;
 import com.bitshammer.cliente.facade.IClienteFacade;
 import com.bitshammer.comum.Endereco;
@@ -27,16 +21,7 @@ import com.bitshammer.security.model.Usuario;
  */
 public class ClienteTest {
 	
-	@InjectMocks
 	private IClienteFacade facade = new ClienteFacade();
-	
-	@Mock
-	private IClienteDao dao = new ClienteDao();
-	
-	@Before
-	public void before(){
-//		MockitoAnnotations.initMocks(this);
-	}
 	
 	/**
 	 * Teste do cadastor de cliente
@@ -83,7 +68,7 @@ public class ClienteTest {
 		cliente.setDtNascimento(new Calendar.Builder().setDate(1995, 05, 10).build().getTime());
 		cliente.setCelular("953200587");
 		cliente.setTelefone("29435002");
-		cliente.setSexo(Sexo.M);
+		cliente.setSexo(Sexo.F);
 		
 		//Endereco
 		Endereco endereco = new Endereco();

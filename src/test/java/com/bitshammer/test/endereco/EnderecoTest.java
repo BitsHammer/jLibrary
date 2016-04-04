@@ -3,6 +3,7 @@ package com.bitshammer.test.endereco;
 import org.junit.Test;
 
 import com.bitshammer.webservice.CepInvalidoException;
+import com.bitshammer.webservice.ConsultaCepWebService;
 import com.bitshammer.webservice.IConsultaCepWebService;
 
 /**

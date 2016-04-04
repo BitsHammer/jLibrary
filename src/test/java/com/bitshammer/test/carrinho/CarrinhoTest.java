@@ -3,7 +3,9 @@
  */
 package com.bitshammer.test.carrinho;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
+
+import java.util.Arrays;
 
 import org.junit.Test;
 
@@ -48,6 +50,17 @@ public class CarrinhoTest {
 		p2.setQuantidade(5);
 		carrinho.adicionarItem(p2);
 		assertEquals(7d, carrinho.precoTotal(),0d);
+	}
+	
+	@Test
+	public void testItensSelecionados(){
+		Carrinho carrinho = new Carrinho();
+		Item p = new Item(new Livro());
+		carrinho.adicionarItem(p);
+		Item p2 = new Item(new Livro());
+		p2.setQuantidade(5);
+		carrinho.adicionarItem(p2);
+		assertTrue(carrinho.itensSelecionados().containsAll(Arrays.asList(p,p2)));
 	}
 
 }

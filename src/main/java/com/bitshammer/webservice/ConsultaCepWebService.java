@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.bitshammer.test.endereco;
+package com.bitshammer.webservice;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -9,8 +9,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 import com.bitshammer.comum.Endereco;
-import com.bitshammer.webservice.CepInvalidoException;
-import com.bitshammer.webservice.IConsultaCepWebService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

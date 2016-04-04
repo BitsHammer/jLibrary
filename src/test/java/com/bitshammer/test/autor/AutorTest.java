@@ -1,119 +1,82 @@
 package com.bitshammer.test.autor;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.doAnswer;
+import static org.junit.Assert.assertTrue;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
-import org.junit.Before;
 import org.junit.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-import org.mockito.invocation.InvocationOnMock;
-import org.mockito.stubbing.Answer;
 
 import com.bitshammer.autor.Autor;
-import com.bitshammer.autor.dao.IAutorDao;
 import com.bitshammer.autor.facade.AutorFacade;
 import com.bitshammer.autor.facade.IAutorFacade;
 
 public class AutorTest {
 
-	@Mock
-	private IAutorDao dao;
 	
-	@InjectMocks
 	private IAutorFacade facade = new AutorFacade();
-	
-	@Before
-	public void before(){
-		MockitoAnnotations.initMocks(this);
-	}
 	
 	@Test
 	public void salvarAutorSucesso(){
 		final Autor autor = new Autor();
+		autor.setBiografia("Biografia");
+		autor.setDtFalecimento(new Date());
+		autor.setDtNascimento(new Date());
+		autor.setLocalMorte("Aqui");
+		autor.setLocalNascimento("lá");
 		autor.setNome("Teste");
-		doAnswer(new Answer<Autor>() {
-
-			@Override
-			public Autor answer(InvocationOnMock invocation) throws Throwable {
-				Autor autor = invocation.getArgumentAt(0, Autor.class);
-				autor.setId(1);
-				return autor;
-			}
-		}).when(dao).persist(autor);
-		
 		facade.save(autor);
-		assertEquals(1l, autor.getId().longValue());
+		assertTrue(autor.getId() != null);
 	}
 	
 	
 	@Test
 	public void buscarUmAutor(){
-		final Autor autor = new Autor();
-		autor.setNome("Teste");
-		doAnswer(new Answer<List<Autor>>() {
-
-			@Override
-			public List<Autor> answer(InvocationOnMock invocation)
-					throws Throwable {
-				Autor a = new Autor();
-				a.setNome("A");
-				Autor b = new Autor();
-				b.setNome("B");
-				return Arrays.asList(a,b);
-			}
-
-			
-		}).when(dao).findByParams(autor);
-		
+		Autor autor = new Autor();
+		autor.setBiografia("Biografia");
+		autor.setDtFalecimento(new Date());
+		autor.setDtNascimento(new Date());
+		autor.setLocalMorte("Aqui");
+		autor.setLocalNascimento("lá");
+		autor.setNome("Teste3");
+		facade.save(autor);
+		autor = null;
+		autor = new Autor("Teste3");
 		List<Autor> list = facade.findByParams(autor);
-		assertEquals(2, list.size());
+		assertEquals(1, list.size());
 	}
 	
 	@Test
 	public void buscarAutorInexistente(){
 		final Autor autor = new Autor();
-		autor.setNome("Teste");
-		doAnswer(new Answer<List<Autor>>() {
-
-			@Override
-			public List<Autor> answer(InvocationOnMock invocation)
-					throws Throwable {
-				return new ArrayList<Autor>();
-			}
-
-			
-		}).when(dao).findByParams(autor);
-		
+		autor.setNome("TesteBlabla");
 		List<Autor> list = facade.findByParams(autor);
 		assertEquals(0, list.size());
 	}
 	
 	@Test
 	public void buscarTodosAutores(){
-		doAnswer(new Answer<List<Autor>>() {
-
-			@Override
-			public List<Autor> answer(InvocationOnMock invocation)
-					throws Throwable {
-				Autor a = new Autor();
-				a.setNome("A");
-				Autor b = new Autor();
-				b.setNome("B");
-				return Arrays.asList(a,b);
-			}
-
-			
-		}).when(dao).listAll();
-		
+		Autor autor = new Autor();
+		autor.setBiografia("Biografia");
+		autor.setDtFalecimento(new Date());
+		autor.setDtNascimento(new Date());
+		autor.setLocalMorte("Aqui");
+		autor.setLocalNascimento("lá");
+		autor.setNome("Teste");
+		facade.save(autor);
+		autor = new Autor();
+		autor.setBiografia("Biografia2");
+		autor.setDtFalecimento(new Date());
+		autor.setDtNascimento(new Date());
+		autor.setLocalMorte("Aqui2");
+		autor.setLocalNascimento("lá2");
+		autor.setNome("Teste2");
+		facade.save(autor);
 		List<Autor> list = facade.listAll();
-		assertEquals(2, list.size());
+		assertTrue(list.size() >= 2);
 	}
+	
 	
 	
 }

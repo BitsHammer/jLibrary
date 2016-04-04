@@ -25,4 +25,5 @@ public class AutorDao extends JPADao<Autor> implements IAutorDao{
 	}
 
 
+
 }
