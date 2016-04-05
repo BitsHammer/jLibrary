@@ -20,7 +20,7 @@
             <p:menuitem value="#{msg.btn_buscar}" label="#{msg.btn_buscar}" icon="ui-icon-contact" action="livroListarLoader" />
         </p:submenu>
         <p:menuitem value="#{msg.btn_carrinho}" icon="ui-icon-cart" action="carrinhoListarLoader" rendered="#{securityBean.usuarioCliente}"/>
-        <p:menuitem value="#{msg.btn_login}" icon="ui-icon-key" action="login"/>
+        <p:menuitem value="#{msg.btn_login}" icon="ui-icon-key" action="login" rendered="#{not securityBean.usuarioLogado}"/>
         <p:menuitem value="#{msg.label_sair}" actionListener="#{loginBean.logOff}" action="home" rendered="#{securityBean.usuarioLogado}"/>
     </p:menubar>
 </h:form>

@@ -10,8 +10,8 @@ package com.bitshammer.cliente;
  */
 public enum Sexo {
 	
-	M("Homem"),
-	F("Mulher");
+	M("Masculino"),
+	F("Feminino");
 	
 	/**
 	 * Sexo

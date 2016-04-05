@@ -56,6 +56,13 @@ public class Item implements Serializable {
 		this.livro = livro;
 		this.quantidade = 1;
 	}
+	
+	/**
+	 * Construtor default
+	 */
+	public Item() {
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @return the livro

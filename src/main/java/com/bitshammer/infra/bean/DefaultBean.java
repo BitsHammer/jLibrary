@@ -27,7 +27,7 @@ public abstract class DefaultBean{
 	 * Exibe uma mensagem de erro ao usuário
 	 * @param error Mensagem
 	 */
-	protected void addErrorMessage(String error) {
+	protected void showErrorMessage(String error) {
 		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro", error);
 		RequestContext.getCurrentInstance().showMessageInDialog(message);
 	}

@@ -177,6 +177,8 @@ public class Cliente {
 	 * @return the endereco
 	 */
 	public Endereco getEndereco() {
+		if(endereco == null)
+			endereco = new Endereco();
 		return endereco;
 	}
 

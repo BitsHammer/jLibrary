@@ -43,7 +43,7 @@ public class LoginBean extends DefaultBean{
 			session.setAttribute("usuario", usuario);
 			return "home";
 		}catch(LoginException e){
-			addErrorMessage(e.getMessage());
+			showErrorMessage(e.getMessage());
 		}
 		return "";
 	}

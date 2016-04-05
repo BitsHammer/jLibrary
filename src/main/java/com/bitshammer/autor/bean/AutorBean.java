@@ -41,7 +41,7 @@ public class AutorBean extends DefaultBean {
 			facade.save(autor);
 			showSucessMessage();
 		}catch(Exception e){
-			addErrorMessage(e.getMessage());
+			showErrorMessage(e.getMessage());
 		}
 	}
 

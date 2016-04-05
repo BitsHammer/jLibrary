@@ -1,0 +1,118 @@
+<?xml version='1.0' encoding='ISO-8859-1' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/templates/defaultTemplate.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	<ui:define name="content">
+		<h:form>
+			<p:messages />
+			<br />
+			<p:fieldset legend="Dados pessoais"
+				style="margin-bottom:10px; width: 100%;" toggleable="true"
+				toggleSpeed="500">
+				<h:panelGrid columns="2">
+
+					<p:outputLabel for="nome" value="Nome:" />
+					<p:inputText id="nome" value="#{clienteBean.cliente.nome}" />
+
+					<p:outputLabel for="cpf" value="CPF:" />
+					<p:inputText id="cpf" value="#{clienteBean.cliente.cpf}" />
+
+					<p:outputLabel for="telefone" value="Telefone:" />
+					<p:inputText id="telefone" value="#{clienteBean.cliente.telefone}" />
+
+					<p:outputLabel for="celular" value="Celular:" />
+					<p:inputText id="celular" value="#{clienteBean.cliente.celular}" />
+
+					<p:outputLabel for="sexo" value="Sexo:" />
+					<p:selectOneMenu value="#{clienteBean.cliente.sexo}" id="sexo">
+						<f:selectItem itemLabel="Masculino" itemValue="M" />
+						<f:selectItem itemLabel="Feminino" itemValue="F" />
+					</p:selectOneMenu>
+
+					<p:outputLabel for="dtNascimento" value="Data de Nascimento:" />
+					<p:calendar id="dtNascimento"
+						value="#{clienteBean.cliente.dtNascimento}" />
+				</h:panelGrid>
+			</p:fieldset>
+			<br />
+			<p:fieldset legend="Dados do Endereco" toggleable="true"
+				toggleSpeed="500">
+				<h:panelGrid id="dadosEndereco" title="Endereco">
+
+					<p:outputLabel for="cep" value="CEP:" />
+					<p:inputText id="cep" value="#{clienteBean.cliente.endereco.cep}">
+						<p:ajax event="change" update="dadosEndereco"
+							listener="#{clienteBean.buscarCep()}" />
+					</p:inputText>
+
+					<p:outputLabel for="logr" value="Logradouro:" />
+					<p:inputText id="logr"
+						value="#{clienteBean.cliente.endereco.logradouro}" />
+
+					<p:outputLabel for="numero" value="Número:" />
+					<p:inputText id="numero"
+						value="#{clienteBean.cliente.endereco.numero}" />
+
+					<p:outputLabel for="bairro" value="Bairro:" />
+					<p:inputText id="bairro"
+						value="#{clienteBean.cliente.endereco.bairro}" />
+
+					<p:outputLabel for="cidade" value="Cidade:" />
+					<p:inputText id="cidade"
+						value="#{clienteBean.cliente.endereco.localidade}" />
+
+					<p:outputLabel for="estado" value="Cidade:" />
+					<p:inputText id="estado" value="#{clienteBean.cliente.endereco.uf}" />
+
+					<p:ajaxStatus onstart="PF('statusDialog').show()"
+						onsuccess="PF('statusDialog').hide()" />
+
+					<p:dialog widgetVar="statusDialog" modal="true" draggable="false"
+						closable="false" resizable="false" showHeader="false">
+						<p:graphicImage value="/images/ajaxloadingbar.gif" />
+					</p:dialog>
+				</h:panelGrid>
+			</p:fieldset>
+
+			<br />
+
+			<p:fieldset legend="Dados de Acessp" toggleable="true"
+				toggleSpeed="500">
+				<h:panelGrid>
+
+					<p:outputLabel for="usuario" value="Usuário:" />
+					<p:inputText id="usuario"
+						value="#{clienteBean.cliente.usuario.login}" />
+
+					<p:outputLabel for="email" value="Email:" />
+					<p:inputText id="email"
+						value="#{clienteBean.cliente.usuario.email}" />
+
+					<p:outputLabel for="senha" value="Senha:" />
+					<p:inputText type="password" id="senha"
+						value="#{clienteBean.cliente.usuario.senha}" />
+
+				</h:panelGrid>
+			</p:fieldset>
+
+			<p />
+			<p:commandButton value="Cadastrar"
+				action="#{clienteBean.cadastrarCliente()}">
+				<p:confirm header="Confirmação"
+					message="Tem certeza que deseja realizar o seu cadastro?"
+					icon="ui-icon-alert" />
+			</p:commandButton>
+
+			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+				<p:commandButton value="Sim" type="button"
+					styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+				<p:commandButton value="Não" type="button"
+					styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+			</p:confirmDialog>
+		</h:form>
+	</ui:define>
+</ui:composition>
