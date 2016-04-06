@@ -216,5 +216,14 @@ public class Cliente {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(obj == null)
+			return false;
+		if(!(obj instanceof Cliente))
+			return false;
+		return id.equals(((Cliente)obj).getId());
+	}
 
 }

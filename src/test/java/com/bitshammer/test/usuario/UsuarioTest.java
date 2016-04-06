@@ -54,7 +54,7 @@ public class UsuarioTest {
 				return usuario;
 			}
 		});
-		user = facade.login(user);
+		facade.login(user);
 		assertEquals(1l, user.getId().longValue());
 	}
 	
