@@ -21,7 +21,11 @@
         </p:submenu>
         <p:menuitem value="#{msg.btn_carrinho}" icon="ui-icon-cart" action="carrinhoListarLoader" rendered="#{securityBean.usuarioCliente}"/>
         <p:menuitem value="#{msg.btn_login}" icon="ui-icon-key" action="login" rendered="#{not securityBean.usuarioLogado}"/>
-        <p:menuitem value="#{msg.label_sair}" actionListener="#{loginBean.logOff}" action="home" rendered="#{securityBean.usuarioLogado}"/>
+        <p:menuitem value="Dados pessoais" action="alterarClienteLoader" rendered="#{securityBean.usuarioLogado}"/>
+        <p:menuitem value="Logout" icon="ui-icon-extlink" rendered="#{securityBean.usuarioLogado}" actionListener="#{loginBean.logOff}" action="home"/>
+        <f:facet name="options">
+            <p:outputLabel style="margin-right:10px" value="Seja bem vindo: #{securityBean.usuario.login}" rendered="#{securityBean.usuarioLogado}"/>
+        </f:facet>
     </p:menubar>
 </h:form>
 

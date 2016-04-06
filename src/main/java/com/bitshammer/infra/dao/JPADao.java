@@ -31,10 +31,14 @@ public abstract class JPADao<T> {
 	 * de dados
 	 * @param e {@link Object}
 	 */
-	public void persist(final T e){
+	public void persist(T e){
 		EntityManager entityManager = getEntityManager();
 		entityManager.getTransaction().begin();
-		entityManager.persist(e);
+		if(entityManager.contains(e)){
+			e = (T)entityManager.merge(e);
+		} else {
+			entityManager.persist(e);
+		}
 		entityManager.getTransaction().commit();
 	}
 	

@@ -45,19 +45,19 @@ public class Cliente {
 	/**
 	 * Telefone
 	 */
-	@Column(nullable = false, length = 8)
+	@Column(nullable = false, length = 10)
 	private String telefone;
 
 	/**
 	 * Celular
 	 */
-	@Column(nullable = false, length = 9)
+	@Column(nullable = false, length = 11)
 	private String celular;
 	
 	/**
 	 * Data de nascimento
 	 */
-	@Temporal(TemporalType.TIME)
+	@Temporal(TemporalType.DATE)
 	private Date dtNascimento;
 	
 	/**

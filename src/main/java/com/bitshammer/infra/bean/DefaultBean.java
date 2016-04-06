@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.primefaces.context.RequestContext;
 
+import com.bitshammer.cliente.Cliente;
 import com.bitshammer.security.model.TipoUsuario;
 import com.bitshammer.security.model.Usuario;
 
@@ -73,5 +74,31 @@ public abstract class DefaultBean{
 		return session.getAttribute("usuario") != null;
 	}
 
+	
+	/**
+	 * Retorna o usuário logado
+	 * @return
+	 */
+	public Usuario getUsuario(){
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+		if(session.getAttribute("usuario") != null){
+			return (Usuario) session.getAttribute("usuario");
+		} else {
+			return null;
+		}
+	}
+	
+	/**
+	 * Retornar o cliente logado
+	 * @return
+	 */
+	public Cliente getClienteLogado(){
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+		if(session.getAttribute("cliente") != null){
+			return (Cliente) session.getAttribute("cliente");
+		} else {
+			return null;
+		}
+	}
 
 }

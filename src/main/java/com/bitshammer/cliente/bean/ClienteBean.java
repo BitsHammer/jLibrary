@@ -45,10 +45,14 @@ public class ClienteBean extends DefaultBean {
 	 * Construtor
 	 */
 	public ClienteBean() {
-		cliente = new Cliente();
-		Usuario usuario = new Usuario();
-		usuario.setTipoUsuario(TipoUsuario.CLIENTE);
-		cliente.setUsuario(usuario);
+		if(getClienteLogado() != null){
+			cliente = getClienteLogado();
+		} else {
+			cliente = new Cliente();
+			Usuario usuario = new Usuario();
+			usuario.setTipoUsuario(TipoUsuario.CLIENTE);
+			cliente.setUsuario(usuario);
+		}
 		facade = new ClienteFacade();
 		webService = new ConsultaCepWebService();
 	}
