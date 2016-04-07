@@ -20,6 +20,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.bitshammer.autor.Autor;
+import com.bitshammer.categoria.Categoria;
 import com.bitshammer.editora.Editora;
 
 /**
@@ -119,10 +120,11 @@ public class Livro {
 	/**
 	 * Categorias
 	 */
-    @ElementCollection(targetClass=Categoria.class)
-    @Enumerated(EnumType.ORDINAL)
-    @CollectionTable(name="categoria_livro")
-    @Column(name="categoria")
+	@ManyToMany(fetch=FetchType.LAZY)
+	@JoinTable(
+	      name="categoria_livro",
+	      joinColumns={@JoinColumn(name="livro_id", referencedColumnName="livro_id")},
+	      inverseJoinColumns={@JoinColumn(name="categoria_id", referencedColumnName="categoria_id")})
 	private List<Categoria> categorias;
 
 	/**

@@ -9,8 +9,8 @@ import javax.faces.bean.ViewScoped;
 
 import com.bitshammer.autor.Autor;
 import com.bitshammer.autor.AutorMock;
+import com.bitshammer.categoria.Categoria;
 import com.bitshammer.infra.bean.DefaultBean;
-import com.bitshammer.livro.Categoria;
 import com.bitshammer.livro.FormatoLivro;
 import com.bitshammer.livro.Livro;
 import com.bitshammer.livro.facade.ILivroFacade;
@@ -36,7 +36,10 @@ public class LivroBean extends DefaultBean {
 	}
 
 	public List<Categoria> getCategorias() {
-		return Arrays.asList(Categoria.values());
+		Categoria cat = new Categoria();
+		cat.setId(1);
+		cat.setNome("Teste");
+		return Arrays.asList(cat);
 	}
 
 	public List<FormatoLivro> getFormatos() {
