@@ -6,8 +6,10 @@ package com.bitshammer.editora.bean;
 import java.util.List;
 
 import com.bitshammer.editora.Editora;
+import com.bitshammer.editora.facade.IEditoraFacade;
 import com.bitshammer.infra.bean.DefaultBean;
 import com.bitshammer.livro.Livro;
+import com.bitshammer.pedido.facade.IPedidoFacade;
 
 /**
  * @author Bruno
@@ -18,6 +20,10 @@ public class EditoraBean extends DefaultBean {
 	private Editora editora;
 	
 	private List<Editora> listaEditora;
+	
+	private IPedidoFacade pedidoFacade;
+	
+	private IEditoraFacade editoraFacade;
 	
 	public EditoraBean() {
 		editora = new Editora();

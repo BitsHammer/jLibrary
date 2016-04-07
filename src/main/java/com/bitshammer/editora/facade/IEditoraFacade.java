@@ -24,8 +24,6 @@ public void cadastrarEditora(Editora editora);
 	public List<Editora> listarEditoraPorParametros(Editora editora);
 	
 	public List<Livro> listarLivrosPorEditora(Editora editora);
-	
-	public Pedido solicitarLivrosParaEditora();
 		
 
 }

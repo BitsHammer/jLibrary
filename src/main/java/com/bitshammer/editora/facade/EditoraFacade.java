@@ -57,10 +57,4 @@ public class EditoraFacade implements IEditoraFacade {
 		return null;
 	}
 
-	@Override
-	public Pedido solicitarLivrosParaEditora() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }
