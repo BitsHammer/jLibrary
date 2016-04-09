@@ -26,6 +26,16 @@
     TITLE="carrinhoListarLoader" model-entity="JSFProcessItemOutput"/>
    <PROCESS-ITEM-OUTPUT ID="login::#login.xhtml" NAME="output4"
     PATH="/login.xhtml" TARGET="rules:#login.xhtml" TITLE="login" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="cadastrarClienteLoader::#pages#cliente#cadastrarClienteLoader.xhtml"
+    NAME="output5" PATH="/pages/cliente/cadastrarClienteLoader.xhtml"
+    TARGET="rules:#pages#cliente#cadastrarClienteLoader.xhtml"
+    TITLE="cadastrarClienteLoader" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="alterarClienteLoader::#pages#cliente#alterarClienteLoader.xhtml"
+    NAME="output6" PATH="/pages/cliente/alterarClienteLoader.xhtml"
+    TARGET="rules:#pages#cliente#alterarClienteLoader.xhtml"
+    TITLE="alterarClienteLoader" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#pages#admin#livro#livroLoader.xhtml"
@@ -34,4 +44,8 @@
   PATH="/pages/admin/livro/livroListarLoader.xhtml" SHAPE="288,465,0,0" model-entity="JSFProcessGroup"/>
  <PROCESS-ITEM NAME="rules:#pages#carrinho#carrinhoListarLoader.xhtml"
   PATH="/pages/carrinho/carrinhoListarLoader.xhtml" SHAPE="304,497,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#cliente#cadastrarClienteLoader.xhtml"
+  PATH="/pages/cliente/cadastrarClienteLoader.xhtml" SHAPE="304,529,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#cliente#alterarClienteLoader.xhtml"
+  PATH="/pages/cliente/alterarClienteLoader.xhtml" SHAPE="304,561,0,0" model-entity="JSFProcessGroup"/>
 </PROCESS>
