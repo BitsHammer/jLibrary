@@ -1,45 +1,42 @@
+<?xml version='1.0' encoding='ISO-8859-1' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
+<ui:composition template="/templates/defaultTemplate.xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
-<h:body>
-	
-	<ui:composition template="/templates/defaultTemplate.xhtml">
 		<ui:define name="content">
+			<h:outputScript name="/javascript/teste.js" target="body"/>
 			<h:form>
 				<p:messages />
 				<p:panel id="panel" header="Cadastro de Livro"
 					style="margin-bottom:10px; width: 100%;">
 					<h:panelGrid columns="2" columnClasses="label, value">
-
 						<p:outputLabel for="l_isbn" value="ISBN" />
 						<p:inputText type="text" id="l_isbn" name="l_isbn"
 							value="#{livroBean.livro.isbn}" />
 
-						<p:outputLabel for="l_titulo" value="Título" />
+						<p:outputLabel for="l_titulo" value="T�tulo" />
 						<p:inputText type="text" size="50" maxlength="50" id="l_titulo"
 							name="l_titulo" value="#{livroBean.livro.titulo}" />
 
 						<h:outputLabel for="menu" value="Autores:" />
 						<p:selectCheckboxMenu id="menu" value="#{livroBean.livro.autores}" label="Autores"
 							filter="true" filterMatchMode="startsWith"
-							panelStyle="width:250px">
-							<f:selectItems value="#{livroBean.autores}" var="autor" itemLabel="#{autor.nome}"/>
-							<p:ajax event="change" update="tabelaAutor"/>
+							panelStyle="width:250px" converter="autorConverter">
+							<f:selectItems value="#{livroBean.listaAutor}" var="autor" itemLabel="#{autor.nome}" itemValue="#{autor}"/>
+							<p:ajax event="change"  update="tabelaAutor"/>
 						</p:selectCheckboxMenu>
 
 						<p:outputLabel value="Selecionados" />
 						<p:dataList id="tabelaAutor" value="#{livroBean.livro.autores}"
-							var="autor" emptyMessage="Nenhuma autor selecionado">
-				            	#{autor}
+							var="autor" emptyMessage="Nenhuma autor selecionado"> 
+				            	<h:outputText value="#{autor.nome}" />
 				       		</p:dataList>
 
-						<!-- DATA DE PUBLICAÇÃO -->
-						<p:outputLabel for="dt_publicacao" value="Data de Publicação" />
+						<!-- DATA DE PUBLICA��O -->
+						<p:outputLabel for="dt_publicacao" value="Data de Publica��o" />
 						<p:calendar id="dt_publicacao" value="#{livroBean.livro.dataPublicacao}" />
 
 						<!-- EDITORA -->
@@ -60,7 +57,7 @@
 				            	#{categoria}
 				       		</p:dataList>
 
-						<p:outputLabel for="l_indice" value="Índice" />
+						<p:outputLabel for="l_indice" value="�ndice" />
 						<p:inputTextarea id="l_indice" rows="6" cols="33" />
 
 						<p:outputLabel for="formato" value="Formato" />
@@ -69,18 +66,18 @@
 								<f:selectItems value="#{livroBean.formatos}" />
 						</p:selectOneMenu>
 
-						<p:outputLabel for="l_numero_paginas" value="Número de Páginas" />
+						<p:outputLabel for="l_numero_paginas" value="N�mero de P�ginas" />
 						<p:inputText size="10" maxlength="10" id="l_numero_paginas"
 							name="l_numero_paginas" value="#{livroBean.livro.numeroPaginas}" />
 
-						<!-- PREÇO DE VENDA-->
-						<p:outputLabel for="l_preco_venda" value="Preço de Venda" />
+						<!-- PRE�O DE VENDA-->
+						<p:outputLabel for="l_preco_venda" value="Pre�o de Venda" />
 						<p:inputText size="10" maxlength="10" id="l_preco_venda"
 							name="l_titulo" value="#{livroBean.livro.precoVenda}">
 							<p:ajax event="change" update="l_margem_lucro"/>	
 						</p:inputText>
 							
-						<p:outputLabel for="l_preco_custo" value="Preço de Custo" />
+						<p:outputLabel for="l_preco_custo" value="Pre�o de Custo" />
 						<p:inputText id="l_preco_custo" value="#{livroBean.livro.precoCusto}">
 							<p:ajax event="change" update="l_margem_lucro"/>	
 						</p:inputText>
@@ -97,9 +94,7 @@
 
 				</p:panel>
 				<p:commandButton value="Gravar" update="panel"
-					action="#{loginBean.logar}" />
+					action="#{livroBean.gravarLivro}" />
 			</h:form>
 		</ui:define>
 	</ui:composition>
-</h:body>
-</html>
