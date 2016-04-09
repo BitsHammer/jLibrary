@@ -23,4 +23,10 @@ public interface IClienteFacade {
 	 */
 	void descadastrarCliente(Cliente cliente);
 
+	/**
+	 * Atualiza o cliente
+	 * @param cliente
+	 */
+	void atualizarCliente(Cliente cliente);
+
 }

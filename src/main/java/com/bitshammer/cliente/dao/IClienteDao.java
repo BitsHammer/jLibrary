@@ -17,6 +17,12 @@ public interface IClienteDao {
 	 * @param cliente
 	 */
 	void persist(Cliente cliente);
+	
+	/**
+	 * Atualiza um cliente na base dados
+	 * @param cliente
+	 */
+	void update(Cliente cliente);
 
 	/**
 	 * Remove um cliente da base de dados

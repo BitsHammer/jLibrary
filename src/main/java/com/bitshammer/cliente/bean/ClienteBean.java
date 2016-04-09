@@ -76,6 +76,19 @@ public class ClienteBean extends DefaultBean {
 	}
 	
 	/**
+	 * Cadastra um cliente
+	 * @return
+	 */
+	public void atualizarCliente(){
+		try{
+			facade.atualizarCliente(cliente);
+			addMessage("Sucesso", "Cliente atualizado");
+		}catch(Exception e){
+			showErrorMessage("Erro ao efetivar o atualização!");
+		}
+	}
+	
+	/**
 	 * Busca um cep no webService dos correios
 	 */
 	public void buscarCep(){

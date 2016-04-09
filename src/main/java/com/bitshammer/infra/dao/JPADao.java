@@ -66,6 +66,18 @@ public abstract class JPADao<T> {
 	}
 	
 	/**
+	 * Atualiza o objeto da base de dados
+	 * 
+	 * @param id
+	 * @param clazz
+	 * @return
+	 */
+	public void update(T obj){
+		EntityManager entityManager = getEntityManager();
+		entityManager.merge(obj);
+	}
+	
+	/**
 	 * Deleta um objeto da base de dados
 	 * 
 	 * @param id

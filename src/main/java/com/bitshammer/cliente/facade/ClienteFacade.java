@@ -34,4 +34,9 @@ public class ClienteFacade implements IClienteFacade {
 		
 	}
 
+	@Override
+	public void atualizarCliente(Cliente cliente) {
+		dao.update(cliente);		
+	}
+
 }

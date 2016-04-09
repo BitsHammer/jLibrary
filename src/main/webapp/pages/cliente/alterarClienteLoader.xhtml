@@ -92,12 +92,12 @@
 				<h:panelGrid>
 			
 					<p:outputLabel for="usuario" value="Usuário:" />
-					<p:inputText id="usuario"
+					<p:outputLabel id="usuario"
 						value="#{clienteBean.cliente.usuario.login}" required="true" requiredMessage="Campo 'Usuario' preenchimento obrigatório"/>
 					<p:message for="usuario"/>
 					
 					<p:outputLabel for="email" value="Email:" />
-					<p:inputText id="email"
+					<p:outputLabel id="email"
 						value="#{clienteBean.cliente.usuario.email}"  required="true" requiredMessage="Campo 'Email' preenchimento obrigatório"/>
 					<p:message for="email"/>
 
@@ -111,8 +111,8 @@
 			</p:fieldset>
 
 			<p />
-			<p:commandButton value="Cadastrar"
-				action="#{clienteBean.cadastrarCliente()}" validateClient="true" update="form">
+			<p:commandButton value="Atualizar"
+				action="#{clienteBean.atualizarCliente()}" validateClient="true" update="form">
 				<p:confirm header="Confirmação"
 					message="Tem certeza que deseja realizar o seu cadastro?"
 					icon="ui-icon-alert" />
