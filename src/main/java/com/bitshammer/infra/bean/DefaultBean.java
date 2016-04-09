@@ -1,23 +1,17 @@
 package com.bitshammer.infra.bean;
 
-import java.io.Serializable;
-
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
 import org.primefaces.context.RequestContext;
 
+import com.bitshammer.cliente.Cliente;
 import com.bitshammer.security.model.TipoUsuario;
 import com.bitshammer.security.model.Usuario;
 
-public abstract class DefaultBean implements Serializable{
+public abstract class DefaultBean{
 
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 6837848004347486921L;
 
 	/**
 	 * Exibe uma mensagem de informação ao usuário
@@ -34,7 +28,7 @@ public abstract class DefaultBean implements Serializable{
 	 * Exibe uma mensagem de erro ao usuário
 	 * @param error Mensagem
 	 */
-	protected void addErrorMessage(String error) {
+	protected void showErrorMessage(String error) {
 		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro", error);
 		RequestContext.getCurrentInstance().showMessageInDialog(message);
 	}
@@ -80,5 +74,31 @@ public abstract class DefaultBean implements Serializable{
 		return session.getAttribute("usuario") != null;
 	}
 
+	
+	/**
+	 * Retorna o usuário logado
+	 * @return
+	 */
+	public Usuario getUsuario(){
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+		if(session.getAttribute("usuario") != null){
+			return (Usuario) session.getAttribute("usuario");
+		} else {
+			return null;
+		}
+	}
+	
+	/**
+	 * Retornar o cliente logado
+	 * @return
+	 */
+	public Cliente getClienteLogado(){
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+		if(session.getAttribute("cliente") != null){
+			return (Cliente) session.getAttribute("cliente");
+		} else {
+			return null;
+		}
+	}
 
 }

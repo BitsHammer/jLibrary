@@ -24,22 +24,22 @@ import javax.servlet.http.HttpSession;
 public final class LoginFilter implements Filter {
 
     /**
-     * Default constructor. 
+     * Construtor
      */
-    public LoginFilter() {
-        // TODO Auto-generated constructor stub
-    }
+    public LoginFilter() {}
 
-	/**
-	 * @see Filter#destroy()
+	/*
+	 * (non-Javadoc)
+	 * @see javax.servlet.Filter#destroy()
 	 */
-	public void destroy() {
-		// TODO Auto-generated method stub
-	}
+    @Override
+	public void destroy() {}
 
-	/**
-	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
+	/*
+	 * (non-Javadoc)
+	 * @see javax.servlet.Filter#doFilter(javax.servlet.ServletRequest, javax.servlet.ServletResponse, javax.servlet.FilterChain)
 	 */
+	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpSession session = ((HttpServletRequest)request).getSession();
 		String uri = ((HttpServletRequest)request).getRequestURI();
@@ -51,11 +51,11 @@ public final class LoginFilter implements Filter {
 		
 	}
 
-	/**
-	 * @see Filter#init(FilterConfig)
+	/*
+	 * (non-Javadoc)
+	 * @see javax.servlet.Filter#init(javax.servlet.FilterConfig)
 	 */
-	public void init(FilterConfig fConfig) throws ServletException {
-		// TODO Auto-generated method stub
-	}
+	@Override
+	public void init(FilterConfig fConfig) throws ServletException {}
 
 }

@@ -15,63 +15,86 @@ import com.bitshammer.livro.Livro;
 
 /**
  * Classe que representa uma Editora
+ * 
  * @author Bruno
  */
 @Entity
 public class Editora {
 
-	@Id
-	@GeneratedValue
-	@Column(name="editora_id")
-	private Long id;
+	/**
+	 * CNPJ
+	 */
+	@Column
+	private String cnpj;
 
-	@Column(nullable=false)
-	private String nome;
-	
-	@Column(nullable=false)
-	private Long telefone;
-	
+	/**
+	 * Endereco
+	 */
 	@Embedded
 	private Endereco endereco;
-	
-	public Editora(String nome) {
-		super();
-		this.nome = nome;
-	}
-	
+
+	/**
+	 * Id
+	 */
+	@Id
+	@GeneratedValue
+	@Column(name = "editora_id")
+	private Integer id;
+
+	/**
+	 * Livros
+	 */
+	@OneToMany(mappedBy = "editora", fetch = FetchType.LAZY)
+	private List<Livro> livros;
+
+	/**
+	 * Nome
+	 */
+	@Column(nullable = false)
+	private String nome;
+
+	/**
+	 * Telefone
+	 */
+	@Column(nullable = false)
+	private Long telefone;
+
+	/**
+	 * Construtor
+	 */
 	public Editora() {
 		// TODO Auto-generated constructor stub
 	}
 
-	@OneToMany(mappedBy="editora", fetch=FetchType.LAZY)
-	private List<Livro> livros;
+	/**
+	 * Construtor com sobrecarga
+	 * 
+	 * @param nome
+	 */
+	public Editora(String nome) {
+		super();
+		this.nome = nome;
+	}
+
+	/**
+	 * @return the cnpj
+	 */
+	public String getCnpj() {
+		return cnpj;
+	}
+
+	/**
+	 * @return the endereco
+	 */
+	public Endereco getEndereco() {
+		return endereco;
+	}
 
 	/**
 	 * @return the id
 	 */
-	public Long getId() {
+	public Integer getId() {
 		return id;
-	}
-
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	/**
-	 * @return the nome
-	 */
-	public String getNome() {
-		return nome;
-	}
-
-	/**
-	 * @param nome the nome to set
-	 */
-	public void setNome(String nome) {
-		this.nome = nome;
 	}
 
 	/**
@@ -82,10 +105,71 @@ public class Editora {
 	}
 
 	/**
-	 * @param livros the livros to set
+	 * @return the nome
+	 */
+	public String getNome() {
+		return nome;
+	}
+
+	/**
+	 * @return the telefone
+	 */
+	public Long getTelefone() {
+		return telefone;
+	}
+
+	/**
+	 * @param cnpj
+	 *            the cnpj to set
+	 */
+	public void setCnpj(String cnpj) {
+		this.cnpj = cnpj;
+	}
+
+	/**
+	 * @param endereco
+	 *            the endereco to set
+	 */
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+
+	/**
+	 * @param id
+	 *            the id to set
+	 */
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	/**
+	 * @param livros
+	 *            the livros to set
 	 */
 	public void setLivros(List<Livro> livros) {
 		this.livros = livros;
 	}
 
+	/**
+	 * @param nome
+	 *            the nome to set
+	 */
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	/**
+	 * @param telefone
+	 *            the telefone to set
+	 */
+	public void setTelefone(Long telefone) {
+		this.telefone = telefone;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if(obj == null)
+			return false;
+		return id.equals(((Editora)obj).getId());
+	}
 }

@@ -19,7 +19,7 @@ public interface IAutorFacade {
 	 * @param autor Autor que será gravado
 	 */
 	void save(Autor autor);
-
+	
 	/**
 	 * Encontra o autor através 
 	 * dos parâmetros passados

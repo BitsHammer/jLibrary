@@ -24,10 +24,19 @@
 			<to-view-id>/pages/carrinho/carrinhoListarLoader.xhtml</to-view-id>
 			<redirect />
 		</navigation-case>
-		
 		<navigation-case>
 			<from-outcome>login</from-outcome>
 			<to-view-id>/login.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>cadastrarClienteLoader</from-outcome>
+			<to-view-id>/pages/cliente/cadastrarClienteLoader.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>alterarClienteLoader</from-outcome>
+			<to-view-id>/pages/cliente/alterarClienteLoader.xhtml</to-view-id>
 			<redirect />
 		</navigation-case>
 	</navigation-rule>

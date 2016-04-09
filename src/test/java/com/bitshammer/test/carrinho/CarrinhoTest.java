@@ -4,19 +4,20 @@
 package com.bitshammer.test.carrinho;
 
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
+
+import java.util.Arrays;
 
 import org.junit.Test;
 
 import com.bitshammer.carrinho.Carrinho;
-import com.bitshammer.comum.Item;
 import com.bitshammer.livro.Livro;
+import com.bitshammer.pedido.Item;
 
 /**
  * @author Bruno
  *
  */
-public class CarrinhoTest {
+public class CarrinhoTest {	
 	
 	@Test
 	public void testAdicionar(){
@@ -30,7 +31,7 @@ public class CarrinhoTest {
 	public void testRemover(){
 		Carrinho carrinho = new Carrinho();
 		assertEquals(0, carrinho.quantidadeItens());
-		Item p = new Item(new Livro());
+		Item p = new Item(new Livro());		
 		carrinho.adicionarItem(p);
 		assertEquals(1, carrinho.quantidadeItens());
 		carrinho.removerItem(p);
@@ -49,6 +50,17 @@ public class CarrinhoTest {
 		p2.setQuantidade(5);
 		carrinho.adicionarItem(p2);
 		assertEquals(7d, carrinho.precoTotal(),0d);
+	}
+	
+	@Test
+	public void testItensSelecionados(){
+		Carrinho carrinho = new Carrinho();
+		Item p = new Item(new Livro());
+		carrinho.adicionarItem(p);
+		Item p2 = new Item(new Livro());
+		p2.setQuantidade(5);
+		carrinho.adicionarItem(p2);
+		assertTrue(carrinho.itensSelecionados().containsAll(Arrays.asList(p,p2)));
 	}
 
 }

@@ -40,19 +40,19 @@ public class Endereco {
 	 * Cidade
 	 */
 	@Column
-	private String cidade;
+	private String localidade;
 
 	/**
 	 * Estado
 	 */
 	@Column
-	private String estado;
+	private String uf;
 
 	/**
 	 * CEP
 	 */
 	@Column
-	private Long cep;
+	private String cep;
 
 	/**
 	 * @return the logradouro
@@ -117,37 +117,37 @@ public class Endereco {
 	/**
 	 * @return the cidade
 	 */
-	public String getCidade() {
-		return cidade;
+	public String getLocalidade() {
+		return localidade;
 	}
 
 	/**
 	 * @param cidade
 	 *            the cidade to set
 	 */
-	public void setCidade(String cidade) {
-		this.cidade = cidade;
+	public void setLocalidade(String localidade) {
+		this.localidade = localidade;
 	}
 
 	/**
 	 * @return the estado
 	 */
-	public String getEstado() {
-		return estado;
+	public String getUf() {
+		return uf;
 	}
 
 	/**
 	 * @param estado
 	 *            the estado to set
 	 */
-	public void setEstado(String estado) {
-		this.estado = estado;
+	public void setUf(String uf) {
+		this.uf = uf;
 	}
 
 	/**
 	 * @return the cep
 	 */
-	public Long getCep() {
+	public String getCep() {
 		return cep;
 	}
 
@@ -155,7 +155,7 @@ public class Endereco {
 	 * @param cep
 	 *            the cep to set
 	 */
-	public void setCep(Long cep) {
+	public void setCep(String cep) {
 		this.cep = cep;
 	}
 

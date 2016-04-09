@@ -21,6 +21,7 @@
 			</h:panelGrid>
 		</p:panel>
 		<p:commandButton value="Entrar" update="panel" action="#{loginBean.logar}" />
+		<p:commandButton value="Efetuar Cadastro!" action="cadastrarClienteLoader" />
 	</h:form>
 	<p:ajaxStatus onstart="PF('statusDialog').show()"
 		onsuccess="PF('statusDialog').hide()" />

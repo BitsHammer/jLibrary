@@ -1,8 +1,6 @@
 package com.bitshammer.infra.dao;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
 /**
  * Classe para acesso a 
@@ -12,11 +10,6 @@ import javax.persistence.Persistence;
  *
  */
 public abstract class JPADao<T> {
-	
-	/**
-	 * Entity Manager
-	 */
-	private static EntityManager em;
 	
 	/**
 	 * Construtor privado 
@@ -38,10 +31,14 @@ public abstract class JPADao<T> {
 	 * de dados
 	 * @param e {@link Object}
 	 */
-	public void persist(final T e){
+	public void persist(T e){
 		EntityManager entityManager = getEntityManager();
 		entityManager.getTransaction().begin();
-		entityManager.persist(e);
+		if(entityManager.contains(e)){
+			e = (T)entityManager.merge(e);
+		} else {
+			entityManager.persist(e);
+		}
 		entityManager.getTransaction().commit();
 	}
 	
@@ -66,6 +63,18 @@ public abstract class JPADao<T> {
 	 */
 	public void remove(final Long id, final Class<T> clazz){
 		getEntityManager().remove(find(id, clazz));
+	}
+	
+	/**
+	 * Deleta um objeto da base de dados
+	 * 
+	 * @param id
+	 * @param clazz
+	 * @return
+	 */
+	public void remove(T obj){
+		EntityManager em = getEntityManager();
+		em.remove(em.merge(obj));
 	}
 	
 }

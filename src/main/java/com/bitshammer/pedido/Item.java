@@ -1,15 +1,29 @@
-package com.bitshammer.comum;
+package com.bitshammer.pedido;
 
 import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import com.bitshammer.livro.Livro;
 
 /**
- * Classe contendo um produto
+ * Classe contendo um item de venda ou pedido
  * 
  * @author Bruno
  */
+@Entity
 public class Item implements Serializable {
+	
+	@Id
+	@Column(name="item_id")
+	@GeneratedValue
+	private Integer id;
 	
 	/**
 	 * 
@@ -17,14 +31,21 @@ public class Item implements Serializable {
 	private static final long serialVersionUID = 3302325467661797883L;
 
 	/**
-	 * Produto
+	 * Items do pedido
 	 */
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="livro_id", referencedColumnName="livro_id")
 	private Livro livro;
 
 	/**
 	 * Quantidade de itens do produto
 	 */
+	@Column
 	private int quantidade;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="pedido_id")
+	private Pedido pedido;
 
 	/**
 	 * Construtor
@@ -34,6 +55,13 @@ public class Item implements Serializable {
 	public Item(Livro livro) {
 		this.livro = livro;
 		this.quantidade = 1;
+	}
+	
+	/**
+	 * Construtor default
+	 */
+	public Item() {
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -76,6 +104,41 @@ public class Item implements Serializable {
 	 */
 	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
+	}
+	
+	/**
+	 * @return the id
+	 */
+	public Integer getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	/**
+	 * @param livro the livro to set
+	 */
+	public void setLivro(Livro livro) {
+		this.livro = livro;
+	}
+
+	/**
+	 * @return the pedido
+	 */
+	public Pedido getPedido() {
+		return pedido;
+	}
+
+	/**
+	 * @param pedido the pedido to set
+	 */
+	public void setPedido(Pedido pedido) {
+		this.pedido = pedido;
 	}
 	
 	

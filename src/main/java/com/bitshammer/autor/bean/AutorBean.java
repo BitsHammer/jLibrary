@@ -21,11 +21,6 @@ import com.bitshammer.infra.bean.DefaultBean;
 @ManagedBean
 @ViewScoped
 public class AutorBean extends DefaultBean {
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 
 	private IAutorFacade facade = new AutorFacade();
 	
@@ -46,7 +41,7 @@ public class AutorBean extends DefaultBean {
 			facade.save(autor);
 			showSucessMessage();
 		}catch(Exception e){
-			addErrorMessage(e.getMessage());
+			showErrorMessage(e.getMessage());
 		}
 	}
 

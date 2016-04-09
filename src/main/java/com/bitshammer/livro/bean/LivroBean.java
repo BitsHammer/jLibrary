@@ -6,13 +6,9 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
-import javax.security.auth.login.LoginException;
-import javax.servlet.http.HttpSession;
-
-import org.hibernate.loader.custom.Return;
 
 import com.bitshammer.autor.Autor;
+import com.bitshammer.autor.AutorMock;
 import com.bitshammer.infra.bean.DefaultBean;
 import com.bitshammer.livro.Categoria;
 import com.bitshammer.livro.FormatoLivro;
@@ -32,22 +28,11 @@ public class LivroBean extends DefaultBean {
 	private ILivroFacade facade = new LivroFacade();
 
 	private Livro livro = new Livro();
-
-	private List<Autor> autores;
-
-	private String[] selectedAutores;
+	
+	private List<Autor> listaAutor= new ArrayList<>();
 
 	public LivroBean() {
-
-	}
-
-	public List<Autor> getAutores() {
-		autores = new ArrayList<Autor>();
-		Autor a = new Autor("Teste");
-		Autor b = new Autor("Teste2");
-		autores.add(a);
-		autores.add(b);
-		return autores;
+		listaAutor = AutorMock.getInstance().listaAutor;
 	}
 
 	public List<Categoria> getCategorias() {
@@ -56,14 +41,6 @@ public class LivroBean extends DefaultBean {
 
 	public List<FormatoLivro> getFormatos() {
 		return Arrays.asList(FormatoLivro.values());
-	}
-
-	public String[] getSelectedAutores() {
-		return selectedAutores;
-	}
-
-	public void setSelectedAutores(String[] selectedAutores) {
-		this.selectedAutores = selectedAutores;
 	}
 
 	/**
@@ -85,6 +62,20 @@ public class LivroBean extends DefaultBean {
 		facade.gravarLivro(livro);
 		addMessage("Sucesso", "Livro Cadastrado com Sucesso.");
 
+	}
+
+	/**
+	 * @return the listaAutor
+	 */
+	public List<Autor> getListaAutor() {
+		return listaAutor;
+	}
+
+	/**
+	 * @param listaAutor the listaAutor to set
+	 */
+	public void setListaAutor(List<Autor> listaAutor) {
+		this.listaAutor = listaAutor;
 	}
 
 }

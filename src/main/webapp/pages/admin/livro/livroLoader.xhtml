@@ -17,7 +17,11 @@
 						<p:inputText type="text" id="l_isbn" name="l_isbn"
 							value="#{livroBean.livro.isbn}" />
 
+<<<<<<< HEAD
 						<p:outputLabel for="l_titulo" value="Tï¿½tulo" />
+=======
+						<p:outputLabel for="l_titulo" value="Título" />
+>>>>>>> branch 'master' of https://github.com/BitsHammer/jLibrary.git
 						<p:inputText type="text" size="50" maxlength="50" id="l_titulo"
 							name="l_titulo" value="#{livroBean.livro.titulo}" />
 
@@ -35,8 +39,13 @@
 				            	<h:outputText value="#{autor.nome}" />
 				       		</p:dataList>
 
+<<<<<<< HEAD
 						<!-- DATA DE PUBLICAï¿½ï¿½O -->
 						<p:outputLabel for="dt_publicacao" value="Data de Publicaï¿½ï¿½o" />
+=======
+						<!-- DATA DE PUBLICAÇÃO -->
+						<p:outputLabel for="dt_publicacao" value="Data de Publicação" />
+>>>>>>> branch 'master' of https://github.com/BitsHammer/jLibrary.git
 						<p:calendar id="dt_publicacao" value="#{livroBean.livro.dataPublicacao}" />
 
 						<!-- EDITORA -->
@@ -57,7 +66,11 @@
 				            	#{categoria}
 				       		</p:dataList>
 
+<<<<<<< HEAD
 						<p:outputLabel for="l_indice" value="ï¿½ndice" />
+=======
+						<p:outputLabel for="l_indice" value="Índice" />
+>>>>>>> branch 'master' of https://github.com/BitsHammer/jLibrary.git
 						<p:inputTextarea id="l_indice" rows="6" cols="33" />
 
 						<p:outputLabel for="formato" value="Formato" />
@@ -66,18 +79,31 @@
 								<f:selectItems value="#{livroBean.formatos}" />
 						</p:selectOneMenu>
 
+<<<<<<< HEAD
 						<p:outputLabel for="l_numero_paginas" value="Nï¿½mero de Pï¿½ginas" />
+=======
+						<p:outputLabel for="l_numero_paginas" value="Número de Páginas" />
+>>>>>>> branch 'master' of https://github.com/BitsHammer/jLibrary.git
 						<p:inputText size="10" maxlength="10" id="l_numero_paginas"
 							name="l_numero_paginas" value="#{livroBean.livro.numeroPaginas}" />
 
+<<<<<<< HEAD
 						<!-- PREï¿½O DE VENDA-->
 						<p:outputLabel for="l_preco_venda" value="Preï¿½o de Venda" />
+=======
+						<!-- PREÇO DE VENDA-->
+						<p:outputLabel for="l_preco_venda" value="Preço de Venda" />
+>>>>>>> branch 'master' of https://github.com/BitsHammer/jLibrary.git
 						<p:inputText size="10" maxlength="10" id="l_preco_venda"
 							name="l_titulo" value="#{livroBean.livro.precoVenda}">
 							<p:ajax event="change" update="l_margem_lucro"/>	
 						</p:inputText>
 							
+<<<<<<< HEAD
 						<p:outputLabel for="l_preco_custo" value="Preï¿½o de Custo" />
+=======
+						<p:outputLabel for="l_preco_custo" value="Preço de Custo" />
+>>>>>>> branch 'master' of https://github.com/BitsHammer/jLibrary.git
 						<p:inputText id="l_preco_custo" value="#{livroBean.livro.precoCusto}">
 							<p:ajax event="change" update="l_margem_lucro"/>	
 						</p:inputText>
@@ -97,4 +123,4 @@
 					action="#{livroBean.gravarLivro}" />
 			</h:form>
 		</ui:define>
-	</ui:composition>
+	</ui:composition>
