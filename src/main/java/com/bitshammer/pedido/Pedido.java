@@ -39,14 +39,14 @@ public class Pedido {
 	/**
 	 * Lista de itens do pedido
 	 */
-	@OneToMany(fetch=FetchType.LAZY)
+	@OneToMany()
 	@JoinColumn(name="pedido_id")
 	private List<Item> listaItens;
 	
 	/**
 	 * Usuario do pedido
 	 */
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne()
 	@JoinColumn(name="usuario_id", referencedColumnName="usuario_id")
 	private Usuario usuario;
 	

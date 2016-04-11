@@ -170,6 +170,10 @@ public class Editora {
 	public boolean equals(Object obj) {
 		if(obj == null)
 			return false;
-		return id.equals(((Editora)obj).getId());
+		if(id != null){
+			return id.equals(((Editora)obj).getId());
+		} else {
+			return false;
+		}
 	}
 }

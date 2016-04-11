@@ -33,7 +33,7 @@ public class Item implements Serializable {
 	/**
 	 * Items do pedido
 	 */
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne()
 	@JoinColumn(name="livro_id", referencedColumnName="livro_id")
 	private Livro livro;
 
@@ -43,7 +43,7 @@ public class Item implements Serializable {
 	@Column
 	private int quantidade;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne()
 	@JoinColumn(name="pedido_id")
 	private Pedido pedido;
 

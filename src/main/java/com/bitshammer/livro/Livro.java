@@ -3,6 +3,7 @@ package com.bitshammer.livro;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
@@ -53,14 +54,14 @@ public class Livro {
 	/**
 	 * Editora do livro
 	 */
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name="editora_id", referencedColumnName="editora_id")
 	private Editora editora;
 
 	/**
 	 * Lista de autores
 	 */
-	@ManyToMany(fetch=FetchType.LAZY)
+	@ManyToMany()
 	@JoinTable(
 	      name="autor_livro",
 	      joinColumns={@JoinColumn(name="livro_id", referencedColumnName="livro_id")},
@@ -171,6 +172,9 @@ public class Livro {
 	 * @return the editora
 	 */
 	public Editora getEditora() {
+		if (editora == null){
+			editora = new Editora();
+		}
 		return editora;
 	}
 

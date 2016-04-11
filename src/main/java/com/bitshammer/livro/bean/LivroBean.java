@@ -9,6 +9,8 @@ import javax.faces.bean.ViewScoped;
 
 import com.bitshammer.autor.Autor;
 import com.bitshammer.autor.AutorMock;
+import com.bitshammer.editora.Editora;
+import com.bitshammer.editora.EditoraMock;
 import com.bitshammer.infra.bean.DefaultBean;
 import com.bitshammer.livro.Categoria;
 import com.bitshammer.livro.FormatoLivro;
@@ -30,9 +32,12 @@ public class LivroBean extends DefaultBean {
 	private Livro livro = new Livro();
 	
 	private List<Autor> listaAutor= new ArrayList<>();
+	
+	private List<Editora> listaEditora= new ArrayList<>();
 
 	public LivroBean() {
 		listaAutor = AutorMock.getInstance().listaAutor;
+		listaEditora = EditoraMock.getInstance().listaEditora;
 	}
 
 	public List<Categoria> getCategorias() {
@@ -76,6 +81,13 @@ public class LivroBean extends DefaultBean {
 	 */
 	public void setListaAutor(List<Autor> listaAutor) {
 		this.listaAutor = listaAutor;
+	}
+
+	/**
+	 * @return the listaEditora
+	 */
+	public List<Editora> getListaEditora() {
+		return listaEditora;
 	}
 
 }
