@@ -3,6 +3,9 @@
  */
 package com.bitshammer.cliente.bean;
 
+import java.io.IOException;
+import java.util.List;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
@@ -40,12 +43,22 @@ public class ClienteBean extends DefaultBean {
 	 * WebService de consulta de CEPs
 	 */
 	private IConsultaCepWebService webService;
+
+	/**
+	 * Lista de cliente
+	 */
+	private List<Cliente> listaClientes;
+	
+	private Cliente clienteDetalhe;
 	
 	/**
 	 * Construtor
 	 */
 	public ClienteBean() {
-		if(getClienteLogado() != null){
+		Cliente clienteAlterar = (Cliente) FacesContext.getCurrentInstance().getExternalContext().getFlash().get("clienteAlterar");
+		if(clienteAlterar != null){
+			cliente = clienteAlterar;
+		}else if(getClienteLogado() != null){
 			cliente = getClienteLogado();
 		} else {
 			cliente = new Cliente();
@@ -92,6 +105,35 @@ public class ClienteBean extends DefaultBean {
 		}
 	}
 	
+	public String alterarCadastro(Cliente cliente) throws Exception{
+		FacesContext.getCurrentInstance().getExternalContext().getFlash().put("clienteAlterar", cliente);
+		return "alterarClienteLoader";
+	}
+	
+	/**
+	 * Cancela o cadastro do cliente
+	 * @return
+	 */
+	public void cancelarCadastro(Cliente c){
+		try{
+			facade.descadastrarCliente(c);
+			listaClientes.remove(c);
+			addMessage("Sucesso", "Cliente descadastrado com sucesso!");
+		}catch(Exception e){
+			showErrorMessage("Erro ao cancelar cadastro!");
+		}
+	}
+	
+	public void pesquisarCliente(){
+		try{
+			listaClientes = facade.pesquisarCliente(cliente);
+			if(listaClientes.isEmpty())
+				showErrorMessage("Nenhum cliente encontrado!");
+		}catch(Exception e){
+			showErrorMessage("Erro ao pesquisar cadastro!");
+		}
+	}
+	
 	/**
 	 * Cadastra um cliente
 	 * @return
@@ -130,6 +172,34 @@ public class ClienteBean extends DefaultBean {
 	 */
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
+	}
+
+	/**
+	 * @return the listaClientes
+	 */
+	public List<Cliente> getListaClientes() {
+		return listaClientes;
+	}
+
+	/**
+	 * @param listaClientes the listaClientes to set
+	 */
+	public void setListaClientes(List<Cliente> listaClientes) {
+		this.listaClientes = listaClientes;
+	}
+
+	/**
+	 * @return the clienteDetalhe
+	 */
+	public Cliente getClienteDetalhe() {
+		return clienteDetalhe;
+	}
+
+	/**
+	 * @param clienteDetalhe the clienteDetalhe to set
+	 */
+	public void setClienteDetalhe(Cliente clienteDetalhe) {
+		this.clienteDetalhe = clienteDetalhe;
 	}
 
 }

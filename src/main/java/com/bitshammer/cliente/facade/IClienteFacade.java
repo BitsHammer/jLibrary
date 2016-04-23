@@ -3,6 +3,8 @@
  */
 package com.bitshammer.cliente.facade;
 
+import java.util.List;
+
 import com.bitshammer.cliente.Cliente;
 
 /**
@@ -28,5 +30,12 @@ public interface IClienteFacade {
 	 * @param cliente
 	 */
 	void atualizarCliente(Cliente cliente);
+
+	/**
+	 * Pesquisa um cliente na base de dados
+	 * @param cliente
+	 * @return
+	 */
+	List<Cliente> pesquisarCliente(Cliente cliente);
 
 }

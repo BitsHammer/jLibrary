@@ -3,7 +3,10 @@
  */
 package com.bitshammer.test.cliente;
 
+
+import static org.junit.Assert.*; 
 import java.util.Calendar;
+import java.util.List;
 
 import org.junit.Test;
 
@@ -125,6 +128,53 @@ public class ClienteTest {
 		facade.cadastrarCliente(cliente);
 		facade.atualizarCliente(cliente);
 		
+	}
+	
+	/**
+	 * Pesquisa um cliente na base
+	 */
+	@Test
+	public void pesquisarCliente(){
+		Cliente cliente = new Cliente();
+		cliente.setNome("Bruno");
+		cliente.setCpf("43598392869");
+		cliente.setDtNascimento(new Calendar.Builder().setDate(1995, 05, 10).build().getTime());
+		cliente.setCelular("953200587");
+		cliente.setTelefone("29435002");
+		cliente.setSexo(Sexo.F);
+		
+		//Endereco
+		Endereco endereco = new Endereco();
+		endereco.setBairro("Parque Boturussu");
+		endereco.setCep("03805090");
+		endereco.setLocalidade("São Paulo");
+		endereco.setComplemento("Proximo a avendia Paranagua");
+		endereco.setUf("SP");
+		endereco.setNumero(661);
+		
+		//Usuario
+		Usuario usuario = new Usuario();
+		usuario.setEmail("bdm2943@gmail.com");
+		usuario.setLogin("bruno");
+		usuario.setSenha("12345a");
+		usuario.setTipoUsuario(TipoUsuario.CLIENTE);
+		
+		cliente.setEndereco(endereco);
+		cliente.setUsuario(usuario);
+		
+		facade.cadastrarCliente(cliente);
+		cliente = new Cliente();
+		cliente.setNome("Bruno");
+		List<Cliente> lista = facade.pesquisarCliente(cliente);
+		assertNotEquals(0, lista.size());
+	}
+	
+	@Test
+	public void pesquisarVazio(){
+		Cliente cliente = new Cliente();
+		cliente.setNome("asdihfoaudhf");
+		List<Cliente> lista = facade.pesquisarCliente(cliente);
+		assertEquals(0, lista.size());
 	}
 	
 }

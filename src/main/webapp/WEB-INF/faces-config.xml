@@ -39,6 +39,11 @@
 			<to-view-id>/pages/cliente/alterarClienteLoader.xhtml</to-view-id>
 			<redirect />
 		</navigation-case>
+		<navigation-case>
+			<from-outcome>pesquisarClienteLoader</from-outcome>
+			<to-view-id>/pages/admin/cliente/pesquisarClienteLoader.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
 	</navigation-rule>
 	<application>
 		<resource-bundle>
