@@ -9,11 +9,9 @@ import javax.faces.context.FacesContext;
 import javax.security.auth.login.LoginException;
 import javax.servlet.http.HttpSession;
 
-import com.bitshammer.cliente.facade.IClienteFacade;
 import com.bitshammer.infra.bean.DefaultBean;
 import com.bitshammer.security.facade.ILoginFacade;
 import com.bitshammer.security.facade.LoginFacade;
-import com.bitshammer.security.model.TipoUsuario;
 import com.bitshammer.security.model.Usuario;
 
 /**

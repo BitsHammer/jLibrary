@@ -117,6 +117,13 @@
 					message="Tem certeza que deseja realizar o seu cadastro?"
 					icon="ui-icon-alert" />
 			</p:commandButton>
+			
+			<p:commandButton value="Cancelar cadastro"
+				action="#{clienteBean.cancelarCadastro()}">
+				<p:confirm header="Confirmação"
+					message="Tem certeza que deseja excluir seu cadastro?Todo seu histórico de compras será perdido!"
+					icon="ui-icon-alert"/>
+			</p:commandButton>
 
 			<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
 				<p:commandButton value="Sim" type="button"

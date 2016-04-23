@@ -76,6 +76,23 @@ public class ClienteBean extends DefaultBean {
 	}
 	
 	/**
+	 * Cancela o cadastro do cliente
+	 * @return
+	 */
+	public String cancelarCadastro(){
+		try{
+			facade.descadastrarCliente(cliente);
+			HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+			session.removeAttribute("usuario");
+			session.removeAttribute("cliente");
+			return "home";
+		}catch(Exception e){
+			showErrorMessage("Erro ao cancelar cadastro!");
+			return "";
+		}
+	}
+	
+	/**
 	 * Cadastra um cliente
 	 * @return
 	 */
