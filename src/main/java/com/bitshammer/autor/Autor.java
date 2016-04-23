@@ -55,7 +55,7 @@ public class Autor {
 	/**
 	 * Livros
 	 */
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany
 	@JoinTable(name = "autor_livro", joinColumns = {
 			@JoinColumn(name = "autor_id", referencedColumnName = "autor_id") }, inverseJoinColumns = {
 					@JoinColumn(name = "livro_id", referencedColumnName = "livro_id") })

@@ -44,7 +44,7 @@ public class Editora {
 	/**
 	 * Livros
 	 */
-	@OneToMany(mappedBy = "editora", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "editora")
 	private List<Livro> livros;
 
 	/**

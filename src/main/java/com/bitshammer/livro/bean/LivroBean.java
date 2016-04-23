@@ -47,7 +47,7 @@ public class LivroBean extends DefaultBean {
 	public List<FormatoLivro> getFormatos() {
 		return Arrays.asList(FormatoLivro.values());
 	}
-
+	
 	/**
 	 * @return the usuario
 	 */

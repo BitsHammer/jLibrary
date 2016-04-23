@@ -81,7 +81,7 @@ public class Cliente {
 	/**
 	 * Usuário
 	 */
-	@OneToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "usuario_id", referencedColumnName = "usuario_id")
 	private Usuario usuario;
 
