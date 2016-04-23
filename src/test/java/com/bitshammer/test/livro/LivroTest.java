@@ -3,27 +3,17 @@
  */
 package com.bitshammer.test.livro;
 
-import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.doAnswer;
+import static org.junit.Assert.assertNotNull;
 
 import java.util.Arrays;
 import java.util.Date;
 
-import org.junit.Before;
 import org.junit.Test;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-import org.mockito.invocation.InvocationOnMock;
-import org.mockito.stubbing.Answer;
 
-import com.bitshammer.autor.Autor;
 import com.bitshammer.autor.AutorMock;
-import com.bitshammer.editora.Editora;
 import com.bitshammer.editora.EditoraMock;
 import com.bitshammer.livro.Categoria;
 import com.bitshammer.livro.Livro;
-import com.bitshammer.livro.dao.ILivroDao;
 import com.bitshammer.livro.facade.ILivroFacade;
 import com.bitshammer.livro.facade.LivroFacade;
 
@@ -53,7 +43,7 @@ public class LivroTest {
 		livro.setIsbn(99l);
 		livro.setQuantidadeEstoque(24);
 		facade.gravarLivro(livro);
-		assertEquals(1l, livro.getId().longValue());
+		assertNotNull(livro.getId());
 		
 	}
 
