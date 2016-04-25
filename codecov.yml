@@ -2,9 +2,9 @@ comment:
   layout: header, changes, diff
 coverage:
   ignore:
-    - .*Bean.java
-    - .*Filter.java
-    - .*Converter.java
-    - .*Mock.java
+    - ".*Bean.java"
+    - ".*Filter.java"
+    - ".*Converter.java"
+    - ".*Mock.java"
   status:
     patch: false
