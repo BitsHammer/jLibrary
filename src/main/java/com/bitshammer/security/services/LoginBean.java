@@ -9,9 +9,13 @@ import javax.faces.context.FacesContext;
 import javax.security.auth.login.LoginException;
 import javax.servlet.http.HttpSession;
 
+import com.bitshammer.cliente.Cliente;
+import com.bitshammer.cliente.facade.ClienteFacade;
+import com.bitshammer.cliente.facade.IClienteFacade;
 import com.bitshammer.infra.bean.DefaultBean;
 import com.bitshammer.security.facade.ILoginFacade;
 import com.bitshammer.security.facade.LoginFacade;
+import com.bitshammer.security.model.TipoUsuario;
 import com.bitshammer.security.model.Usuario;
 
 /**
@@ -24,12 +28,15 @@ public class LoginBean extends DefaultBean{
 
 	private ILoginFacade facade;
 	
+	private IClienteFacade clienteFacade;
+	
 	
 	private Usuario usuario;
 	
 	public LoginBean(){
 		usuario = new Usuario();
 		facade = new LoginFacade();
+		clienteFacade = new ClienteFacade();
 	}
 	
 	/**
@@ -39,7 +46,13 @@ public class LoginBean extends DefaultBean{
 	 */
 	public String logar() throws LoginException{
 		try{	
-			facade.login(usuario);
+			usuario = facade.login(usuario);
+			HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+			session.setAttribute("usuario", usuario);
+			if(usuario.getTipoUsuario().equals(TipoUsuario.CLIENTE)){
+				Cliente cliente = clienteFacade.buscarClientePorUsuario(usuario);
+				session.setAttribute("cliente", cliente);
+			}
 			return "home";
 		}catch(LoginException e){
 			showErrorMessage(e.getMessage());

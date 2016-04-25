@@ -8,6 +8,7 @@ import java.util.List;
 import com.bitshammer.cliente.Cliente;
 import com.bitshammer.cliente.dao.ClienteDao;
 import com.bitshammer.cliente.dao.IClienteDao;
+import com.bitshammer.security.model.Usuario;
 
 /**
  * @author Bruno
@@ -51,6 +52,15 @@ public class ClienteFacade implements IClienteFacade {
 	@Override
 	public List<Cliente> pesquisarCliente(Cliente cliente) {		
 		return dao.pesquisarCliente(cliente);
+	}
+	
+	/*
+	 * (non-Javadoc)
+	 * @see com.bitshammer.cliente.facade.IClienteFacade#buscarClientePorUsuario(com.bitshammer.security.model.Usuario)
+	 */
+	@Override
+	public Cliente buscarClientePorUsuario(Usuario usuario){
+		return dao.findByUser(usuario);
 	}
 
 }
