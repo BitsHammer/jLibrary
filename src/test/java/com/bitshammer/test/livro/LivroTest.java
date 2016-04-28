@@ -43,6 +43,7 @@ public class LivroTest {
 		livro.setResumo("Resumo");
 		livro.setIsbn(99l);
 		livro.setQuantidadeEstoque(24);
+		livro.setFormato(FormatoLivro.BROCHURA);
 		facade.gravarLivro(livro);
 		assertNotNull(livro.getId());
 		System.out.println(livro);
@@ -57,6 +58,7 @@ public class LivroTest {
 		assertEquals(livro,livro2);
 		livro2.setId(2);
 		assertNotEquals(livro,livro2);
+		assertNotEquals(livro,null);
 		
 	}
 	

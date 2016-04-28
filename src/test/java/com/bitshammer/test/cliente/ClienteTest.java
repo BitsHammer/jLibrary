@@ -177,4 +177,17 @@ public class ClienteTest {
 		assertEquals(0, lista.size());
 	}
 	
+	@Test
+	public void testarIgualdadeCliente(){
+		Cliente cliente = new Cliente();
+		cliente.setId(1l);
+		Cliente cliente2 = new Cliente();
+		cliente2.setId(2l);
+		assertNotEquals(cliente, cliente2);
+		assertNotEquals(cliente, null);
+		assertNotEquals(cliente, new Usuario());
+		cliente2.setId(1l);
+		assertEquals(cliente, cliente2);
+	}
+	
 }
