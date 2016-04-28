@@ -28,6 +28,10 @@ import com.bitshammer.editora.Editora;
  * Classe que representa um livro
  * @author Bruno
  */
+/**
+ * @author bruno.martins
+ *
+ */
 @Entity
 public class Livro {
 	
@@ -339,4 +343,46 @@ public class Livro {
 			return false;
 		return id.equals(((Livro)obj).getId());
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Livro [getId()=");
+		builder.append(getId());
+		builder.append(", getTitulo()=");
+		builder.append(getTitulo());
+		builder.append(", getNumeroPaginas()=");
+		builder.append(getNumeroPaginas());
+		builder.append(", getEditora()=");
+		builder.append(getEditora());
+		builder.append(", getAutores()=");
+		builder.append(getAutores());
+		builder.append(", getIsbn()=");
+		builder.append(getIsbn());
+		builder.append(", getDataPublicacao()=");
+		builder.append(getDataPublicacao());
+		builder.append(", getPrecoVenda()=");
+		builder.append(getPrecoVenda());
+		builder.append(", getResumo()=");
+		builder.append(getResumo());
+		builder.append(", getFormato()=");
+		builder.append(getFormato());
+		builder.append(", getPrecoCusto()=");
+		builder.append(getPrecoCusto());
+		builder.append(", getQuantidadeEstoque()=");
+		builder.append(getQuantidadeEstoque());
+		builder.append(", calcularMargemLucro()=");
+		builder.append(calcularMargemLucro());
+		builder.append(", getIndice()=");
+		builder.append(getIndice());
+		builder.append(", getCategorias()=");
+		builder.append(getCategorias());
+		builder.append("]");
+		return builder.toString();
+	}
+	
+	
 }
