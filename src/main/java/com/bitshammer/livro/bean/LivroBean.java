@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 import com.bitshammer.autor.Autor;
 import com.bitshammer.autor.AutorMock;
@@ -63,10 +65,16 @@ public class LivroBean extends DefaultBean {
 		this.livro = livro;
 	}
 
-	public String gravarLivro() {
-		facade.gravarLivro(livro);
-		addMessage("Sucesso", "Livro Cadastrado com Sucesso.");
-		return "livroLoader";
+	public void gravarLivro() {
+		try{
+			facade.gravarLivro(livro);
+			addMessage("Sucesso", "Livro Cadastrado com Sucesso.");
+			livro = new Livro();
+		}catch(Exception e){
+			showErrorMessage("Erro ao efetivar o cadastro!");
+		}
+		
+		
 
 	}
 	

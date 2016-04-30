@@ -99,6 +99,8 @@ public class Autor {
 	public boolean equals(Object obj) {
 		if(obj == null)
 			return false;
+		if(this.id == null)
+			return false;
 		return id.equals(((Autor) obj).getId());
 	}
 
