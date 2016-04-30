@@ -74,7 +74,9 @@ public abstract class JPADao<T> {
 	 */
 	public void update(T obj){
 		EntityManager entityManager = getEntityManager();
+		entityManager.getTransaction().begin();
 		entityManager.merge(obj);
+		entityManager.getTransaction().commit();
 	}
 	
 	/**
@@ -86,7 +88,9 @@ public abstract class JPADao<T> {
 	 */
 	public void remove(T obj){
 		EntityManager em = getEntityManager();
+		em.getTransaction().begin();
 		em.remove(em.merge(obj));
+		em.getTransaction().commit();
 	}
 	
 }

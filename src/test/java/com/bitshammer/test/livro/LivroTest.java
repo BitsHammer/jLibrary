@@ -3,7 +3,7 @@
  */
 package com.bitshammer.test.livro;
 
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 import java.util.Arrays;
 import java.util.Date;
@@ -13,6 +13,7 @@ import org.junit.Test;
 import com.bitshammer.autor.AutorMock;
 import com.bitshammer.editora.EditoraMock;
 import com.bitshammer.livro.Categoria;
+import com.bitshammer.livro.FormatoLivro;
 import com.bitshammer.livro.Livro;
 import com.bitshammer.livro.facade.ILivroFacade;
 import com.bitshammer.livro.facade.LivroFacade;
@@ -42,8 +43,36 @@ public class LivroTest {
 		livro.setResumo("Resumo");
 		livro.setIsbn(99l);
 		livro.setQuantidadeEstoque(24);
+		livro.setFormato(FormatoLivro.BROCHURA);
 		facade.gravarLivro(livro);
 		assertNotNull(livro.getId());
+		System.out.println(livro);
+	}
+	
+	@Test
+	public void testaLivroIgual(){
+		Livro livro = new Livro();
+		livro.setId(1);
+		Livro livro2 = new Livro();
+		livro2.setId(1);
+		assertEquals(livro,livro2);
+		livro2.setId(2);
+		assertNotEquals(livro,livro2);
+		assertNotEquals(livro,null);
+		
+	}
+	
+	@Test
+	public void testaEnumsDeLivro(){
+		Integer id = Categoria.PAIXAO.getId();
+		String nome = Categoria.PAIXAO.getNome();
+		assertEquals(Integer.valueOf(2), id);
+		assertEquals("Paixao", nome);
+		
+		id = FormatoLivro.BROCHURA.getId();
+		FormatoLivro formato = FormatoLivro.byId(id);
+		System.out.println(formato);
+		assertEquals(formato, FormatoLivro.BROCHURA);
 		
 	}
 

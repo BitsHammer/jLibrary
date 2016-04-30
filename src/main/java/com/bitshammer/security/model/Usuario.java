@@ -19,6 +19,10 @@ import javax.persistence.Id;
  * @author Bruno
  *
  */
+/**
+ * @author bruno.martins
+ *
+ */
 @Entity
 public class Usuario implements Serializable {
 
@@ -119,26 +123,6 @@ public class Usuario implements Serializable {
 		this.email = email;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Usuario [id=");
-		builder.append(id);
-		builder.append(", login=");
-		builder.append(login);
-		builder.append(", senha=");
-		builder.append(senha);
-		builder.append(", email=");
-		builder.append(email);
-		builder.append("]");
-		return builder.toString();
-	}
-
 	/**
 	 * @return the tipoUsuario
 	 */
@@ -160,4 +144,21 @@ public class Usuario implements Serializable {
 			return false;
 		return id.equals(((Usuario)obj).getId());
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Usuario [getId()=").append(getId())
+				.append(", getLogin()=").append(getLogin())
+				.append(", getSenha()=").append(getSenha())
+				.append(", getEmail()=").append(getEmail())
+				.append(", getTipoUsuario()=").append(getTipoUsuario())
+				.append("]");
+		return builder.toString();
+	}
+	
+	
 }

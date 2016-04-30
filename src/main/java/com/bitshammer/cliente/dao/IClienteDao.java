@@ -3,6 +3,8 @@
  */
 package com.bitshammer.cliente.dao;
 
+import java.util.List;
+
 import com.bitshammer.cliente.Cliente;
 import com.bitshammer.security.model.Usuario;
 
@@ -36,5 +38,12 @@ public interface IClienteDao {
 	 * @return Cliente
 	 */
 	Cliente findByUser(Usuario usuario);
+
+	/**
+	 * Pesquisa um cliente na base de dados
+	 * @param cliente
+	 * @return Lista de cliente
+	 */
+	List<Cliente> pesquisarCliente(Cliente cliente);
 
 }

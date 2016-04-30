@@ -8,7 +8,6 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -225,5 +224,25 @@ public class Cliente {
 			return false;
 		return id.equals(((Cliente)obj).getId());
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Cliente [getId()=").append(getId())
+				.append(", getNome()=").append(getNome())
+				.append(", getTelefone()=").append(getTelefone())
+				.append(", getCelular()=").append(getCelular())
+				.append(", getDtNascimento()=").append(getDtNascimento())
+				.append(", getSexo()=").append(getSexo())
+				.append(", getEndereco()=").append(getEndereco())
+				.append(", getCpf()=").append(getCpf())
+				.append(", getUsuario()=").append(getUsuario()).append("]");
+		return builder.toString();
+	}
+	
+	
 
 }

@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='ISO-8859-1' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/templates/defaultTemplate.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	<ui:define name="content">
+		<h:form id="form">
+			<p/>
+			<p:fieldset legend="Filtro" style="margin-bottom:20px">
+				<p:panelGrid columns="3" columnClasses="label, value, value">
+					<p:outputLabel for="nome" value="Nome:"/>
+					<p:inputText id="nome" value="#{clienteBean.cliente.nome}"/>
+					<p:commandButton value="Pesquisar" action="#{clienteBean.pesquisarCliente()}" update="tabelaCliente"/>
+				</p:panelGrid>
+			</p:fieldset>
+			<p:dataTable value="#{clienteBean.listaClientes}" emptyMessage="Lista vazia!" var="cliente" id="tabelaCliente">
+				<p:column headerText="Nome">
+        			<h:outputText value="#{cliente.nome}" />
+				</p:column>
+				<p:column headerText="Usuário" width="100">
+        			<h:outputText value="#{cliente.usuario.login}" />
+				</p:column>
+				<p:column headerText="Email">
+        			<h:outputText value="#{cliente.usuario.email}" />
+				</p:column>
+				<p:column headerText="Celular">
+					<h:outputText value="#{cliente.celular}"/>
+				</p:column>
+				<p:column headerText="Telefone">
+        			<h:outputText value="#{cliente.telefone}" />
+				</p:column>
+				<p:column headerText="Data de Nascimento">
+        			<h:outputText value="#{cliente.dtNascimento}" />
+				</p:column>
+				<p:column headerText="Endereço">
+        			<p:commandLink update=":form:enderecoDetail" oncomplete="PF('enderecoDialog').show()" title="Ver detalhe" styleClass="ui-icon ui-icon-search" style="float:left;margin-right:10px">
+            			<f:setPropertyActionListener value="#{cliente}" target="#{clienteBean.clienteDetalhe}" />
+        			</p:commandLink>
+				</p:column>
+				<p:column headerText="Ações">
+        			<p:commandButton update="form" actionListener="#{clienteBean.cancelarCadastro(cliente)}" icon="ui-icon-trash" title="Excluir"/>
+        			<p:commandButton ajax="false" action="#{clienteBean.alterarCadastro(cliente)}" icon="ui-icon-pencil" title="Alterar"/>
+				</p:column>
+			</p:dataTable>
+			
+			<p:dialog header="Endereço" widgetVar="enderecoDialog" modal="true" resizable="false">
+	        	<p:outputPanel id="enderecoDetail" style="text-align:center;">
+		            <p:panelGrid  columns="2" rendered="#{not empty clienteBean.clienteDetalhe}" columnClasses="label,value">
+		 
+		                <h:outputText value="CEP" />
+		                <h:outputText value="#{clienteBean.clienteDetalhe.endereco.cep}" />
+		 
+		                <h:outputText value="Logradouro" />
+		                <h:outputText value="#{clienteBean.clienteDetalhe.endereco.logradouro}" />
+		                
+		                <h:outputText value="Número" />
+		                <h:outputText value="#{clienteBean.clienteDetalhe.endereco.numero}" />
+		                
+		                <h:outputText value="Bairro" />
+		                <h:outputText value="#{clienteBean.clienteDetalhe.endereco.bairro}" />
+		                
+		                <h:outputText value="Cidade" />
+		                <h:outputText value="#{clienteBean.clienteDetalhe.endereco.localidade}" />
+		                
+		                <h:outputText value="UF" />
+		                <h:outputText value="#{clienteBean.clienteDetalhe.endereco.uf}" />
+		                
+		                <h:outputText value="Complemento" />
+		                <h:outputText value="#{clienteBean.clienteDetalhe.endereco.complemento}" />
+            		</p:panelGrid>
+       			</p:outputPanel>
+    		</p:dialog>
+    		
+    		<p:ajaxStatus onstart="PF('statusDialog').show()"	onsuccess="PF('statusDialog').hide()" />
+
+			<p:dialog widgetVar="statusDialog" modal="true" draggable="false"
+				closable="false" resizable="false" showHeader="false">
+				<p:graphicImage value="/images/ajaxloadingbar.gif" />
+			</p:dialog>
+		</h:form>
+	</ui:define>
+</ui:composition>
