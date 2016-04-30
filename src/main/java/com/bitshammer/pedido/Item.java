@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -41,22 +40,12 @@ public class Item implements Serializable {
 	 * Quantidade de itens do produto
 	 */
 	@Column
-	private int quantidade;
+	private int quantidade = 1;
 	
 	@ManyToOne()
 	@JoinColumn(name="pedido_id")
 	private Pedido pedido;
 
-	/**
-	 * Construtor
-	 * @param livro livro
-	 * @param quantidade quantidade
-	 */
-	public Item(Livro livro) {
-		this.livro = livro;
-		this.quantidade = 1;
-	}
-	
 	/**
 	 * Construtor default
 	 */

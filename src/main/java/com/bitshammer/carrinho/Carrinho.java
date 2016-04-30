@@ -67,4 +67,20 @@ public final class Carrinho implements Serializable {
 		return itens;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Carrinho [precoTotal()=");
+		builder.append(precoTotal());
+		builder.append(", quantidadeItens()=");
+		builder.append(quantidadeItens());
+		builder.append(", itensSelecionados()=");
+		builder.append(itensSelecionados());
+		builder.append("]");
+		return builder.toString();
+	}
+
 }

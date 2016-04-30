@@ -69,10 +69,16 @@ public class LivroBean extends DefaultBean {
 		this.livro = livro;
 	}
 
-	public String gravarLivro() {
-		facade.gravarLivro(livro);
-		addMessage("Sucesso", "Livro Cadastrado com Sucesso.");
-		return "livroLoader";
+	public void gravarLivro() {
+		try{
+			facade.gravarLivro(livro);
+			addMessage("Sucesso", "Livro Cadastrado com Sucesso.");
+			livro = new Livro();
+		}catch(Exception e){
+			showErrorMessage("Erro ao efetivar o cadastro!");
+		}
+		
+		
 
 	}
 	

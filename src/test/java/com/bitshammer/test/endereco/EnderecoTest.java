@@ -2,6 +2,7 @@ package com.bitshammer.test.endereco;
 
 import org.junit.Test;
 
+import com.bitshammer.comum.Endereco;
 import com.bitshammer.webservice.CepInvalidoException;
 import com.bitshammer.webservice.ConsultaCepWebService;
 import com.bitshammer.webservice.IConsultaCepWebService;
@@ -17,7 +18,8 @@ public class EnderecoTest {
 	
 	@Test
 	public void CepExistente() throws CepInvalidoException, Exception{
-		webService.consultarCep("03805090");
+		Endereco endereco = webService.consultarCep("03805090");
+		System.out.println(endereco);
 	}
 	
 	@Test(expected=CepInvalidoException.class)

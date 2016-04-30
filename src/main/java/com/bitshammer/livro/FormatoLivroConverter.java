@@ -5,8 +5,6 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-import com.bitshammer.editora.Editora;
-
 @FacesConverter(value = "formatoLivroConverter", forClass = FormatoLivro.class)
 public class FormatoLivroConverter implements Converter {
 

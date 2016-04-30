@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -98,6 +97,8 @@ public class Autor {
 	@Override
 	public boolean equals(Object obj) {
 		if(obj == null)
+			return false;
+		if(this.id == null)
 			return false;
 		return id.equals(((Autor) obj).getId());
 	}

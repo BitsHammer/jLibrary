@@ -30,8 +30,15 @@ public class CarrinhoBean extends DefaultBean {
 		livro.setTitulo("Teste");
 		Livro livro2 = new Livro();
 		livro2.setTitulo("Blabla");
-		carrinho.adicionarItem(new Item(livro));
-		carrinho.adicionarItem(new Item(livro2));
+		
+		Item item = new Item();
+		item.setLivro(livro);
+		
+		Item item2 = new Item();
+		item.setLivro(livro2);
+				
+		carrinho.adicionarItem(item);
+		carrinho.adicionarItem(item2);
 	}
 
 	/**
