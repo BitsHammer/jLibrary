@@ -159,4 +159,30 @@ public class Endereco {
 		this.cep = cep;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Endereco [getLogradouro()=");
+		builder.append(getLogradouro());
+		builder.append(", getNumero()=");
+		builder.append(getNumero());
+		builder.append(", getComplemento()=");
+		builder.append(getComplemento());
+		builder.append(", getBairro()=");
+		builder.append(getBairro());
+		builder.append(", getLocalidade()=");
+		builder.append(getLocalidade());
+		builder.append(", getUf()=");
+		builder.append(getUf());
+		builder.append(", getCep()=");
+		builder.append(getCep());
+		builder.append("]");
+		return builder.toString();
+	}
+	
+	
+
 }

@@ -49,6 +49,7 @@ public class ClienteTest {
 		endereco.setComplemento("Proximo a avendia Paranagua");
 		endereco.setUf("SP");
 		endereco.setNumero(661);
+		endereco.setLogradouro("Rua Dario Costa Mattos");
 		
 		//Usuario
 		Usuario usuario = new Usuario();
