@@ -6,17 +6,18 @@
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<mapping-file>META-INF/orm.xml</mapping-file>
 		<properties>
-			<property name="javax.persistence.jdbc.url"	value="jdbc:mysql://localhost/jLibrary" />
-			<property name="javax.persistence.jdbc.user" value="root" />
-			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
-			<property name="javax.persistence.schema-generation.database.action" value="none" />
+			<property name="javax.persistence.jdbc.url"	value="jdbc:postgresql://ec2-54-225-165-132.compute-1.amazonaws.com:5432/d74nrupcurbrun" />
+			<property name="javax.persistence.jdbc.user" value="qnjkmtcyyjlzjv" />
+			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
+			<property name="javax.persistence.schema-generation.database.action"
+				value="none" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />
 			<property name="hibernate.show_sql" value="true"/>
 			<property name="hibernate.format_sql" value="true"/>
 			<property name="use_sql_comments" value="true"/>
 			<property name="hibernate.pool_size" value="10"/>
 			<property name="hibernate.ejb.cfgfile" value="META-INF/hibernate.cfg.xml"/>
-			<property name="javax.persistence.jdbc.password" value="92091763"/>			
+			<property name="javax.persistence.jdbc.password" value=" 452nryF1UbfLaiq-bNMFcgjqLN"/>			
 		</properties>
 	</persistence-unit>
 </persistence>
