@@ -25,7 +25,15 @@ public enum Categoria {
 		this.id =id;
 		this.nome = nome;
 	}
-
+	
+	public static Categoria byId(int id){
+		for(Categoria categoria : values()){
+			if(categoria.getId()==id){
+				return categoria;
+			}
+		}
+		return null;
+	}
 	/**
 	 * @return the id
 	 */

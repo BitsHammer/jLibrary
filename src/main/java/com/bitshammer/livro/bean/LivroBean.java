@@ -63,10 +63,17 @@ public class LivroBean extends DefaultBean {
 		this.livro = livro;
 	}
 
-	public void gravarLivro() {
+	public String gravarLivro() {
 		facade.gravarLivro(livro);
 		addMessage("Sucesso", "Livro Cadastrado com Sucesso.");
+		return "livroLoader";
 
+	}
+	
+	public String Consulta(){
+		
+		
+		return null;
 	}
 
 	/**

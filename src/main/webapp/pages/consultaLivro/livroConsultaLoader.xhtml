@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='ISO-8859-1' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/templates/defaultTemplate.xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	<ui:define name="content">
+			<h:outputScript name="/javascript/livroConsulta.js" target="body"/>
+			<br></br>
+		<h:form id="consultaLoader">
+			<p:panel id="panel" header="Cadastro de Livro"
+					style="margin-bottom:10px; width: 100%;">
+				<h:panelGrid columns="7" columnClasses="label, value">
+					
+						<!-- TITULO -->
+						<p:outputLabel for="l_titulo" value="Título" />
+						<p:inputText type="text" id="l_titulo" name="l_titulo"
+									value="#{livroBean.livro.isbn}" />
+							
+						<!-- EDITORA -->
+						<p:outputLabel for="l_editora" value="Editora" />
+						<p:selectOneMenu id="l_editora"
+							value="#{livroBean.livro.editora}" filter="true" filterMatchMode="startsWith" 
+							panelStyle="width:250px" converter="editoraConverter">
+							<f:selectItems value="#{livroBean.listaEditora}" var="editora" itemLabel="#{editora.nome}" itemValue="#{editora}"/>
+						</p:selectOneMenu>						
+						
+						<!-- AUTORES -->
+						 <p:outputLabel for="l_autores" value="Autores:" /> 
+						<p:selectCheckboxMenu id="l_autores" value="#{livroBean.livro.autores}" label="Autores"
+							filter="true" filterMatchMode="startsWith"
+							panelStyle="width:250px" converter="autorConverter">
+							<f:selectItems value="#{livroBean.listaAutor}" var="autor" itemLabel="#{autor.nome}" itemValue="#{autor}"/>
+							<p:ajax event="change"  update="tabelaAutor"/>
+						</p:selectCheckboxMenu>						
+						<p:dataList id="tabelaAutor" value="#{livroBean.livro.autores}"
+							var="autor" emptyMessage="Nenhuma autor selecionado"> 
+				            	<h:outputText value="#{autor.nome}" />
+						</p:dataList>
+						
+						<!-- CATEGORIA -->
+						 <p:outputLabel for="categoria" value="Categoria" /> 
+								<p:selectCheckboxMenu id="categoria"
+									value="#{livroBean.livro.categorias}" style="width:125px" converter="categoriaConverter">
+									<f:selectItems value="#{livroBean.categorias}" var="categoria" itemLabel="#{categoria}" />
+									<p:ajax event="change" update="tabelaCategoria"/>
+						</p:selectCheckboxMenu>						
+						<p:outputLabel value="Selecionados" />
+						<p:dataList id="tabelaCategoria" value="#{livroBean.livro.categorias}"
+							var="categoria" emptyMessage="Nenhuma categoria selecionada">
+					           #{categoria}
+						</p:dataList>
+						
+						<p:commandButton value="Consultar" onclick="return validarCampos()" id="btn_consultar" action="#{livroBean.consultar()}" />
+						<br></br>
+						</h:panelGrid>
+						</p:panel> 			
+		    			<p:dataGrid var="car" value="#{dataGridView.cars}" columns="3" layout="grid"
+					        rows="12" paginator="true" id="cars"
+					        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					        rowsPerPageTemplate="6,12,16"> 
+				        <f:facet name="header">
+				            Resultado
+				        </f:facet>			 
+				        <p:panel header="#{car.id}" style="text-align:center">
+				            <h:panelGrid columns="1" style="width:100%">
+				                <p:graphicImage name="demo/images/car/#{car.brand}.gif"/>			 
+				                <h:outputText value="#{car.year}" />			 
+				                <p:commandLink update=":form:carDetail" oncomplete="PF('carDialog').show()" title="View Detail">
+				                    <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
+				                    <f:setPropertyActionListener value="#{car}" target="#{dataGridView.selectedCar}" />
+				                </p:commandLink>
+				            </h:panelGrid>
+				        </p:panel>			 
+					    </p:dataGrid>			 
+					    <p:dialog header="Car Info" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+					        <p:outputPanel id="carDetail" style="text-align:center;">
+					            <p:panelGrid  columns="2" rendered="#{not empty dataGridView.selectedCar}" columnClasses="label,value">
+					                <f:facet name="header">
+					                    <p:graphicImage name="demo/images/car/#{dataGridView.selectedCar.brand}-big.gif"/> 
+					                </f:facet>			 
+					                <h:outputText value="Id:" />
+					                <h:outputText value="#{dataGridView.selectedCar.id}" />			 
+					                <h:outputText value="Year" />
+					                <h:outputText value="#{dataGridView.selectedCar.year}" />			 
+					                <h:outputText value="Color:" />
+					                <h:outputText value="#{dataGridView.selectedCar.color}" style="color:#{dataGridView.selectedCar.color}"/>			 
+					                <h:outputText value="Price" />
+					                <h:outputText value="$#{dataGridView.selectedCar.price}" />
+					            </p:panelGrid>
+					        </p:outputPanel>
+					    </p:dialog> 
+						  
+		</h:form>
+		</ui:define>
+	</ui:composition>

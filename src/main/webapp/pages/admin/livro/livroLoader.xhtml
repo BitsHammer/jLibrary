@@ -17,7 +17,7 @@
 						<p:inputText type="text" id="l_isbn" name="l_isbn"
 							value="#{livroBean.livro.isbn}" />
 
-						<p:outputLabel for="l_titulo" value="T�tulo" />
+						<p:outputLabel for="l_titulo" value="Título" />
 						<p:inputText type="text" size="50" maxlength="50" id="l_titulo"
 							name="l_titulo" value="#{livroBean.livro.titulo}" />
 
@@ -35,7 +35,7 @@
 				            	<h:outputText value="#{autor.nome}" />
 				       		</p:dataList>
 
-						<p:outputLabel for="dt_publicacao" value="Data de Publica��o" />
+						<p:outputLabel for="dt_publicacao" value="Data de Publicação" />
 						<p:calendar id="dt_publicacao" value="#{livroBean.livro.dataPublicacao}" />
 
 						<!-- EDITORA -->
@@ -48,7 +48,7 @@
 							
 						<p:outputLabel for="categoria" value="Categoria" />
 						<p:selectCheckboxMenu id="categoria"
-							value="#{livroBean.livro.categorias}" style="width:125px">
+							value="#{livroBean.livro.categorias}" style="width:125px" converter="categoriaConverter">
 							<f:selectItems value="#{livroBean.categorias}" var="categoria" itemLabel="#{categoria}" />
 							<p:ajax event="change" update="tabelaCategoria"/>
 						</p:selectCheckboxMenu>
@@ -59,7 +59,7 @@
 				            	#{categoria}
 				       		</p:dataList>
 
-						<p:outputLabel for="l_indice" value="�ndice" />
+						<p:outputLabel for="l_indice" value="Índice" />
 						<p:inputTextarea id="l_indice" rows="6" cols="33" value="#{livroBean.livro.indice}"/>
 
 						<p:outputLabel for="formato" value="Formato" />
@@ -68,18 +68,18 @@
 								<f:selectItems value="#{livroBean.formatos}" var="g" itemValue="#{g}" itemLabel="#{g}"/>	
 						</p:selectOneMenu>
 
-						<p:outputLabel for="l_numero_paginas" value="N�mero de P�ginas" />
+						<p:outputLabel for="l_numero_paginas" value="Número de Páginas" />
 						<p:inputText size="10" maxlength="10" id="l_numero_paginas"
 							name="l_numero_paginas" value="#{livroBean.livro.numeroPaginas}" />
 
 						<!-- PRE�O DE VENDA-->
-						<p:outputLabel for="l_preco_venda" value="Pre�o de Venda" />
+						<p:outputLabel for="l_preco_venda" value="Preço de Venda" />
 						<p:inputText size="10" maxlength="10" id="l_preco_venda"
 							name="l_titulo" value="#{livroBean.livro.precoVenda}">
 							<p:ajax event="change" update="l_margem_lucro"/>	
 						</p:inputText>
 							
-						<p:outputLabel for="l_preco_custo" value="Pre�o de Custo" />
+						<p:outputLabel for="l_preco_custo" value="Preço de Custo" />
 						<p:inputText id="l_preco_custo" value="#{livroBean.livro.precoCusto}">
 							<p:ajax event="change" update="l_margem_lucro"/>	
 						</p:inputText>
