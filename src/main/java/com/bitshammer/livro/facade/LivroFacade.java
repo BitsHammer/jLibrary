@@ -3,6 +3,9 @@
  */
 package com.bitshammer.livro.facade;
 
+import java.util.List;
+
+import com.bitshammer.cliente.Cliente;
 import com.bitshammer.livro.Livro;
 import com.bitshammer.livro.dao.ILivroDao;
 import com.bitshammer.livro.dao.LivroDao;
@@ -24,4 +27,9 @@ public class LivroFacade implements ILivroFacade {
 		dao.persist(livro);
 	}
 
+	@Override
+	public List<Livro> pesquisarCliente(Livro livro) {		
+		return dao.pesquisarLivro(livro);
+	}
+	
 }

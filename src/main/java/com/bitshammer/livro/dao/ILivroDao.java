@@ -3,6 +3,8 @@
  */
 package com.bitshammer.livro.dao;
 
+import java.util.List;
+
 import com.bitshammer.livro.Livro;
 
 /**
@@ -11,6 +13,8 @@ import com.bitshammer.livro.Livro;
  */
 public interface ILivroDao {
 	
-	void persist(Livro l);	
+	void persist(Livro l);
+
+	List<Livro> pesquisarLivro(Livro livro);	
 
 }

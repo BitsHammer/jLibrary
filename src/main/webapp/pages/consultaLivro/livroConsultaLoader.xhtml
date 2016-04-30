@@ -52,47 +52,50 @@
 							var="categoria" emptyMessage="Nenhuma categoria selecionada">
 					           #{categoria}
 						</p:dataList>
-						
-						<p:commandButton value="Consultar" onclick="return validarCampos()" id="btn_consultar" action="#{livroBean.consultar()}" />
+											
+						<p:commandButton update="cars" value="Consultar" onclick="return validarCampos()" id="btn_consultar" action="#{livroBean.pesquisaLivro()}" />
 						<br></br>
-						</h:panelGrid>
-						</p:panel> 			
-		    			<p:dataGrid var="car" value="#{dataGridView.cars}" columns="3" layout="grid"
-					        rows="12" paginator="true" id="cars"
-					        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-					        rowsPerPageTemplate="6,12,16"> 
-				        <f:facet name="header">
-				            Resultado
-				        </f:facet>			 
-				        <p:panel header="#{car.id}" style="text-align:center">
-				            <h:panelGrid columns="1" style="width:100%">
-				                <p:graphicImage name="demo/images/car/#{car.brand}.gif"/>			 
-				                <h:outputText value="#{car.year}" />			 
-				                <p:commandLink update=":form:carDetail" oncomplete="PF('carDialog').show()" title="View Detail">
-				                    <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
-				                    <f:setPropertyActionListener value="#{car}" target="#{dataGridView.selectedCar}" />
-				                </p:commandLink>
-				            </h:panelGrid>
-				        </p:panel>			 
-					    </p:dataGrid>			 
+						
+			</h:panelGrid>
+		</p:panel> 			
+		    		
+		<p:dataGrid var="livro" value="#{livroBean.listaLivro}" columns="3" layout="grid"
+			rows="12" paginator="true" id="cars"
+			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			rowsPerPageTemplate="6,12,16">
+					 
+		   <f:facet name="header">
+			          Livros a Venda
+			</f:facet>
+					 
+			<p:panel header="#{livro.titulo}" style="text-align:center">
+				 <h:panelGrid columns="1" style="width:100%">
+				 	   <h:outputText value="Título: " />
+					   <h:outputText value="#{livro.precoVenda}" />					               
+					                <p:commandLink  oncomplete="PF('carDialog').show()" title="View Detail">
+					                    <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
+					                    <f:setPropertyActionListener value="#{livro}" target="#{livroBean.selectedLivro}" />
+					                </p:commandLink>
+					            </h:panelGrid>
+					        </p:panel> 
+    					</p:dataGrid>
+
 					    <p:dialog header="Car Info" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
 					        <p:outputPanel id="carDetail" style="text-align:center;">
-					            <p:panelGrid  columns="2" rendered="#{not empty dataGridView.selectedCar}" columnClasses="label,value">
-					                <f:facet name="header">
-					                    <p:graphicImage name="demo/images/car/#{dataGridView.selectedCar.brand}-big.gif"/> 
-					                </f:facet>			 
-					                <h:outputText value="Id:" />
-					                <h:outputText value="#{dataGridView.selectedCar.id}" />			 
-					                <h:outputText value="Year" />
-					                <h:outputText value="#{dataGridView.selectedCar.year}" />			 
-					                <h:outputText value="Color:" />
-					                <h:outputText value="#{dataGridView.selectedCar.color}" style="color:#{dataGridView.selectedCar.color}"/>			 
+					            <p:panelGrid  columns="2" rendered="#{not empty livroBean.selectedLivro}" columnClasses="label,value">					               
+					                <h:outputText value="Título: " />
+					                <h:outputText value="#{livroBean.selectedLivro.titulo}" />					 
+					                <h:outputText value="Número de Páginas" />
+					                <h:outputText value="#{livroBean.selectedLivro.numeroPaginas}" />					 
+					                <!-- <h:outputText value="Color:" />
+					                <h:outputText value="#{livroBean.selectedLivro.editora}"/>
+					 
 					                <h:outputText value="Price" />
-					                <h:outputText value="$#{dataGridView.selectedCar.price}" />
+					                <h:outputText value="$#{livroBean.selectedLivro.price}" /> -->
 					            </p:panelGrid>
 					        </p:outputPanel>
-					    </p:dialog> 
-						  
-		</h:form>
-		</ui:define>
-	</ui:composition>
+					    </p:dialog>					 
+</h:form>
+	</ui:define>
+</ui:composition>
+

@@ -19,6 +19,14 @@
 			<to-view-id>/pages/admin/livro/livroListarLoader.xhtml</to-view-id>
 			<redirect />
 		</navigation-case>
+		
+		<navigation-case>
+			<from-outcome>livroConsultaLoader</from-outcome>
+			<to-view-id>/pages/consultaLivro/livroConsultaLoader.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		
+		
 		<navigation-case>
 			<from-outcome>carrinhoListarLoader</from-outcome>
 			<to-view-id>/pages/carrinho/carrinhoListarLoader.xhtml</to-view-id>

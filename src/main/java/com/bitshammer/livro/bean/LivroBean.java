@@ -9,6 +9,7 @@ import javax.faces.bean.ViewScoped;
 
 import com.bitshammer.autor.Autor;
 import com.bitshammer.autor.AutorMock;
+import com.bitshammer.cliente.Cliente;
 import com.bitshammer.editora.Editora;
 import com.bitshammer.editora.EditoraMock;
 import com.bitshammer.infra.bean.DefaultBean;
@@ -34,6 +35,11 @@ public class LivroBean extends DefaultBean {
 	private List<Autor> listaAutor= new ArrayList<>();
 	
 	private List<Editora> listaEditora= new ArrayList<>();
+	
+	/**
+	 * Lista de livro
+	 */
+	private List<Livro> listaLivro= new ArrayList<>();
 
 	public LivroBean() {
 		listaAutor = AutorMock.getInstance().listaAutor;
@@ -70,10 +76,30 @@ public class LivroBean extends DefaultBean {
 
 	}
 	
-	public String Consulta(){
-		
-		
-		return null;
+	 public void setSelectedLivro(Livro livro) {
+	        this.livro = livro;
+	 }
+	 
+	 public Livro getSelectedLivro() {
+	        return livro;
+	 }
+	 
+	public void pesquisaLivro(){
+		try{
+			listaLivro = facade.pesquisarCliente(livro);
+			if(listaLivro.isEmpty())
+				showErrorMessage("Nenhum livro encontrado!");
+		}catch(Exception e){
+			showErrorMessage("Erro ao pesquisar livro!");
+		}
+	}
+
+	public List<Livro> getListaLivro() {
+		return listaLivro;
+	}
+
+	public void setListaLivro(List<Livro> listaLivro) {
+		this.listaLivro = listaLivro;
 	}
 
 	/**
