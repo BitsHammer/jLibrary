@@ -8,6 +8,7 @@ import static org.junit.Assert.*;
 import java.util.Arrays;
 import java.util.Date;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.bitshammer.autor.AutorMock;
@@ -26,10 +27,11 @@ public class LivroTest {
 	
 	private ILivroFacade facade = new LivroFacade();
 	
+	private static Livro livro;
 	
-	@Test
-	public void salvarLivro(){
-		Livro livro = new Livro();
+	@BeforeClass
+	public static void tearUp(){
+		livro = new Livro();
 		livro.setNumeroPaginas(999);
 		livro.setTitulo("TESTE");
 		livro.setEditora(EditoraMock.getInstance().listaEditora.get(0));
@@ -44,6 +46,10 @@ public class LivroTest {
 		livro.setIsbn(99l);
 		livro.setQuantidadeEstoque(24);
 		livro.setFormato(FormatoLivro.BROCHURA);
+	}
+	
+	@Test
+	public void salvarLivro(){
 		facade.gravarLivro(livro);
 		assertNotNull(livro.getId());
 		System.out.println(livro);
@@ -73,7 +79,28 @@ public class LivroTest {
 		FormatoLivro formato = FormatoLivro.byId(id);
 		System.out.println(formato);
 		assertEquals(formato, FormatoLivro.BROCHURA);
-		
+	}
+	
+	@Test
+	public void atualizarLivro(){
+		Livro livro = new Livro();
+		livro.setNumeroPaginas(999);
+		livro.setTitulo("TESTE");
+		livro.setEditora(EditoraMock.getInstance().listaEditora.get(0));
+		livro.setAutores(AutorMock.getInstance().listaAutor);
+		livro.setCategorias(Arrays.asList(Categoria.values()));
+		livro.setNumeroPaginas(999);
+		livro.setPrecoCusto(99d);
+		livro.setPrecoVenda(299d);
+		livro.setDataPublicacao(new Date());
+		livro.setIndice("Indice");
+		livro.setResumo("Resumo");
+		livro.setIsbn(99l);
+		livro.setQuantidadeEstoque(24);
+		livro.setFormato(FormatoLivro.BROCHURA);
+		facade.gravarLivro(livro);
+		livro.setTitulo("Novo titulo");
+		facade.atualizarLivro(livro);
 	}
 
 }
