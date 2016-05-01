@@ -31,6 +31,8 @@ public class LivroBean extends DefaultBean {
 
 	private Livro livro = new Livro();
 	
+	private Livro selectLivro = new Livro();
+	
 	private List<Autor> listaAutor= new ArrayList<>();
 	
 	private List<Editora> listaEditora= new ArrayList<>();
@@ -75,18 +77,16 @@ public class LivroBean extends DefaultBean {
 			livro = new Livro();
 		}catch(Exception e){
 			showErrorMessage("Erro ao efetivar o cadastro!");
-		}
-		
-		
+		}	
 
 	}
 	
 	 public void setSelectedLivro(Livro livro) {
-	        this.livro = livro;
+	        this.selectLivro = livro;	
 	 }
 	 
 	 public Livro getSelectedLivro() {
-	        return livro;
+	        return selectLivro;
 	 }
 	 
 	public void pesquisaLivro(){

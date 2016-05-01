@@ -10,92 +10,105 @@
 			<h:outputScript name="/javascript/livroConsulta.js" target="body"/>
 			<br></br>
 		<h:form id="consultaLoader">
-			<p:panel id="panel" header="Cadastro de Livro"
-					style="margin-bottom:10px; width: 100%;">
-				<h:panelGrid columns="7" columnClasses="label, value">
-					
-						<!-- TITULO -->
-						<p:outputLabel for="l_titulo" value="Título" />
-						<p:inputText type="text" id="l_titulo" name="l_titulo"
-									value="#{livroBean.livro.isbn}" />
-							
-						<!-- EDITORA -->
-						<p:outputLabel for="l_editora" value="Editora" />
-						<p:selectOneMenu id="l_editora"
-							value="#{livroBean.livro.editora}" filter="true" filterMatchMode="startsWith" 
-							panelStyle="width:250px" converter="editoraConverter">
-							<f:selectItems value="#{livroBean.listaEditora}" var="editora" itemLabel="#{editora.nome}" itemValue="#{editora}"/>
-						</p:selectOneMenu>						
-						
-						<!-- AUTORES -->
-						 <p:outputLabel for="l_autores" value="Autores:" /> 
-						<p:selectCheckboxMenu id="l_autores" value="#{livroBean.livro.autores}" label="Autores"
-							filter="true" filterMatchMode="startsWith"
-							panelStyle="width:250px" converter="autorConverter">
-							<f:selectItems value="#{livroBean.listaAutor}" var="autor" itemLabel="#{autor.nome}" itemValue="#{autor}"/>
-							<p:ajax event="change"  update="tabelaAutor"/>
-						</p:selectCheckboxMenu>						
-						<p:dataList id="tabelaAutor" value="#{livroBean.livro.autores}"
-							var="autor" emptyMessage="Nenhuma autor selecionado"> 
-				            	<h:outputText value="#{autor.nome}" />
-						</p:dataList>
-						
-						<!-- CATEGORIA -->
-						 <p:outputLabel for="categoria" value="Categoria" /> 
-								<p:selectCheckboxMenu id="categoria"
-									value="#{livroBean.livro.categorias}" style="width:125px" converter="categoriaConverter">
-									<f:selectItems value="#{livroBean.categorias}" var="categoria" itemLabel="#{categoria}" />
-									<p:ajax event="change" update="tabelaCategoria"/>
-						</p:selectCheckboxMenu>						
-						<p:outputLabel value="Selecionados" />
-						<p:dataList id="tabelaCategoria" value="#{livroBean.livro.categorias}"
-							var="categoria" emptyMessage="Nenhuma categoria selecionada">
-					           #{categoria}
-						</p:dataList>
-											
-						<p:commandButton update="cars" value="Consultar" onclick="return validarCampos()" id="btn_consultar" action="#{livroBean.pesquisaLivro()}" />
-						<br></br>
-						
-			</h:panelGrid>
-		</p:panel> 			
-		    		
-		<p:dataGrid var="livro" value="#{livroBean.listaLivro}" columns="3" layout="grid"
-			rows="12" paginator="true" id="cars"
-			paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-			rowsPerPageTemplate="6,12,16">
-					 
-		   <f:facet name="header">
-			          Livros a Venda
-			</f:facet>
-					 
-			<p:panel header="#{livro.titulo}" style="text-align:center">
-				 <h:panelGrid columns="1" style="width:100%">
-				 	   <h:outputText value="Título: " />
-					   <h:outputText value="#{livro.precoVenda}" />					               
-					                <p:commandLink  oncomplete="PF('carDialog').show()" title="View Detail">
-					                    <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
-					                    <f:setPropertyActionListener value="#{livro}" target="#{livroBean.selectedLivro}" />
-					                </p:commandLink>
-					            </h:panelGrid>
-					        </p:panel> 
-    					</p:dataGrid>
-
-					    <p:dialog header="Car Info" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
-					        <p:outputPanel id="carDetail" style="text-align:center;">
-					            <p:panelGrid  columns="2" rendered="#{not empty livroBean.selectedLivro}" columnClasses="label,value">					               
-					                <h:outputText value="Título: " />
-					                <h:outputText value="#{livroBean.selectedLivro.titulo}" />					 
-					                <h:outputText value="Número de Páginas" />
-					                <h:outputText value="#{livroBean.selectedLivro.numeroPaginas}" />					 
-					                <!-- <h:outputText value="Color:" />
-					                <h:outputText value="#{livroBean.selectedLivro.editora}"/>
-					 
-					                <h:outputText value="Price" />
-					                <h:outputText value="$#{livroBean.selectedLivro.price}" /> -->
-					            </p:panelGrid>
-					        </p:outputPanel>
-					    </p:dialog>					 
-</h:form>
+				<p:panel id="panel" header="Cadastro de Livro"
+						style="margin-bottom:10px; width: 100%;">
+						<h:panelGrid columns="7" columnClasses="label, value">					
+								<!-- TITULO -->
+								<p:outputLabel for="l_titulo" value="Título" />
+								<p:inputText type="text" id="l_titulo" name="l_titulo"
+											value="#{livroBean.livro.isbn}" />
+									
+								<!-- EDITORA -->
+								<p:outputLabel for="l_editora" value="Editora" />
+								<p:selectOneMenu id="l_editora"
+									value="#{livroBean.livro.editora}" filter="true" filterMatchMode="startsWith" 
+									panelStyle="width:250px" converter="editoraConverter">
+									<f:selectItems value="#{livroBean.listaEditora}" var="editora" itemLabel="#{editora.nome}" itemValue="#{editora}"/>
+								</p:selectOneMenu>						
+								
+								<!-- AUTORES -->
+								 <p:outputLabel for="l_autores" value="Autores:" /> 
+								<p:selectCheckboxMenu id="l_autores" value="#{livroBean.livro.autores}" label="Autores"
+									filter="true" filterMatchMode="startsWith"
+									panelStyle="width:250px" converter="autorConverter">
+									<f:selectItems value="#{livroBean.listaAutor}" var="autor" itemLabel="#{autor.nome}" itemValue="#{autor}"/>
+									<p:ajax event="change"  update="tabelaAutor"/>
+								</p:selectCheckboxMenu>						
+								<p:dataList id="tabelaAutor" value="#{livroBean.livro.autores}"
+									var="autor" emptyMessage="Nenhuma autor selecionado"> 
+						            	<h:outputText value="#{autor.nome}" />
+								</p:dataList>
+								
+								<!-- CATEGORIA -->
+								 <p:outputLabel for="categoria" value="Categoria" /> 
+										<p:selectCheckboxMenu id="categoria"
+											value="#{livroBean.livro.categorias}" style="width:125px" converter="categoriaConverter">
+											<f:selectItems value="#{livroBean.categorias}" var="categoria" itemLabel="#{categoria}" />
+											<p:ajax event="change" update="tabelaCategoria"/>
+								</p:selectCheckboxMenu>						
+								<p:outputLabel value="Selecionados" />
+								<p:dataList id="tabelaCategoria" value="#{livroBean.livro.categorias}"
+									var="categoria" emptyMessage="Nenhuma categoria selecionada">
+							           #{categoria}
+								</p:dataList>
+																				
+								<p:commandButton update="cars" value="Consultar" onclick="return validarCampos()" id="btn_consultar" action="#{livroBean.pesquisaLivro()}" />
+								<br></br>						
+					</h:panelGrid>
+				</p:panel>			
+			    		
+				<p:dataGrid var="livro" value="#{livroBean.listaLivro}" columns="3" layout="grid"
+					rows="12" paginator="true" id="cars"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="6,12,16">					 
+				   <f:facet name="header">
+					          Livros a Venda
+					</f:facet>					 
+					<p:panel header="#{livro.titulo}" style="text-align:center">
+						<h:panelGrid columns="1" style="width:100%">				        
+						        <p:dataList value="#{livro.autores}" var="autor" type="ordered">
+							        <f:facet name="header">
+							            Autores
+							        </f:facet>
+							        #{autor.nome}
+							    </p:dataList>   	  
+						  	   <!-- <h:outputText value="Autor " />
+							   <h:outputText value="#{livro.autores}" converter="autorConverter" />	 -->
+						 	   <h:outputText value="Preco " />
+							   <h:outputText value="#{livro.precoVenda}" />					               
+							   <p:commandLink  oncomplete="PF('carDialog').show()" title="View Detail">
+							   	  <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
+							      <f:setPropertyActionListener value="#{livro}" target="#{livroBean.selectedLivro}" />
+							   </p:commandLink>	
+							   
+							 <!--   <p:commandLink  title="View Detail">
+							   	  <h:outputText styleClass="ui-icon ui-icon-cart" style="margin:0 auto;" />
+							      <f:setPropertyActionListener value="#{livro}" target="#{carrinhoBean.adicionarItem(livro)}" />
+							   </p:commandLink>	 -->	
+							   
+							   
+							   <p:commandButton ajax="true" action="#{carrinhoBean.adicionarItem(livro)}" icon="ui-icon-cart" title="Adicionar ao Carrinho"/>	   
+							   
+						</h:panelGrid>
+					</p:panel> 
+		    </p:dataGrid>
+		
+			<p:dialog header="Detalhes do Livro" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+					<p:outputPanel id="carDetail" style="text-align:center;">
+						<p:panelGrid  columns="2" rendered="#{not empty livroBean.selectedLivro}" columnClasses="label,value">					               
+							<h:outputText value="Titulo: " />
+							<h:outputText value="#{livroBean.selectedLivro.titulo}" />					 
+							<h:outputText value="Numero de Paginas" />
+							<h:outputText value="#{livroBean.selectedLivro.numeroPaginas}" />
+												 
+							<!-- <h:outputText value="Color:" />
+							<h:outputText value="#{livroBean.selectedLivro.editora}"/>
+							<h:outputText value="Price" />
+							<h:outputText value="$#{livroBean.selectedLivro.price}" /> -->
+						</p:panelGrid>
+					</p:outputPanel>
+			</p:dialog>					 
+		</h:form>
 	</ui:define>
 </ui:composition>
 

@@ -54,5 +54,16 @@ public class CarrinhoBean extends DefaultBean {
 	public void setCarrinho(Carrinho carrinho) {
 		this.carrinho = carrinho;
 	}
+	
+	public String adicionarItem(Livro livro){
+		carrinho = new Carrinho();
+		Item item=new Item();
+		item.setLivro(livro);
+		
+		carrinho.adicionarItem(item);
+		
+		
+		return "carrinho";
+	}
 
 }
