@@ -5,7 +5,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-@FacesConverter(value = "formatoLivroConverter", forClass = FormatoLivro.class)
+@FacesConverter(value = "formatoLivroConverter")
 public class FormatoLivroConverter implements Converter {
 
 	@Override
