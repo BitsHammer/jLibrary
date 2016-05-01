@@ -80,7 +80,9 @@
 							   	  <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
 							      <f:setPropertyActionListener value="#{livro}" target="#{livroBean.selectedLivro}" />
 							   </p:commandLink>	 
-							   <p:commandButton ajax="true" action="#{carrinhoBean.adicionarItem(livro)}" icon="ui-icon-cart" title="Adicionar ao Carrinho"/>
+							   <p:commandButton ajax="true" icon="ui-icon-cart" title="Adicionar ao Carrinho" onclick="PF('dlg1').show();" rendered="#{securityBean.usuarioCliente}">
+							   		<f:setPropertyActionListener value="#{livro}" target="#{livroBean.selectedLivro}" />
+							   </p:commandButton>
 							   <p:commandButton ajax="false" action="#{livroBean.alterarLivro(livro)}" icon="ui-icon-pencil" title="Alterar" rendered="#{securityBean.usuarioAdministrador}"/>
 							   <p:commandButton update="consultaLoader" ajax="false" action="#{livroBean.excluirLivro(livro)}" icon="ui-icon-trash" title="Excluir" rendered="#{securityBean.usuarioAdministrador}"/>	   
 							   
@@ -102,6 +104,15 @@
 							<h:outputText value="$#{livroBean.selectedLivro.price}" /> -->
 						</p:panelGrid>
 					</p:outputPanel>
+			</p:dialog>
+			
+			<p:dialog header="Adicionar ao carrinho" widgetVar="dlg1" minHeight="40" resizable="false">
+    			<h:outputText value="Tem certeza que deseja adicionar esse item ao carrinho de compras?" /> <br></br>
+    			<p:outputLabel value="Quantidade" for="spnQnt"/>
+    			<p:spinner name="spnQnt" id="spnQnt" min="1" value="1" binding="#{quantidade}"/> <br></br>
+    			
+    			<p:commandButton ajax="true" value="Sim" action="#{carrinhoBean.adicionarItem(livroBean.selectedLivro, quantidade.value)}" oncomplete="PF('dlg1').hide();"/>
+    			<p:commandButton value="Não" onclick="PF('dlg1').hide();" />
 			</p:dialog>					 
 		</h:form>
 	</ui:define>
