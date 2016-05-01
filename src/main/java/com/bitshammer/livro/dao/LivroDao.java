@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
-import com.bitshammer.cliente.Cliente;
 import com.bitshammer.infra.dao.JPADao;
 import com.bitshammer.livro.Livro;
 

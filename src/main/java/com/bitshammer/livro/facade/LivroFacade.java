@@ -5,7 +5,6 @@ package com.bitshammer.livro.facade;
 
 import java.util.List;
 
-import com.bitshammer.cliente.Cliente;
 import com.bitshammer.livro.Livro;
 import com.bitshammer.livro.dao.ILivroDao;
 import com.bitshammer.livro.dao.LivroDao;

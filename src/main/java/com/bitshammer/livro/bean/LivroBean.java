@@ -9,7 +9,6 @@ import javax.faces.bean.ViewScoped;
 
 import com.bitshammer.autor.Autor;
 import com.bitshammer.autor.AutorMock;
-import com.bitshammer.cliente.Cliente;
 import com.bitshammer.editora.Editora;
 import com.bitshammer.editora.EditoraMock;
 import com.bitshammer.infra.bean.DefaultBean;
