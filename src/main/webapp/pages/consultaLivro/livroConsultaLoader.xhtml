@@ -12,9 +12,11 @@
 		<h:form id="consultaLoader">
 				<p:panel id="panel" header="Cadastro de Livro"
 						style="margin-bottom:10px; width: 100%;">
-						<h:panelGrid columns="7" columnClasses="label, value">					
+						
+						<h:panelGrid columns="7" columnClasses="label, value">	
+										
 								<!-- TITULO -->
-								<p:outputLabel for="l_titulo" value="Título" />
+								<p:outputLabel for="l_titulo" value="Titulo" />
 								<p:inputText type="text" id="l_titulo" name="l_titulo"
 											value="#{livroBean.livro.isbn}" />
 									
@@ -27,7 +29,7 @@
 								</p:selectOneMenu>						
 								
 								<!-- AUTORES -->
-								 <p:outputLabel for="l_autores" value="Autores:" /> 
+								<p:outputLabel for="l_autores" value="Autores:" /> 
 								<p:selectCheckboxMenu id="l_autores" value="#{livroBean.livro.autores}" label="Autores"
 									filter="true" filterMatchMode="startsWith"
 									panelStyle="width:250px" converter="autorConverter">
@@ -75,36 +77,69 @@
 						  	   <!-- <h:outputText value="Autor " />
 							   <h:outputText value="#{livro.autores}" converter="autorConverter" />	 -->
 						 	   <h:outputText value="Preco " />
-							   <h:outputText value="#{livro.precoVenda}" />					               
+							   <h:outputText value="#{livro.precoVenda}" />	
+							   				               
 							   <p:commandLink  oncomplete="PF('carDialog').show()" title="View Detail">
 							   	  <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
 							      <f:setPropertyActionListener value="#{livro}" target="#{livroBean.selectedLivro}" />
 							   </p:commandLink>	
 							   
-							 <!--   <p:commandLink  title="View Detail">
+							 <p:commandLink  title="Adicionar ao Carrinho">
 							   	  <h:outputText styleClass="ui-icon ui-icon-cart" style="margin:0 auto;" />
 							      <f:setPropertyActionListener value="#{livro}" target="#{carrinhoBean.adicionarItem(livro)}" />
-							   </p:commandLink>	 -->	
-							   
-							   
-							   <p:commandButton ajax="true" action="#{carrinhoBean.adicionarItem(livro)}" icon="ui-icon-cart" title="Adicionar ao Carrinho"/>	   
-							   
+							  </p:commandLink>	 
+							  
+							   <!-- <p:commandButton ajax="true" action="#{carrinhoBean.adicionarItem(livro)}" icon="ui-icon-cart" title="Adicionar ao Carrinho"/> -->							   
 						</h:panelGrid>
 					</p:panel> 
 		    </p:dataGrid>
 		
 			<p:dialog header="Detalhes do Livro" widgetVar="carDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
-					<p:outputPanel id="carDetail" style="text-align:center;">
-						<p:panelGrid  columns="2" rendered="#{not empty livroBean.selectedLivro}" columnClasses="label,value">					               
-							<h:outputText value="Titulo: " />
-							<h:outputText value="#{livroBean.selectedLivro.titulo}" />					 
-							<h:outputText value="Numero de Paginas" />
-							<h:outputText value="#{livroBean.selectedLivro.numeroPaginas}" />
-												 
-							<!-- <h:outputText value="Color:" />
-							<h:outputText value="#{livroBean.selectedLivro.editora}"/>
-							<h:outputText value="Price" />
-							<h:outputText value="$#{livroBean.selectedLivro.price}" /> -->
+						<p:outputPanel id="carDetail" style="text-align:center;" rendered="#{not empty livroBean.selectedLivro}">
+							<p:panelGrid  columns="2" rendered="#{not empty livroBean.selectedLivro}" columnClasses="label,value"> 					               
+								
+								<h:outputText value="Resumo " />												
+								<p:inputTextarea rows="6" cols="33" value="#{livroBean.selectedLivro.resumo}" disabled="true"/>							
+								
+								<h:outputText value="Sumario " />							
+								<p:inputTextarea rows="6" cols="33" value="#{livroBean.selectedLivro.indice}" disabled="true"/>
+							 
+								<h:outputText value="Autores" />	
+							  <p:dataTable var="autor" value="#{livroBean.selectedLivro.autores}">
+								    <p:column headerText="Nome">
+								        <h:outputText value="#{autor.nome}" />
+								    </p:column>
+								 
+								    <p:column headerText="Data de Nascimento">
+								        <h:outputText value="#{autor.dtNascimento}" />
+								    </p:column>
+								 
+								    <p:column headerText="Local de Nascimento">
+								        <h:outputText value="#{autor.localNascimento}" />
+								    </p:column>
+								 
+								    <p:column headerText="Local da Morte">
+								        <h:outputText value="#{autor.localMorte}" />
+								    </p:column>
+								    
+								     <p:column headerText="Biografia">							       
+								        <h:inputTextarea value="#{autor.biografia}" disabled="true"></h:inputTextarea>
+								    </p:column>							    
+							 </p:dataTable>
+							
+								<h:outputText value="Formato" />
+								<h:outputText value="#{livroBean.selectedLivro.formato}" /> 
+								
+								<h:outputText value="Editora" />
+								<h:outputText value="#{livroBean.selectedLivro.editora.nome}" />
+								
+								<h:outputText value="Numero de Paginas" />
+								<h:outputText value="#{livroBean.selectedLivro.numeroPaginas}" />							
+								
+								<h:outputText value="Data de Publicacao" />
+								<h:outputText value="#{livroBean.selectedLivro.dataPublicacao}" />
+							
+						
 						</p:panelGrid>
 					</p:outputPanel>
 			</p:dialog>					 

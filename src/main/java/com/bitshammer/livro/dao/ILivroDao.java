@@ -13,8 +13,29 @@ import com.bitshammer.livro.Livro;
  */
 public interface ILivroDao {
 	
+	/**
+	 * Persiste um livro
+	 * @param l
+	 */
 	void persist(Livro l);
 
-	List<Livro> pesquisarLivro(Livro livro);	
+	/**
+	 * Pesquisa um livro
+	 * @param livro
+	 * @return
+	 */
+	List<Livro> pesquisarLivro(Livro livro);
+
+	/**
+	 * Atualiza um livro
+	 * @param livro
+	 */
+	void update(Livro livro);
+
+	/**
+	 * Exclui um livro
+	 * @param livro
+	 */
+	void remove(Livro livro);	
 
 }

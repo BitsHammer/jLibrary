@@ -15,6 +15,11 @@
 			<redirect />
 		</navigation-case>
 		<navigation-case>
+			<from-outcome>alterarLivroLoader</from-outcome>
+			<to-view-id>/pages/admin/livro/alterarLivroLoader.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
 			<from-outcome>livroListarLoader</from-outcome>
 			<to-view-id>/pages/admin/livro/livroListarLoader.xhtml</to-view-id>
 			<redirect />
