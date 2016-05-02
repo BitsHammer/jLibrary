@@ -103,9 +103,25 @@
 
 
 					<p:outputLabel for="senha" value="Senha:" />
-					<p:inputText type="password" id="senha"
-						value="#{clienteBean.cliente.usuario.senha}" maxlength="6"  required="true" requiredMessage="Campo 'Senha' preenchimento obrigatório"/>
+					<p:password id="senha" 
+						value="#{clienteBean.cliente.usuario.senha}"
+						required="true"
+						requiredMessage="Campo 'Senha' preenchimento obrigatório" 
+						match="senha2"
+						goodLabel="Boa!"
+						promptLabel="Digita sua senha"
+						weakLabel="Fraca!"
+						strongLabel="Forte!"
+						feedback="true"
+						/>
 					<p:message for="senha"/>
+					<p:outputLabel for="senha" value="Confirme a senha:" />
+					<p:password id="senha2" 
+						value="#{clienteBean.cliente.usuario.senha}"
+						required="true"
+						requiredMessage="Campo 'Confirme a Senha' preenchimento obrigatório" 
+						/>
+					<p:message for="senha2"/>
 
 				</h:panelGrid>
 			</p:fieldset>
