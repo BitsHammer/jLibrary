@@ -71,7 +71,7 @@ public class Item implements Serializable {
 	 * Retorna o valor total
 	 */
 	public double valorTotal(){
-		return 1d * quantidade;
+		return livro.getPrecoVenda() * quantidade;
 	}
 
 	/* (non-Javadoc)
