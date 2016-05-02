@@ -5,6 +5,7 @@ package com.bitshammer.security.dao;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.security.auth.login.LoginException;
 
@@ -15,7 +16,7 @@ import com.bitshammer.security.model.Usuario;
  * @author Bruno
  *
  */
-class LoginDao extends JPADao<Usuario> implements ILoginDao {
+public class LoginDao extends JPADao<Usuario> implements ILoginDao {
 	
 	/**
 	 * @see com.bitshammer.security.dao.ILoginDao#findUser(java.lang.String,
@@ -23,16 +24,20 @@ class LoginDao extends JPADao<Usuario> implements ILoginDao {
 	 */
 	@Override
 	public Usuario findUser(Usuario usuario) throws LoginException {
-		TypedQuery<Usuario> query = getEntityManager().createQuery("select u from Usuario as u where u.login = :login and u.senha = :senha",
+		EntityManager entityManager = getEntityManager();
+		
+		TypedQuery<Usuario> query = entityManager.createQuery("select u from Usuario as u where u.login = :login and u.senha = :senha",
 				Usuario.class);
 		query.setParameter("login", usuario.getLogin());
 		query.setParameter("senha", usuario.getSenha());
+		
 		List<Usuario> resultList = query.getResultList();
 		if (!resultList.isEmpty()) {
 			return resultList.get(0);
 		} else {
 			throw new LoginException("Usuario nao encontrado");
 		}
+		
 	}
 
 }

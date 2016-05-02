@@ -3,51 +3,78 @@
  */
 package com.bitshammer.security.model;
 
-import java.security.Principal;
+import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 /**
  * 
  * Classe representando um Usuario
+ * 
  * @author Bruno
  *
  */
 /**
- * @author Bruno
+ * @author bruno.martins
  *
  */
 @Entity
-public class Usuario implements Principal {
-	
+public class Usuario implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4196937487888694691L;
+
+	/**
+	 * Id
+	 */
 	@Id
 	@GeneratedValue
-	@Column(name="user_id")
-	private Long id;
-	
-	@Column(nullable=false, length=50)
+	@Column(name = "usuario_id")
+	private Integer id;
+
+	/**
+	 * Login
+	 */
+	@Column(nullable = false, length = 50)
 	private String login;
-	
-	@Column(nullable=false)
+
+	/**
+	 * Senha
+	 */
+	@Column(nullable = false)
 	private String senha;
-	
-	@Column(nullable=false, length=50)
+
+	/**
+	 * Email
+	 */
+	@Column(nullable = false, length = 50)
 	private String email;
-	
+
+	/**
+	 * Tipo de Usuario
+	 */
+	@Enumerated(EnumType.ORDINAL)
+	private TipoUsuario tipoUsuario;
+
 	/**
 	 * @return the id
 	 */
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
 	/**
-	 * @param id the id to set
+	 * @param id
+	 *            the id to set
 	 */
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -59,7 +86,8 @@ public class Usuario implements Principal {
 	}
 
 	/**
-	 * @param login the login to set
+	 * @param login
+	 *            the login to set
 	 */
 	public void setLogin(String login) {
 		this.login = login;
@@ -73,7 +101,8 @@ public class Usuario implements Principal {
 	}
 
 	/**
-	 * @param senha the senha to set
+	 * @param senha
+	 *            the senha to set
 	 */
 	public void setSenha(String senha) {
 		this.senha = senha;
@@ -87,10 +116,33 @@ public class Usuario implements Principal {
 	}
 
 	/**
-	 * @param email the email to set
+	 * @param email
+	 *            the email to set
 	 */
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	/**
+	 * @return the tipoUsuario
+	 */
+	public TipoUsuario getTipoUsuario() {
+		return tipoUsuario;
+	}
+
+	/**
+	 * @param tipoUsuario
+	 *            the tipoUsuario to set
+	 */
+	public void setTipoUsuario(TipoUsuario tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(obj == null)
+			return false;
+		return id.equals(((Usuario)obj).getId());
 	}
 
 	/* (non-Javadoc)
@@ -99,20 +151,14 @@ public class Usuario implements Principal {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Usuario [id=");
-		builder.append(id);
-		builder.append(", login=");
-		builder.append(login);
-		builder.append(", senha=");
-		builder.append(senha);
-		builder.append(", email=");
-		builder.append(email);
-		builder.append("]");
+		builder.append("Usuario [getId()=").append(getId())
+				.append(", getLogin()=").append(getLogin())
+				.append(", getSenha()=").append(getSenha())
+				.append(", getEmail()=").append(getEmail())
+				.append(", getTipoUsuario()=").append(getTipoUsuario())
+				.append("]");
 		return builder.toString();
 	}
-
-	@Override
-	public String getName() {
-		return login;
-	}
+	
+	
 }

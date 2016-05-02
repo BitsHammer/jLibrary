@@ -1,17 +1,17 @@
 package com.bitshammer.infra.bean;
 
-import java.io.Serializable;
-
 import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 import org.primefaces.context.RequestContext;
 
-public abstract class DefaultBean implements Serializable{
+import com.bitshammer.cliente.Cliente;
+import com.bitshammer.security.model.TipoUsuario;
+import com.bitshammer.security.model.Usuario;
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 2162113209886252134L;
+public abstract class DefaultBean{
+
 
 	/**
 	 * Exibe uma mensagem de informação ao usuário
@@ -28,7 +28,7 @@ public abstract class DefaultBean implements Serializable{
 	 * Exibe uma mensagem de erro ao usuário
 	 * @param error Mensagem
 	 */
-	protected void addErrorMessage(String error) {
+	protected void showErrorMessage(String error) {
 		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro", error);
 		RequestContext.getCurrentInstance().showMessageInDialog(message);
 	}
@@ -37,7 +37,68 @@ public abstract class DefaultBean implements Serializable{
 	protected void showSucessMessage() {
 		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Sucesso", "Dados salvos!");
 		RequestContext.getCurrentInstance().showMessageInDialog(message);
-		
+	}
+	
+	/**
+	 * Valida se há um usuário comum na aplicação
+	 * @return
+	 */
+	public boolean isUsuarioCliente(){
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+		if(session.getAttribute("usuario") != null){
+			Usuario usuario = (Usuario) session.getAttribute("usuario");
+			return TipoUsuario.CLIENTE.equals(usuario.getTipoUsuario());			
+		}
+		return true;
+	}
+	
+	/**
+	 * Valida se há um usuário administrador na aplicação
+	 * @return
+	 */
+	public boolean isUsuarioAdministrador(){
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+		if(session.getAttribute("usuario") != null){
+			Usuario usuario = (Usuario) session.getAttribute("usuario");
+			return TipoUsuario.ADMINISTRADOR.equals(usuario.getTipoUsuario());			
+		}
+		return false;
+	}
+	
+	/**
+	 * Valida se há um usuário na aplicação
+	 * @return
+	 */
+	public boolean isUsuarioLogado(){
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+		return session.getAttribute("usuario") != null;
+	}
+
+	
+	/**
+	 * Retorna o usuário logado
+	 * @return
+	 */
+	public Usuario getUsuario(){
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+		if(session.getAttribute("usuario") != null){
+			return (Usuario) session.getAttribute("usuario");
+		} else {
+			return null;
+		}
+	}
+	
+	/**
+	 * Retornar o cliente logado
+	 * @return
+	 */
+	public Cliente getClienteLogado(){
+		HttpSession session = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(true);
+		if(session.getAttribute("cliente") != null){
+			return (Cliente) session.getAttribute("cliente");
+		} else {
+			return null;
+		}
 	}
 
 }

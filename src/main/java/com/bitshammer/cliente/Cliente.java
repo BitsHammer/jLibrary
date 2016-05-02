@@ -1,43 +1,88 @@
 package com.bitshammer.cliente;
 
-import java.util.List;
+import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
-import com.bitshammer.aluguel.Aluguel;
+import com.bitshammer.comum.Endereco;
+import com.bitshammer.security.model.Usuario;
 
 /**
  * Classe que representa um Cliente
+ * 
  * @author Bruno
  *
  */
 @Entity
 public class Cliente {
 
+	/**
+	 * ID
+	 */
 	@Id
 	@GeneratedValue
-	@Column(name="cliente_id")
+	@Column(name = "cliente_id")
 	private Long id;
-	
-	@Column(nullable=false, length=200)
+
+	/**
+	 * Nome
+	 */
+	@Column(nullable = false, length = 200)
 	private String nome;
 
-	@Column(nullable=false, length=8)
+	/**
+	 * Telefone
+	 */
+	@Column(nullable = false, length = 10)
 	private String telefone;
 
-	@Column(nullable=false, length=50)
-	private String email;
-
-	@Column(nullable=false, length=9)
+	/**
+	 * Celular
+	 */
+	@Column(nullable = false, length = 11)
 	private String celular;
 	
-	@OneToMany(mappedBy="cliente", fetch=FetchType.LAZY)
-	private List<Aluguel> alugueis;
+	/**
+	 * Data de nascimento
+	 */
+	@Temporal(TemporalType.DATE)
+	private Date dtNascimento;
+	
+	/**
+	 * Sexo
+	 */
+	@Enumerated(EnumType.STRING)
+	private Sexo sexo;
+
+	/**
+	 * Endereco
+	 */
+	@Embedded
+	private Endereco endereco;
+	
+	/**
+	 * CPF
+	 */
+	@Column
+	private String cpf;
+
+	/**
+	 * Usuário
+	 */
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name = "usuario_id", referencedColumnName = "usuario_id")
+	private Usuario usuario;
 
 	/**
 	 * @return the id
@@ -47,7 +92,8 @@ public class Cliente {
 	}
 
 	/**
-	 * @param id the id to set
+	 * @param id
+	 *            the id to set
 	 */
 	public void setId(Long id) {
 		this.id = id;
@@ -61,7 +107,8 @@ public class Cliente {
 	}
 
 	/**
-	 * @param nome the nome to set
+	 * @param nome
+	 *            the nome to set
 	 */
 	public void setNome(String nome) {
 		this.nome = nome;
@@ -75,24 +122,11 @@ public class Cliente {
 	}
 
 	/**
-	 * @param telefone the telefone to set
+	 * @param telefone
+	 *            the telefone to set
 	 */
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
-	}
-
-	/**
-	 * @return the email
-	 */
-	public String getEmail() {
-		return email;
-	}
-
-	/**
-	 * @param email the email to set
-	 */
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 	/**
@@ -103,24 +137,112 @@ public class Cliente {
 	}
 
 	/**
-	 * @param celular the celular to set
+	 * @param celular
+	 *            the celular to set
 	 */
 	public void setCelular(String celular) {
 		this.celular = celular;
 	}
 
 	/**
-	 * @return the alugueis
+	 * @return the dtNascimento
 	 */
-	public List<Aluguel> getAlugueis() {
-		return alugueis;
+	public Date getDtNascimento() {
+		return dtNascimento;
 	}
 
 	/**
-	 * @param alugueis the alugueis to set
+	 * @param dtNascimento the dtNascimento to set
 	 */
-	public void setAlugueis(List<Aluguel> alugueis) {
-		this.alugueis = alugueis;
+	public void setDtNascimento(Date dtNascimento) {
+		this.dtNascimento = dtNascimento;
 	}
+
+	/**
+	 * @return the sexo
+	 */
+	public Sexo getSexo() {
+		return sexo;
+	}
+
+	/**
+	 * @param sexo the sexo to set
+	 */
+	public void setSexo(Sexo sexo) {
+		this.sexo = sexo;
+	}
+
+	/**
+	 * @return the endereco
+	 */
+	public Endereco getEndereco() {
+		if(endereco == null)
+			endereco = new Endereco();
+		return endereco;
+	}
+
+	/**
+	 * @param endereco the endereco to set
+	 */
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+
+	/**
+	 * @return the cpf
+	 */
+	public String getCpf() {
+		return cpf;
+	}
+
+	/**
+	 * @param cpf the cpf to set
+	 */
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	/**
+	 * @return the usuario
+	 */
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	/**
+	 * @param usuario the usuario to set
+	 */
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(obj == null)
+			return false;
+		if(!(obj instanceof Cliente))
+			return false;
+		return id.equals(((Cliente)obj).getId());
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Cliente [getId()=").append(getId())
+				.append(", getNome()=").append(getNome())
+				.append(", getTelefone()=").append(getTelefone())
+				.append(", getCelular()=").append(getCelular())
+				.append(", getDtNascimento()=").append(getDtNascimento())
+				.append(", getSexo()=").append(getSexo())
+				.append(", getEndereco()=").append(getEndereco())
+				.append(", getCpf()=").append(getCpf())
+				.append(", getUsuario()=").append(getUsuario()).append("]");
+		return builder.toString();
+	}
+	
+	
 
 }

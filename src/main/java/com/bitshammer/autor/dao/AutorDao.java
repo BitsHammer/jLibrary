@@ -7,7 +7,7 @@ import javax.persistence.TypedQuery;
 import com.bitshammer.autor.Autor;
 import com.bitshammer.infra.dao.JPADao;
 
-class AutorDao extends JPADao<Autor> implements IAutorDao{
+public class AutorDao extends JPADao<Autor> implements IAutorDao{
 
 	@Override
 	public List<Autor> findByParams(Autor autor) {
@@ -23,6 +23,7 @@ class AutorDao extends JPADao<Autor> implements IAutorDao{
 		TypedQuery<Autor> query = getEntityManager().createQuery(str, Autor.class);
 		return query.getResultList();
 	}
+
 
 
 }

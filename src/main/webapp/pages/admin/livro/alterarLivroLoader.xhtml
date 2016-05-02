@@ -1,0 +1,118 @@
+<?xml version='1.0' encoding='ISO-8859-1' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/templates/defaultTemplate.xhtml"
+		xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+		<ui:define name="content">
+			<h:form id="form">
+				<p:messages />
+				<p:panel id="panel" header="Cadastro de Livro"
+					style="margin-bottom:10px; width: 100%;">
+					<h:panelGrid columns="2" columnClasses="label, value">
+						<p:outputLabel for="l_isbn" value="ISBN" />
+						<p:inputText type="number" id="l_isbn" name="l_isbn" value="#{livroBean.livro.isbn}" required="true" requiredMessage="Campo 'ISBN' obrigatorio"/>
+
+						<p:outputLabel for="l_titulo" value="Título" />
+						<p:inputText type="text" size="50" maxlength="50" id="l_titulo" name="l_titulo" value="#{livroBean.livro.titulo}" required="true" requiredMessage="Campo 'Título' obrigatorio" />
+
+						<h:outputLabel for="menu" value="Autores" />
+						<p:selectCheckboxMenu id="menu" value="#{livroBean.livro.autores}" label="Autores"
+							filter="true" filterMatchMode="startsWith"
+							panelStyle="width:250px" converter="autorConverter" required="true" requiredMessage="Campo 'Autor' obrigatorio">
+							<f:selectItems value="#{livroBean.listaAutor}" var="autor" itemLabel="#{autor.nome}" itemValue="#{autor}"/>
+							<p:ajax event="change"  update="tabelaAutor"/>
+						</p:selectCheckboxMenu>
+
+						<p:outputLabel value="Selecionados" />
+						<p:dataList id="tabelaAutor" value="#{livroBean.livro.autores}" var="autor" emptyMessage="Nenhuma autor selecionado"> 
+				            	<h:outputText value="#{autor.nome}" />
+				       	</p:dataList>
+
+						<p:outputLabel for="dt_publicacao" value="Data de Publicacao" />
+						<p:calendar id="dt_publicacao" value="#{livroBean.livro.dataPublicacao}" required="true" requiredMessage="Campo 'Data de Publicacao' obrigatorio"/>
+
+						<!-- EDITORA -->
+						<p:outputLabel for="l_editora" value="Editora" />
+						<p:selectOneMenu id="l_editora"
+							value="#{livroBean.livro.editora}" filter="true" filterMatchMode="startsWith" 
+							panelStyle="width:250px" converter="editoraConverter" required="true" requiredMessage="Campo 'Editora' obrigatorio">
+							<f:selectItems value="#{livroBean.listaEditora}" var="editora" itemLabel="#{editora.nome}" itemValue="#{editora}"/>
+						</p:selectOneMenu>
+							
+						<p:outputLabel for="categoria" value="Categoria" />
+						<p:selectCheckboxMenu id="categoria"
+							value="#{livroBean.livro.categorias}" style="width:125px" converter="categoriaConverter" required="true" requiredMessage="Campo 'Categoria' obrigatorio">
+							<f:selectItems value="#{livroBean.categorias}" var="categoria" itemLabel="#{categoria}" />
+							<p:ajax event="change" update="tabelaCategoria"/>
+						</p:selectCheckboxMenu>
+						
+						<p:outputLabel value="Selecionados" />
+						<p:dataList id="tabelaCategoria" value="#{livroBean.livro.categorias}"
+							var="categoria" emptyMessage="Nenhuma categoria selecionada"> 
+				            	#{categoria}
+				       	</p:dataList>
+
+						<p:outputLabel for="l_indice" value="Indice" />
+						<p:inputTextarea id="l_indice" rows="6" cols="33" value="#{livroBean.livro.indice}" required="true" requiredMessage="Campo 'Indice' obrigatorio"/>
+
+						<p:outputLabel for="formato" value="Formato" />
+						<p:selectOneMenu id="formato" value="#{livroBean.livro.formato}" converter="formatoLivroConverter"
+							style="width:125px" required="true" requiredMessage="Campo 'Formato' obrigatorio">
+								<f:selectItems value="#{livroBean.formatos}" var="g" itemValue="#{g}" itemLabel="#{g}"/>	
+						</p:selectOneMenu>
+
+						<p:outputLabel for="l_numero_paginas" value="Numero de Paginas" />
+						<p:inputText type="number" size="10" maxlength="10" id="l_numero_paginas"
+							name="l_numero_paginas" value="#{livroBean.livro.numeroPaginas}" required="true" requiredMessage="Campo 'Numero de Paginas' obrigatorio" />
+
+						<!-- PREï¿½O DE VENDA-->
+						<p:outputLabel for="l_preco_venda" value="Preco de Venda" />
+						<p:inputText type="number"  size="10" maxlength="10" id="l_preco_venda"
+							name="l_titulo" value="#{livroBean.livro.precoVenda}" required="true" requiredMessage="Campo 'Preco de venda' obrigatorio">
+							<p:ajax event="change" update="l_margem_lucro"/>
+						</p:inputText>
+							
+						<p:outputLabel for="l_preco_custo" value="Preco de Custo" />
+						<p:inputText type="number"  id="l_preco_custo" value="#{livroBean.livro.precoCusto}" required="true" requiredMessage="Campo 'Preco de Custo' obrigatorio">
+							<p:ajax event="change" update="l_margem_lucro"/>
+						</p:inputText>
+						
+						<p:outputLabel for="l_margem_lucro" value="Margem de Lucro" />
+						<h:outputText id="l_margem_lucro" value="#{livroBean.livro.calcularMargemLucro()}" required="true" requiredMessage="Campo 'Marge de Lucro' obrigatorio" />
+						
+						
+						<p:outputLabel for="l_estoque" value="Quantidade em Estoque" />
+						<p:inputText type="number"  id="l_estoque" value="#{livroBean.livro.quantidadeEstoque	}" required="true" requiredMessage="Campo 'Estoque' obrigatorio" />
+						
+						<p:outputLabel for="l_resumo" value="Resumo" />
+						<p:inputTextarea id="l_resumo" rows="6" cols="33" value="#{livroBean.livro.resumo}" required="true" requiredMessage="Campo 'Quantidade em estoque' obrigatorio" />
+					</h:panelGrid>
+
+				</p:panel>
+				<p:commandButton value="Cadastrar"
+				action="#{livroBean.atualizarLivro()}" validateClient="true" update="form">
+				<p:confirm header="Confirmação"
+					message="Tem certeza que deseja atualizar o cadastro?"
+					icon="ui-icon-alert" />
+				</p:commandButton>
+
+				<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+					<p:commandButton value="Sim" type="button"
+						styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+					<p:commandButton value="Não" type="button"
+						styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+				</p:confirmDialog>
+				
+				<p:ajaxStatus onstart="PF('statusDialog').show()"
+					onsuccess="PF('statusDialog').hide()" />
+
+				<p:dialog widgetVar="statusDialog" modal="true" draggable="false"
+					closable="false" resizable="false" showHeader="false">
+					<p:graphicImage value="/images/ajaxloadingbar.gif" />
+				</p:dialog>
+			</h:form>
+		</ui:define>
+	</ui:composition>

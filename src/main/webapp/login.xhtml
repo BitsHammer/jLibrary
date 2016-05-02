@@ -11,7 +11,8 @@
 <h:body>
 	<h:form>
 		<p:panel id="panel" header="Bem vindo ao jLibrary"
-			style="margin-bottom:10px;">
+			style="margin-bottom:10px; width: 100%;" >
+			<p:graphicImage value="/images/books.png" width="200" />
 			<h:panelGrid columns="2" columnClasses="label, value">
 				<p:outputLabel for="j_username" value="#{msg.label_nome}" />
 				<p:inputText type="text" id="j_username" name="j_username" value="#{loginBean.usuario.login}"/>
@@ -20,13 +21,14 @@
 			</h:panelGrid>
 		</p:panel>
 		<p:commandButton value="Entrar" update="panel" action="#{loginBean.logar}" />
+		<p:commandButton value="Efetuar Cadastro!" action="cadastrarClienteLoader" />
 	</h:form>
 	<p:ajaxStatus onstart="PF('statusDialog').show()"
 		onsuccess="PF('statusDialog').hide()" />
 
 	<p:dialog widgetVar="statusDialog" modal="true" draggable="false"
 		closable="false" resizable="false" showHeader="false">
-		<p:graphicImage value="images/ajaxloadingbar.gif" />
+		<p:graphicImage value="/images/ajaxloadingbar.gif" />
 	</p:dialog>
 </h:body>
 </html>

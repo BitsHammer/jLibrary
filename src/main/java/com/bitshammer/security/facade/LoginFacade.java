@@ -1,21 +1,23 @@
 package com.bitshammer.security.facade;
 
-import javax.inject.Inject;
 import javax.security.auth.login.LoginException;
 
 import com.bitshammer.security.dao.ILoginDao;
+import com.bitshammer.security.dao.LoginDao;
 import com.bitshammer.security.model.Usuario;
 
-class LoginFacade implements ILoginFacade{
+public class LoginFacade implements ILoginFacade {
 
+	private ILoginDao dao = new LoginDao();
 	
-	
-	@Inject
-	private ILoginDao dao;
-	
+	/*
+	 * (non-Javadoc)
+	 * @see com.bitshammer.security.facade.ILoginFacade#login(com.bitshammer.security.model.Usuario)
+	 */
 	@Override
-	public Usuario login(Usuario user) throws LoginException {
-		return dao.findUser(user);
+	public Usuario login(final Usuario usuario) throws LoginException {
+		return dao.findUser(usuario);
 	}
+	
 
 }

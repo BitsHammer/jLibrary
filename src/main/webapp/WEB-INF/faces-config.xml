@@ -3,28 +3,58 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
 	<navigation-rule>
-		<from-view-id>/login.xhtml</from-view-id>
+		<from-view-id>*</from-view-id>
 		<navigation-case>
 			<from-outcome>home</from-outcome>
-			<to-view-id>/pages/user/home.xhtml</to-view-id>
-			<redirect />
-		</navigation-case>
-	</navigation-rule>
-	<navigation-rule>
-		<from-view-id>/pages/user/home.xhtml</from-view-id>
-		<navigation-case>
-			<from-outcome>autorLoader</from-outcome>
-			<to-view-id>/pages/autor/autorLoader.xhtml</to-view-id>
+			<to-view-id>/pages/home.xhtml</to-view-id>
 			<redirect />
 		</navigation-case>
 		<navigation-case>
-			<from-outcome>autorListarLoader</from-outcome>
-			<to-view-id>/pages/autor/autorListarLoader.xhtml</to-view-id>
+			<from-outcome>livroLoader</from-outcome>
+			<to-view-id>/pages/admin/livro/livroLoader.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>alterarLivroLoader</from-outcome>
+			<to-view-id>/pages/admin/livro/alterarLivroLoader.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>livroListarLoader</from-outcome>
+			<to-view-id>/pages/admin/livro/livroListarLoader.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		
+		<navigation-case>
+			<from-outcome>livroConsultaLoader</from-outcome>
+			<to-view-id>/pages/consultaLivro/livroConsultaLoader.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		
+		
+		<navigation-case>
+			<from-outcome>carrinhoListarLoader</from-outcome>
+			<to-view-id>/pages/carrinho/carrinhoListarLoader.xhtml</to-view-id>
 			<redirect />
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>login</from-outcome>
 			<to-view-id>/login.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>cadastrarClienteLoader</from-outcome>
+			<to-view-id>/pages/cliente/cadastrarClienteLoader.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>alterarClienteLoader</from-outcome>
+			<to-view-id>/pages/cliente/alterarClienteLoader.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>pesquisarClienteLoader</from-outcome>
+			<to-view-id>/pages/admin/cliente/pesquisarClienteLoader.xhtml</to-view-id>
 			<redirect />
 		</navigation-case>
 	</navigation-rule>
