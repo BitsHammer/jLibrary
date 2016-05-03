@@ -168,6 +168,25 @@ public class ClienteTest {
 		cliente.setNome("Bruno");
 		List<Cliente> lista = facade.pesquisarCliente(cliente);
 		assertNotEquals(0, lista.size());
+		cliente = new Cliente();
+		cliente.setNome("sakdfka");
+		lista = facade.pesquisarCliente(cliente);
+		assertEquals(0, lista.size());
+		cliente = new Cliente();
+		cliente.setNome("Bruno");
+		cliente.setCpf("43598392869");
+		lista = facade.pesquisarCliente(cliente);
+		assertNotEquals(0, lista.size());
+		cliente = new Cliente();
+		cliente.getUsuario().setEmail("bdm2943@gmail.com");
+		lista = facade.pesquisarCliente(cliente);
+		assertNotEquals(0, lista.size());
+		cliente = new Cliente();
+		cliente.setNome("Bruno");
+		cliente.setCpf("43598392869");
+		cliente.getUsuario().setEmail("bdm2943@gmail.com");
+		lista = facade.pesquisarCliente(cliente);
+		assertNotEquals(0, lista.size());
 	}
 	
 	@Test

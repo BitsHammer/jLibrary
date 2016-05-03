@@ -3,10 +3,15 @@
  */
 package com.bitshammer.cliente.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 
 import com.bitshammer.cliente.Cliente;
 import com.bitshammer.infra.dao.JPADao;
@@ -43,11 +48,26 @@ public class ClienteDao extends JPADao<Cliente> implements IClienteDao {
 	@Override
 	public List<Cliente> pesquisarCliente(Cliente cliente) {
 		EntityManager entityManager = getEntityManager();
-
-		TypedQuery<Cliente> query = entityManager
-				.createQuery("select c from Cliente as c where nome like :nome", Cliente.class);
-		query.setParameter("nome", "%" + cliente.getNome() + "%");
-		return query.getResultList();
+		CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+		CriteriaQuery<Cliente> query = builder.createQuery(Cliente.class);
+		Root<Cliente> from = query.from(Cliente.class);
+		List<Predicate> predicates = new ArrayList<Predicate>();
+		
+		if(cliente.getNome() != null)
+			predicates.add(builder.equal(from.get("nome"), cliente.getNome()));
+		
+		if(cliente.getCpf() != null)
+			predicates.add(builder.equal(from.get("cpf"), cliente.getCpf()));
+		if(cliente.getUsuario().getEmail() != null)
+			predicates.add(builder.equal(from.join("usuario").get("email"), cliente.getUsuario().getEmail()));
+		
+		Predicate[] arrPredicates = new Predicate[predicates.size()];
+		for(int i=0; i<predicates.size();i++){
+			arrPredicates[i] = predicates.get(i);
+		}
+		return entityManager.createQuery(query.select(from).where(arrPredicates)).getResultList();
+		
+		
 	}
 
 }

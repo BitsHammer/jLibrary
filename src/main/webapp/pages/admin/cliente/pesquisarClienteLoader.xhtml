@@ -13,6 +13,10 @@
 				<p:panelGrid columns="3" columnClasses="label, value, value">
 					<p:outputLabel for="nome" value="Nome:"/>
 					<p:inputText id="nome" value="#{clienteBean.cliente.nome}"/>
+					<p:outputLabel for="cpf" value="CPF:"/>
+					<p:inputText id="cpf" value="#{clienteBean.cliente.cpf}"/>
+					<p:outputLabel for="email" value="Email:"/>
+					<p:inputText id="email" value="#{clienteBean.cliente.usuario.email}"/>
 					<p:commandButton value="Pesquisar" action="#{clienteBean.pesquisarCliente()}" update="tabelaCliente"/>
 				</p:panelGrid>
 			</p:fieldset>
