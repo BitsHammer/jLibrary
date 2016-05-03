@@ -18,7 +18,7 @@
 								<!-- TITULO -->
 								<p:outputLabel for="l_titulo" value="Titulo" />
 								<p:inputText type="text" id="l_titulo" name="l_titulo"
-											value="#{livroBean.livro.isbn}" />
+											value="#{livroBean.livro.titulo}" />
 									
 								<!-- EDITORA -->
 								<p:outputLabel for="l_editora" value="Editora" />
@@ -54,13 +54,13 @@
 							           #{categoria}
 								</p:dataList>
 																				
-								<p:commandButton update="cars" value="Consultar" onclick="return validarCampos()" id="btn_consultar" action="#{livroBean.pesquisaLivro()}" />
+								<p:commandButton update="livros" value="Consultar" onclick="return validarCampos()" id="btn_consultar" action="#{livroBean.pesquisaLivro()}" />
 								<br></br>						
 					</h:panelGrid>
 				</p:panel>			
 			    		
 				<p:dataGrid var="livro" value="#{livroBean.listaLivro}" columns="3" layout="grid"
-					rows="12" paginator="true" id="cars"
+					rows="12" paginator="true" id="livros"
 					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 					rowsPerPageTemplate="6,12,16">					 
 				   <f:facet name="header">
@@ -82,6 +82,7 @@
 							   <p:commandLink  oncomplete="PF('carDialog').show()" title="View Detail">
 							   	  <h:outputText styleClass="ui-icon ui-icon-search" style="margin:0 auto;" />
 							      <f:setPropertyActionListener value="#{livro}" target="#{livroBean.selectedLivro}" />
+
 							   </p:commandLink>	
 							   
 							 <p:commandLink  title="Adicionar ao Carrinho">
@@ -90,6 +91,7 @@
 							  </p:commandLink>	 
 							  
 							   <!-- <p:commandButton ajax="true" action="#{carrinhoBean.adicionarItem(livro)}" icon="ui-icon-cart" title="Adicionar ao Carrinho"/> -->							   
+
 						</h:panelGrid>
 					</p:panel> 
 		    </p:dataGrid>
@@ -142,6 +144,15 @@
 						
 						</p:panelGrid>
 					</p:outputPanel>
+			</p:dialog>
+			
+			<p:dialog header="Adicionar ao carrinho" widgetVar="dlg1" minHeight="40" resizable="false">
+    			<h:outputText value="Tem certeza que deseja adicionar esse item ao carrinho de compras?" /> <br></br>
+    			<p:outputLabel value="Quantidade" for="spnQnt"/>
+    			<p:spinner name="spnQnt" id="spnQnt" min="1" value="1" binding="#{quantidade}"/> <br></br>
+    			
+    			<p:commandButton ajax="true" value="Sim" action="#{carrinhoBean.adicionarItem(livroBean.selectedLivro, quantidade.value)}" oncomplete="PF('dlg1').hide();"/>
+    			<p:commandButton value="N�o" onclick="PF('dlg1').hide();" />
 			</p:dialog>					 
 		</h:form>
 	</ui:define>

@@ -12,7 +12,7 @@ import javax.faces.convert.FacesConverter;
  * @author Bruno
  *
  */
-@FacesConverter(value = "autorConverter", forClass = Autor.class)
+@FacesConverter(value = "autorConverter")
 public class AutorConverter implements Converter {
 
 	/*

@@ -5,7 +5,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-@FacesConverter(value="categoriaConverter", forClass = Categoria.class)
+@FacesConverter(value="categoriaConverter")
 public class CategoriaConverter implements Converter {
 
 	@Override

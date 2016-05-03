@@ -9,7 +9,7 @@
 	</Appenders>
 	<Loggers>
 		<logger name="org.hibernate.SQL">
-			<level value="DEBUG" />
+			<level value="INFO" />
 		</logger>
 
 		<logger name="org.hibernate.type">
@@ -22,7 +22,7 @@
 			<level value="INFO" />
 		</logger>
 		<logger name="com.bitshammer">
-			<level value="ALL" />
+			<level value="INFO" />
 		</logger>
 
 		<Root level="INFO" additivity="false">

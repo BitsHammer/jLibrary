@@ -12,7 +12,7 @@ import javax.faces.convert.FacesConverter;
  * @author Bruno
  *
  */
-@FacesConverter(value = "numberStringConverter", forClass = String.class)
+@FacesConverter(value = "numberStringConverter")
 public class NumberStringConverter implements Converter {
 
 	/* (non-Javadoc)

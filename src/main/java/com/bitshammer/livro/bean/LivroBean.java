@@ -142,6 +142,7 @@ public class LivroBean extends DefaultBean {
 			showErrorMessage("Erro ao excluir livro!");
 		}
 	}
+		
 
 	public List<Livro> getListaLivro() {
 		return listaLivro;
