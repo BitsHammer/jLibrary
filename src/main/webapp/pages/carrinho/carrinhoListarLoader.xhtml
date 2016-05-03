@@ -21,7 +21,7 @@
 				<p:panel id="painelTabela" header="Carrinho de compras"
 					styleClass="table" >
 
-					<p:dataTable id="tableItems" var="Item" value="#{carrinhoBean.carrinho.itensSelecionados()}" rendered="#{not empty carrinhoBean.carrinho.itensSelecionados()}" emptyMessage="Não há itens no carrinho!">
+					<p:dataTable id="tableItems" var="Item" value="#{carrinhoBean.carrinho.itensSelecionados()}" emptyMessage="Não há itens no carrinho!">
 						<p:column headerText="Item">
 							<h:outputText value="#{Item.livro.titulo}" />
 							&emsp;
@@ -33,7 +33,7 @@
 							</p:spinner>
 						</p:column>
 						<p:column headerText="Valor">
-							<h:outputText value="1"/>
+							<h:outputText value="#{Item.livro.precoVenda}" />
 						</p:column>
 						<p:column headerText="Valor Total">
 							<h:outputText value="#{Item.valorTotal()}" id="valorTotal"/>

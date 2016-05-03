@@ -1,6 +1,9 @@
 function validarCampos(){
+<<<<<<< HEAD
 	
 	
+=======
+>>>>>>> branch 'master' of https://github.com/BitsHammer/jLibrary.git
 	var titulo=$("#consultaLoader\\:l_titulo").val();
 	var editora=$("#consultaLoader\\:l_editora").val();
 	var autor=$("#consultaLoader\\:l_autor").val();

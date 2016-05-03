@@ -49,14 +49,18 @@ public class CarrinhoTest {
 	public void testSomar(){
 		Carrinho carrinho = new Carrinho();
 		Item item = new Item();
-		item.setLivro(new Livro());
+		Livro l = new Livro();
+		l.setPrecoVenda(1d);
+		item.setLivro(l);
 		item.setQuantidade(1);
 		carrinho.adicionarItem(item);
 		assertEquals(1d, carrinho.precoTotal(),0d);
 		carrinho.adicionarItem(item);
 		assertEquals(2d, carrinho.precoTotal(),0d);
 		Item p2 = new Item();
-		p2.setLivro(new Livro());
+		Livro l2 = new Livro();
+		l2.setPrecoVenda(1d);
+		p2.setLivro(l2);
 		p2.setQuantidade(5);
 		carrinho.adicionarItem(p2);
 		assertEquals(7d, carrinho.precoTotal(),0d);

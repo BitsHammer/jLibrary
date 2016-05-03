@@ -48,7 +48,7 @@ public class Usuario implements Serializable {
 	/**
 	 * Senha
 	 */
-	@Column(nullable = false, length=6)
+	@Column(nullable = false)
 	private String senha;
 
 	/**
