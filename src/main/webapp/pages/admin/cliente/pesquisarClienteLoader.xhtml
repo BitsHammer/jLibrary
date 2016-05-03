@@ -7,17 +7,18 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 	<ui:define name="content">
+		<h:outputScript name="/javascript/clienteConsulta.js" target="body"/>
 		<h:form id="form">
 			<p/>
 			<p:fieldset legend="Filtro" style="margin-bottom:20px">
-				<p:panelGrid columns="3" columnClasses="label, value, value">
+				<p:panelGrid columns="2" columnClasses="label, value, value">
 					<p:outputLabel for="nome" value="Nome:"/>
 					<p:inputText id="nome" value="#{clienteBean.cliente.nome}"/>
 					<p:outputLabel for="cpf" value="CPF:"/>
 					<p:inputText id="cpf" value="#{clienteBean.cliente.cpf}"/>
 					<p:outputLabel for="email" value="Email:"/>
 					<p:inputText id="email" value="#{clienteBean.cliente.usuario.email}"/>
-					<p:commandButton value="Pesquisar" action="#{clienteBean.pesquisarCliente()}" update="tabelaCliente"/>
+					<p:commandButton value="Pesquisar" action="#{clienteBean.pesquisarCliente()}" update="tabelaCliente" onclick="return validarCampos()"/>
 				</p:panelGrid>
 			</p:fieldset>
 			<p:dataTable value="#{clienteBean.listaClientes}" emptyMessage="Lista vazia!" var="cliente" id="tabelaCliente">

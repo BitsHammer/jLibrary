@@ -53,13 +53,13 @@ public class ClienteDao extends JPADao<Cliente> implements IClienteDao {
 		Root<Cliente> from = query.from(Cliente.class);
 		List<Predicate> predicates = new ArrayList<Predicate>();
 		
-		if(cliente.getNome() != null)
-			predicates.add(builder.equal(from.get("nome"), cliente.getNome()));
+		if(cliente.getNome() != null && !"".equals(cliente.getNome()))
+			predicates.add(builder.like(from.get("nome"), "%" + cliente.getNome() + "%"));
 		
-		if(cliente.getCpf() != null)
-			predicates.add(builder.equal(from.get("cpf"), cliente.getCpf()));
-		if(cliente.getUsuario().getEmail() != null)
-			predicates.add(builder.equal(from.join("usuario").get("email"), cliente.getUsuario().getEmail()));
+		if(cliente.getCpf() != null && !"".equals(cliente.getCpf()))
+			predicates.add(builder.like(from.get("cpf"), "%" + cliente.getCpf() + "%"));
+		if(cliente.getUsuario().getEmail() != null && !"".equals(cliente.getUsuario().getEmail()))
+			predicates.add(builder.like(from.join("usuario").get("email"),"%" +  cliente.getUsuario().getEmail()+ "%"));
 		
 		Predicate[] arrPredicates = new Predicate[predicates.size()];
 		for(int i=0; i<predicates.size();i++){

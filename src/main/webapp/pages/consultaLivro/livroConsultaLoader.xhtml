@@ -152,7 +152,7 @@
     			<p:spinner name="spnQnt" id="spnQnt" min="1" value="1" binding="#{quantidade}"/> <br></br>
     			
     			<p:commandButton ajax="true" value="Sim" action="#{carrinhoBean.adicionarItem(livroBean.selectedLivro, quantidade.value)}" oncomplete="PF('dlg1').hide();"/>
-    			<p:commandButton value="Nï¿½o" onclick="PF('dlg1').hide();" />
+    			<p:commandButton value="Não" onclick="PF('dlg1').hide();" />
 			</p:dialog>					 
 		</h:form>
 	</ui:define>
