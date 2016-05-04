@@ -63,7 +63,7 @@ public class Livro {
 	/**
 	 * Lista de autores
 	 */
-	@ManyToMany()
+	@ManyToMany
 	@JoinTable(
 	      name="autor_livro",
 	      joinColumns={@JoinColumn(name="livro_id", referencedColumnName="livro_id")},

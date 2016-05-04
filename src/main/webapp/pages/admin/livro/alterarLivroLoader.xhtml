@@ -24,6 +24,7 @@
 							panelStyle="width:250px" converter="autorConverter" required="true" requiredMessage="Campo 'Autor' obrigatorio">
 							<f:selectItems value="#{livroBean.listaAutor}" var="autor" itemLabel="#{autor.nome}" itemValue="#{autor}"/>
 							<p:ajax event="change"  update="tabelaAutor"/>
+							<f:attribute name="collectionType" value="java.util.ArrayList" />
 						</p:selectCheckboxMenu>
 
 						<p:outputLabel value="Selecionados" />
@@ -47,6 +48,7 @@
 							value="#{livroBean.livro.categorias}" style="width:125px" converter="categoriaConverter" required="true" requiredMessage="Campo 'Categoria' obrigatorio">
 							<f:selectItems value="#{livroBean.categorias}" var="categoria" itemLabel="#{categoria}" />
 							<p:ajax event="change" update="tabelaCategoria"/>
+							<f:attribute name="collectionType" value="java.util.ArrayList" />
 						</p:selectCheckboxMenu>
 						
 						<p:outputLabel value="Selecionados" />
