@@ -24,10 +24,20 @@ public class AutorMock {
 				a.setDtNascimento(new Date());
 				a.setLocalMorte("Aqui");
 				a.setLocalNascimento("Lá");
+				Autor b = new Autor();
+				
+				b.setNome("SK");
+				b.setBiografia("Biografia 2");
+				b.setDtFalecimento(new Date());
+				b.setDtNascimento(new Date());
+				b.setLocalMorte("Morreu aqui");
+				b.setLocalNascimento("Nasceu?");
 				entityManager.getTransaction().begin();
 				entityManager.persist(a);
+				entityManager.persist(b);
 				entityManager.getTransaction().commit();
 				listaAutor.add(a);
+				listaAutor.add(b);
 		}
 	}
 

@@ -20,10 +20,16 @@ public class EditoraMock {
 			editora.setNome("Empresa Sombra");
 			editora.setTelefone(29435002l);
 			editora.setCnpj("435983928000169");
+			Editora editora2 = new Editora();
+			editora2.setNome("From Hell");
+			editora2.setTelefone(666l);
+			editora2.setCnpj("666");
 			entityManager.getTransaction().begin();
 			entityManager.persist(editora);
+			entityManager.persist(editora2);
 			entityManager.getTransaction().commit();
 			listaEditora.add(editora);
+			listaEditora.add(editora2);
 		}
 	}
 

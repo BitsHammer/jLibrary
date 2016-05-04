@@ -8,6 +8,8 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
+import com.bitshammer.infra.dao.EntityManagerSingleton;
+
 /**
  * @author Bruno
  *
@@ -23,9 +25,7 @@ public class EditoraConverter implements Converter {
 	 */
 	@Override
 	public Object getAsObject(FacesContext fc, UIComponent arg1, String value) {
-		Editora editora = null;
-		editora = EditoraMock.getInstance().listaEditora.stream().filter(e-> e.getId() == (Long.parseLong(value))).findFirst().orElse(editora);
-		return editora;
+		return EntityManagerSingleton.getInstance().createEntityManager().find(Editora.class, Integer.parseInt(value));
 	}
 
 	/*

@@ -8,6 +8,8 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
+import com.bitshammer.infra.dao.EntityManagerSingleton;
+
 /**
  * @author Bruno
  *
@@ -23,9 +25,7 @@ public class AutorConverter implements Converter {
 	 */
 	@Override
 	public Object getAsObject(FacesContext fc, UIComponent arg1, String value) {
-		Autor autor = null;
-		autor = AutorMock.getInstance().listaAutor.stream().filter(e-> e.getId() == (Long.parseLong(value))).findFirst().orElse(autor);
-		return autor;
+		return EntityManagerSingleton.getInstance().createEntityManager().find(Autor.class, Integer.parseInt(value));
 	}
 
 	/*

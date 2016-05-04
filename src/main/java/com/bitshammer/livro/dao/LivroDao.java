@@ -45,7 +45,7 @@ public class LivroDao extends JPADao<Livro> implements ILivroDao {
 			}
 		}
 		
-		if(livro.getTitulo()!=null){			
+		if(livro.getTitulo()!=null && !"".equals(livro.getTitulo())){			
 			if(!where.equals("")){				
 				where.append(" AND L.titulo= :titulo");				
 			}else{
@@ -78,7 +78,7 @@ public class LivroDao extends JPADao<Livro> implements ILivroDao {
 				query.setParameter("autor", autor);
 			if(categorias!=null && !categorias.isEmpty())
 				query.setParameter("categorias", categorias);
-			if(livro.getTitulo()!=null)
+			if(livro.getTitulo()!=null && !"".equals(livro.getTitulo()))
 				query.setParameter("titulo", livro.getTitulo());
 			
 			return query.getResultList();	
