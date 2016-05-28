@@ -1,13 +1,16 @@
 package com.bitshammer.livro.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 
 import com.bitshammer.autor.Autor;
 import com.bitshammer.editora.Editora;
-
 import com.bitshammer.infra.dao.JPADao;
 import com.bitshammer.livro.Categoria;
 import com.bitshammer.livro.Livro;
@@ -22,80 +25,27 @@ public class LivroDao extends JPADao<Livro> implements ILivroDao {
 		Editora editora=livro.getEditora();
 		List<Categoria> categorias=livro.getCategorias();
 		
-		StringBuilder where=new StringBuilder();
-		StringBuilder join=new StringBuilder();
+		CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+		CriteriaQuery<Livro> query = builder.createQuery(Livro.class);
+		Root<Livro> from = query.from(Livro.class);
+		List<Predicate> predicates = new ArrayList<Predicate>();
 		
-		if(editora!=null){
-			where.append("L.editora = :editora");			
+		if(autor != null && !autor.isEmpty())
+			predicates.add(from.join("autores").in(autor));
+		if(categorias != null && !categorias.isEmpty())
+			predicates.add(from.join("categorias").in(categorias));
+		
+		if(editora != null && !"".equals(editora.getNome()))
+			predicates.add(builder.equal(from.join("editora"), editora));
+		if(livro.getTitulo() != null && !"".equals(livro.getTitulo()))
+			predicates.add(builder.like(from.get("titulo"), "%" + livro.getTitulo() + "%"));
+		
+		
+		Predicate[] arrPredicates = new Predicate[predicates.size()];
+		for(int i=0; i<predicates.size();i++){
+			arrPredicates[i] = predicates.get(i);
 		}
-		if(categorias!=null && !categorias.isEmpty()){
-			join.append(" INNER JOIN L.categorias c");
-			if(!where.equals("")){				
-				where.append(" AND c IN :categorias");				
-			}else{
-				where.append("c IN :categorias");
-			}
-		}	
-		if(autor!=null && !autor.isEmpty()){
-			join.append(" INNER JOIN L.autores a");
-			if(!where.equals("")){				
-				where.append(" AND a IN :autor");				
-			}else{
-				where.append("a IN :autor");
-			}
-		}
-		
-		if(livro.getTitulo()!=null && !"".equals(livro.getTitulo())){			
-			if(!where.equals("")){				
-				where.append(" AND L.titulo= :titulo");				
-			}else{
-				where.append("L.titulo= :titulo");
-			}
-		}
-		
-		String whereC=where.toString();
-		String joinC=join.toString();
-		
-		StringBuilder select=new StringBuilder();
-		
-		if(!joinC.equals("")){
-			select.append(joinC);
-		}
-		
-		if(!whereC.equals("")){
-			select.append(" WHERE "+whereC);
-		}
-		
-		String selectC=select.toString();
-		
-		System.out.println("QUERY MONTADA"+select);
-		if(!select.equals("")){
-			TypedQuery<Livro> query = entityManager
-					.createQuery("SELECT L FROM Livro L "+selectC, Livro.class);
-			if(editora!=null)
-				query.setParameter("editora",editora);
-			if(autor!=null && !autor.isEmpty())
-				query.setParameter("autor", autor);
-			if(categorias!=null && !categorias.isEmpty())
-				query.setParameter("categorias", categorias);
-			if(livro.getTitulo()!=null && !"".equals(livro.getTitulo()))
-				query.setParameter("titulo", livro.getTitulo());
-			
-			return query.getResultList();	
-		}else{
-			TypedQuery<Livro> query = entityManager
-					.createQuery("SELECT L FROM Livro L", Livro.class);		
-			
-			return query.getResultList();	
-		}
-		
-		
-		/*TypedQuery<Livro> query = entityManager
-				.createQuery("SELECT L FROM Livro L INNER JOIN L.autores a INNER JOIN L.categorias c WHERE L.editora = :editora AND a IN :autor AND c IN :categorias", Livro.class);
-		query.setParameter("editora", editora);
-		query.setParameter("autor", autor);
-		query.setParameter("categorias", categorias);
-		query.setParameter("titulo", livro.getTitulo());*/
+		return entityManager.createQuery(query.select(from).where(arrPredicates).distinct(true)).getResultList();
 		
 	}
 }

@@ -16,7 +16,7 @@
 						<p:inputText type="number" id="l_isbn" name="l_isbn" value="#{livroBean.livro.isbn}" required="true" requiredMessage="Campo 'ISBN' obrigatorio"/>
 
 
-						<p:outputLabel for="l_titulo" value="Tï¿½tulo" />
+						<p:outputLabel for="l_titulo" value="Titulo" />
 
 						<p:inputText type="text" size="50" maxlength="50" id="l_titulo" name="l_titulo" value="#{livroBean.livro.titulo}" required="true" requiredMessage="Campo 'Tï¿½tulo' obrigatorio" />
 
@@ -96,7 +96,7 @@
 				</p:panel>
 				<p:commandButton value="Cadastrar"
 				action="#{livroBean.gravarLivro()}" validateClient="true" update="form">
-				<p:confirm header="Confirmação"
+				<p:confirm header="Confirmacao"
 					message="Tem certeza que deseja realizar o cadastro?"
 					icon="ui-icon-alert" />
 				</p:commandButton>
@@ -104,7 +104,7 @@
 				<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
 					<p:commandButton value="Sim" type="button"
 						styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
-					<p:commandButton value="N]ao" type="button"
+					<p:commandButton value="Nao" type="button"
 						styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
 				</p:confirmDialog>
 				

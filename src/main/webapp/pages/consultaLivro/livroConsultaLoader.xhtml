@@ -78,12 +78,10 @@
 						        #{autor.nome}
 						    </p:dataList>   	  
 					 	   	<p:outputLabel for="precoVenda" value="Preco:" />
-							<h:outputText id="precoVenda" value="#{livro.precoVenda}" >
-								<f:convertNumber currencyCode="BRL" type="currency" />
+							<h:outputText id="precoVenda" value="R$ #{livro.precoVenda}" >
 							</h:outputText>
 							<p:outputLabel for="precoCusto" value="Preco de Custo:" rendered="#{securityBean.usuarioAdministrador}"/>
-							<h:outputText id="precoCusto" value="#{livro.precoCusto}" rendered="#{securityBean.usuarioAdministrador}">
-								<f:convertNumber currencyCode="BRL" type="currency" />
+							<h:outputText id="precoCusto" value="R$ #{livro.precoCusto}" rendered="#{securityBean.usuarioAdministrador}">
 							</h:outputText>	
 							
 							
@@ -160,7 +158,7 @@
     			<p:spinner name="spnQnt" id="spnQnt" min="1" value="1" binding="#{quantidade}"/> <br></br>
     			
     			<p:commandButton ajax="true" value="Sim" action="#{carrinhoBean.adicionarItem(livroBean.selectedLivro, quantidade.value)}" oncomplete="PF('dlg1').hide();"/>
-    			<p:commandButton value="Não" onclick="PF('dlg1').hide();" />
+    			<p:commandButton value="Nao" onclick="PF('dlg1').hide();" />
 			</p:dialog>					 
 		</h:form>
 	</ui:define>

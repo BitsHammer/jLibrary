@@ -38,6 +38,23 @@ public class AutorMock {
 				entityManager.getTransaction().commit();
 				listaAutor.add(a);
 				listaAutor.add(b);
+				
+				 	Autor c = new Autor();
+					c.setNome("J. K. Rowling");
+					c.setBiografia("Biografia");
+					c.setDtFalecimento(new Date());
+					c.setDtNascimento(new Date());
+					c.setLocalMorte("Aqui");
+					c.setLocalNascimento("Lá");
+					
+					entityManager.getTransaction().begin();
+					entityManager.persist(a);
+					entityManager.persist(b);
+					entityManager.persist(c);
+					entityManager.getTransaction().commit();
+					listaAutor.add(a);
+					listaAutor.add(b);
+					listaAutor.add(c);
 		}
 	}
 
