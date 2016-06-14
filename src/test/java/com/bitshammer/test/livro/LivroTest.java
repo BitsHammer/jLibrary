@@ -20,7 +20,7 @@ import com.bitshammer.livro.facade.ILivroFacade;
 import com.bitshammer.livro.facade.LivroFacade;
 
 /**
- * @author bruno.martins
+ * @author leticia.costa
  *
  */
 public class LivroTest {

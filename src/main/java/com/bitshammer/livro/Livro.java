@@ -27,7 +27,7 @@ import com.bitshammer.editora.Editora;
  * @author Bruno
  */
 /**
- * @author bruno.martins
+ * @author leticia.costa
  *
  */
 @Entity

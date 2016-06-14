@@ -10,7 +10,7 @@ import com.bitshammer.livro.dao.ILivroDao;
 import com.bitshammer.livro.dao.LivroDao;
 
 /**
- * @author bruno.martins
+ * @author leticia.costa
  *
  */
 public class LivroFacade implements ILivroFacade {

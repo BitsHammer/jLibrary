@@ -8,7 +8,7 @@ import java.util.List;
 import com.bitshammer.livro.Livro;
 
 /**
- * @author bruno.martins
+ * @author leticia.costa
  *
  */
 public interface ILivroDao {

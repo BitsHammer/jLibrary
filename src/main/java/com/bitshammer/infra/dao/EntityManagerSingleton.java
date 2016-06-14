@@ -7,7 +7,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 /**
- * @author bruno.martins
+ * @author leticia.costa
  *
  */
 public class EntityManagerSingleton {

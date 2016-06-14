@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 
 
 /**
- * @author bruno.martins
+ * @author leticia.costa
  *
  */
 public class LoggerProducer {

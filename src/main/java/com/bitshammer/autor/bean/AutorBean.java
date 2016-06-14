@@ -15,7 +15,7 @@ import com.bitshammer.autor.facade.IAutorFacade;
 import com.bitshammer.infra.bean.DefaultBean;
 
 /**
- * @author bruno.martins
+ * @author leticia.costa
  *
  */
 @ManagedBean
